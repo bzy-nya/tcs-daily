@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.DS_Store
+.venv/
+
+data/
+!data/.gitkeep
+
+# Keep the knowledge base
+!memory.db
+serve.py
+memory.db
