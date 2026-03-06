@@ -9,7 +9,7 @@ build/
 data/
 !data/.gitkeep
 
-# Keep the knowledge base
+bin/daily.sh
 !memory.db
 serve.py
 memory.db

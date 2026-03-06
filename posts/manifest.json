@@ -542,6 +542,40 @@
   },
   "reports": [
     {
+      "date": "2026-03-06",
+      "path": "posts/2026-03-06.md",
+      "paper_count": 3,
+      "generated_at": "2026-03-06T09:19:18.961153+00:00",
+      "tags": [
+        "time-complexity",
+        "parameterized-complexity",
+        "distribution-testing"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.05482",
+          "title": "Finding Short Paths on Simple Polytopes",
+          "tags": [
+            "time-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2603.05406",
+          "title": "ETH-Tight Complexity of Optimal Morse Matching on Bounded-Treewidth Complexes",
+          "tags": [
+            "parameterized-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2603.04635",
+          "title": "Optimal Prediction-Augmented Algorithms for Testing Independence of Distributions",
+          "tags": [
+            "distribution-testing"
+          ]
+        }
+      ]
+    },
+    {
       "date": "2026-03-05",
       "path": "posts/2026-03-05.md",
       "paper_count": 5,
