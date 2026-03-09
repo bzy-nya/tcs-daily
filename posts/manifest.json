@@ -542,6 +542,40 @@
   },
   "reports": [
     {
+      "date": "2026-03-09",
+      "path": "posts/2026-03-09.md",
+      "paper_count": 3,
+      "generated_at": "2026-03-09T05:03:38.871088+00:00",
+      "tags": [
+        "quantum-complexity-theory",
+        "statistical-learning-theory",
+        "graph-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.05920v1",
+          "title": "Classical simulability of quantum circuits followed by sparse classical post-processing",
+          "tags": [
+            "quantum-complexity-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2603.06027v1",
+          "title": "Agnostic learning in (almost) optimal time via Gaussian surface area",
+          "tags": [
+            "statistical-learning-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2603.06367v1",
+          "title": "Recognizing Subgraphs of Regular Tilings",
+          "tags": [
+            "graph-algorithms"
+          ]
+        }
+      ]
+    },
+    {
       "date": "2026-03-06",
       "path": "posts/2026-03-06.md",
       "paper_count": 3,
