@@ -542,6 +542,40 @@
   },
   "reports": [
     {
+      "date": "2026-03-10",
+      "path": "posts/2026-03-10.md",
+      "paper_count": 3,
+      "generated_at": "2026-03-10T04:44:41.495752+00:00",
+      "tags": [
+        "circuit-complexity",
+        "average-case-complexity",
+        "pac-learning"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.07589",
+          "title": "On Factorization of Sparse Polynomials of Bounded Individual Degree",
+          "tags": [
+            "circuit-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2603.08693v1",
+          "title": "Improved Certificates for Independence Number in Semirandom Hypergraphs",
+          "tags": [
+            "average-case-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2603.08700v1",
+          "title": "Learning Functions of Halfspaces",
+          "tags": [
+            "pac-learning"
+          ]
+        }
+      ]
+    },
+    {
       "date": "2026-03-09",
       "path": "posts/2026-03-09.md",
       "paper_count": 3,
