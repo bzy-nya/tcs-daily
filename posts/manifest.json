@@ -542,6 +542,55 @@
   },
   "reports": [
     {
+      "date": "2026-03-11",
+      "path": "posts/2026-03-11.md",
+      "paper_count": 5,
+      "generated_at": "2026-03-11T11:45:40.630397+00:00",
+      "tags": [
+        "approximation-algorithms",
+        "parameterized-complexity",
+        "time-complexity",
+        "geometric-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.09846v1",
+          "title": "Almost-Optimal Upper and Lower Bounds for Clustering in Low Dimensional Euclidean Spaces",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.09834v1",
+          "title": "Gap-ETH-Tight Algorithms for Hyperbolic TSP and Steiner Tree",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.08826v1",
+          "title": "d-QBF with Few Existential Variables Revisited",
+          "tags": [
+            "parameterized-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2603.09958v1",
+          "title": "Tetris is Hard with Just One Piece Type",
+          "tags": [
+            "time-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2603.09048v1",
+          "title": "The Spanning Ratio of the Directed $\\Theta_6$-Graph is 5",
+          "tags": [
+            "geometric-algorithms"
+          ]
+        }
+      ]
+    },
+    {
       "date": "2026-03-10",
       "path": "posts/2026-03-10.md",
       "paper_count": 3,
