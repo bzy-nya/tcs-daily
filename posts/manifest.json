@@ -542,6 +542,56 @@
   },
   "reports": [
     {
+      "date": "2026-03-12",
+      "path": "posts/2026-03-12.md",
+      "paper_count": 5,
+      "generated_at": "2026-03-12T07:48:15.223477+00:00",
+      "tags": [
+        "online-algorithms",
+        "graph-algorithms",
+        "parallel-algorithms",
+        "sublinear-algorithms",
+        "streaming-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.10244v1",
+          "title": "Transposition is Nearly Optimal for IID List Update",
+          "tags": [
+            "online-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.10432v1",
+          "title": "Reconstructing Bounded Treelength Graphs with Linearithmic Shortest Path Distance Queries",
+          "tags": [
+            "graph-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.10639v1",
+          "title": "Density-Dependent Graph Orientation and Coloring in Scalable MPC",
+          "tags": [
+            "parallel-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.10720v1",
+          "title": "Sublinear-Time Reconfiguration of Programmable Matter with Joint Movements",
+          "tags": [
+            "sublinear-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.11029v1",
+          "title": "Separating Oblivious and Adaptive Differential Privacy under Continual Observation",
+          "tags": [
+            "streaming-algorithms"
+          ]
+        }
+      ]
+    },
+    {
       "date": "2026-03-11",
       "path": "posts/2026-03-11.md",
       "paper_count": 5,
