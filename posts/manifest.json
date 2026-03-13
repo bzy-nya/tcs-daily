@@ -542,15 +542,58 @@
   },
   "reports": [
     {
+      "date": "2026-03-13",
+      "path": "posts/2026-03-13.md",
+      "paper_count": 4,
+      "generated_at": "2026-03-13T16:18:45.472197+00:00",
+      "tags": [
+        "time-complexity",
+        "graph-algorithms",
+        "distributed-graph-algorithms",
+        "streaming-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.11270v1",
+          "title": "On the PLS-Completeness of $k$-Opt Local Search for the Traveling Salesman Problem",
+          "tags": [
+            "time-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2603.11763v1",
+          "title": "Enumerating All Directed Spanning Trees in Optimal Time",
+          "tags": [
+            "graph-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.12156v1",
+          "title": "Time, Message and Memory-Optimal Distributed Minimum Spanning Tree and Partwise Aggregation",
+          "tags": [
+            "distributed-graph-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.11216v1",
+          "title": "Frequency Moments in Noisy Streaming and Distributed Data under Mismatch Ambiguity",
+          "tags": [
+            "streaming-algorithms"
+          ]
+        }
+      ]
+    },
+    {
       "date": "2026-03-12",
       "path": "posts/2026-03-12.md",
-      "paper_count": 5,
-      "generated_at": "2026-03-12T07:48:15.223477+00:00",
+      "paper_count": 6,
+      "generated_at": "2026-03-12T10:05:21.955749+00:00",
       "tags": [
         "online-algorithms",
         "graph-algorithms",
         "parallel-algorithms",
-        "sublinear-algorithms",
+        "exact-algorithms",
+        "distributed-algorithms",
         "streaming-algorithms"
       ],
       "papers": [
@@ -576,10 +619,17 @@
           ]
         },
         {
+          "arxiv_id": "2603.10710v1",
+          "title": "Polynomial-size encoding of all cuts of small value in integer-valued symmetric submodular functions",
+          "tags": [
+            "exact-algorithms"
+          ]
+        },
+        {
           "arxiv_id": "2603.10720v1",
           "title": "Sublinear-Time Reconfiguration of Programmable Matter with Joint Movements",
           "tags": [
-            "sublinear-algorithms"
+            "distributed-algorithms"
           ]
         },
         {
