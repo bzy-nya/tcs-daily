@@ -545,19 +545,19 @@
       "date": "2026-03-13",
       "path": "posts/2026-03-13.md",
       "paper_count": 4,
-      "generated_at": "2026-03-13T16:18:45.472197+00:00",
+      "generated_at": "2026-03-13T16:19:13.640572+00:00",
       "tags": [
-        "time-complexity",
-        "graph-algorithms",
         "distributed-graph-algorithms",
+        "graph-algorithms",
+        "time-complexity",
         "streaming-algorithms"
       ],
       "papers": [
         {
-          "arxiv_id": "2603.11270v1",
-          "title": "On the PLS-Completeness of $k$-Opt Local Search for the Traveling Salesman Problem",
+          "arxiv_id": "2603.12156v1",
+          "title": "Time, Message and Memory-Optimal Distributed Minimum Spanning Tree and Partwise Aggregation",
           "tags": [
-            "time-complexity"
+            "distributed-graph-algorithms"
           ]
         },
         {
@@ -568,10 +568,10 @@
           ]
         },
         {
-          "arxiv_id": "2603.12156v1",
-          "title": "Time, Message and Memory-Optimal Distributed Minimum Spanning Tree and Partwise Aggregation",
+          "arxiv_id": "2603.11270v1",
+          "title": "On the PLS-Completeness of $k$-Opt Local Search for the Traveling Salesman Problem",
           "tags": [
-            "distributed-graph-algorithms"
+            "time-complexity"
           ]
         },
         {
