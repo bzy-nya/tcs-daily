@@ -542,6 +542,48 @@
   },
   "reports": [
     {
+      "date": "2026-03-16",
+      "path": "posts/2026-03-16.md",
+      "paper_count": 4,
+      "generated_at": "2026-03-16T10:55:08.195300+00:00",
+      "tags": [
+        "fine-grained-complexity",
+        "graph-algorithms",
+        "string-data-structures",
+        "mechanism-design"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.12999v1",
+          "title": "Tight (S)ETH-based Lower Bounds for Pseudopolynomial Algorithms for Bin Packing and Multi-Machine Scheduling",
+          "tags": [
+            "fine-grained-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2603.12894v1",
+          "title": "Optimal Enumeration of Eulerian Trails in Directed Graphs",
+          "tags": [
+            "graph-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.13058v1",
+          "title": "Dynamic direct (ranked) access of MSO query evaluation over SLP-compressed strings",
+          "tags": [
+            "string-data-structures"
+          ]
+        },
+        {
+          "arxiv_id": "2603.12403v1",
+          "title": "Pairwise Exchanges of Freely Replicable Goods with Negative Externalities",
+          "tags": [
+            "mechanism-design"
+          ]
+        }
+      ]
+    },
+    {
       "date": "2026-03-13",
       "path": "posts/2026-03-13.md",
       "paper_count": 4,
