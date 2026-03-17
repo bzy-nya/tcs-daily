@@ -544,19 +544,30 @@
     {
       "date": "2026-03-17",
       "path": "posts/2026-03-17.md",
-      "paper_count": 3,
-      "generated_at": "2026-03-17T05:26:39.319935+00:00",
+      "paper_count": 5,
+      "generated_at": "2026-03-17T12:47:09.564162+00:00",
       "tags": [
-        "approximation-algorithms",
+        "exact-algorithms",
+        "fine-grained-complexity",
+        "parameterized-complexity",
         "online-algorithms",
-        "dynamic-algorithms"
+        "approximation-algorithms",
+        "circuit-complexity"
       ],
       "papers": [
         {
-          "arxiv_id": "2603.14334v1",
-          "title": "Better approximation guarantee for Asymmetric TSP",
+          "arxiv_id": "2603.13624v1",
+          "title": "Jaguar: A Primal Algorithm for Conjunctive Query Evaluation in Submodular-Width Time",
           "tags": [
-            "approximation-algorithms"
+            "exact-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.14754v1",
+          "title": "Towards Parameterized Hardness on Maintaining Conjunctive Queries",
+          "tags": [
+            "fine-grained-complexity",
+            "parameterized-complexity"
           ]
         },
         {
@@ -567,10 +578,17 @@
           ]
         },
         {
-          "arxiv_id": "2603.14754v1",
-          "title": "Towards Parameterized Hardness on Maintaining Conjunctive Queries",
+          "arxiv_id": "2603.14334v1",
+          "title": "Better approximation guarantee for Asymmetric TSP",
           "tags": [
-            "dynamic-algorithms"
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.15565v1",
+          "title": "Smaller Depth-2 Linear Circuits for Disjointness Matrices",
+          "tags": [
+            "circuit-complexity"
           ]
         }
       ]
