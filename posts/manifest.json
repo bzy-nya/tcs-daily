@@ -542,6 +542,40 @@
   },
   "reports": [
     {
+      "date": "2026-03-17",
+      "path": "posts/2026-03-17.md",
+      "paper_count": 3,
+      "generated_at": "2026-03-17T05:26:39.319935+00:00",
+      "tags": [
+        "approximation-algorithms",
+        "online-algorithms",
+        "dynamic-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.14334v1",
+          "title": "Better approximation guarantee for Asymmetric TSP",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.14293v1",
+          "title": "Improved Online Hitting Set Algorithms for Structured and Geometric Set Systems",
+          "tags": [
+            "online-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.14754v1",
+          "title": "Towards Parameterized Hardness on Maintaining Conjunctive Queries",
+          "tags": [
+            "dynamic-algorithms"
+          ]
+        }
+      ]
+    },
+    {
       "date": "2026-03-16",
       "path": "posts/2026-03-16.md",
       "paper_count": 4,
