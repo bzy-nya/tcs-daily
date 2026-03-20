@@ -538,9 +538,151 @@
     "graph-theory": {
       "name": "Graph Theory",
       "color": "#1ABC9C"
+    },
+    "graph-drawing": {
+      "name": "Graph Drawing",
+      "color": "#E0CC4C"
+    },
+    "differential-privacy": {
+      "name": "Differential Privacy",
+      "color": "#2AC9A4"
     }
   },
   "reports": [
+    {
+      "date": "2026-03-20",
+      "path": "posts/2026-03-20.md",
+      "paper_count": 5,
+      "generated_at": "2026-03-20T09:47:29.423193+00:00",
+      "tags": [
+        "differential-privacy",
+        "statistical-learning-theory",
+        "matching-theory",
+        "approximation-algorithms",
+        "graph-minor-theory"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.18254v1",
+          "title": "Computation-Utility-Privacy Tradeoffs in Bayesian Estimation",
+          "tags": [
+            "differential-privacy"
+          ]
+        },
+        {
+          "arxiv_id": "2603.18391v1",
+          "title": "Computational and Statistical Hardness of Calibration Distance",
+          "tags": [
+            "statistical-learning-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2603.18232v1",
+          "title": "On the Complexity of the Odd-Red Bipartite Perfect Matching Polytope",
+          "tags": [
+            "matching-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2603.18720v1",
+          "title": "Resource-Constrained Joint Replenishment via Power-of-$m^{1/k}$ Policies",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.18997v1",
+          "title": "Product Structure and Treewidth of Hyperbolic Uniform Disk Graphs",
+          "tags": [
+            "graph-minor-theory"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-03-19",
+      "path": "posts/2026-03-19.md",
+      "paper_count": 4,
+      "generated_at": "2026-03-20T08:48:20.916022+00:00",
+      "tags": [
+        "graph-drawing",
+        "approximation-algorithms",
+        "parameterized-complexity",
+        "time-complexity"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.17128v1",
+          "title": "Upward Book Embeddings of Partitioned Digraphs",
+          "tags": [
+            "graph-drawing"
+          ]
+        },
+        {
+          "arxiv_id": "2603.17916v1",
+          "title": "Average Case Graph Searching in Non-Uniform Cost Models",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.17345v1",
+          "title": "Polynomial Kernels with Reachability for Weighted $d$-Matroid Intersection",
+          "tags": [
+            "parameterized-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2603.17489v1",
+          "title": "An approximation notion between P and FPTAS",
+          "tags": [
+            "time-complexity"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-03-18",
+      "path": "posts/2026-03-18.md",
+      "paper_count": 4,
+      "generated_at": "2026-03-20T07:57:18.175094+00:00",
+      "tags": [
+        "approximation-algorithms",
+        "geometric-algorithms",
+        "proof-complexity",
+        "sample-complexity"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.15782v1",
+          "title": "A Fast Approximation Algorithm for the Minimum Balanced Vertex Separator in a Graph",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.16510v1",
+          "title": "Minimum Exposure Motion Planning",
+          "tags": [
+            "geometric-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.16156v1",
+          "title": "An Exponential Separation between Deterministic CDCL and DPLL Solvers",
+          "tags": [
+            "proof-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2603.16798v1",
+          "title": "High-Dimensional Gaussian Mean Estimation under Realizable Contamination",
+          "tags": [
+            "sample-complexity"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-03-17",
       "path": "posts/2026-03-17.md",
