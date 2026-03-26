@@ -546,9 +546,168 @@
     "differential-privacy": {
       "name": "Differential Privacy",
       "color": "#2AC9A4"
+    },
+    "existential-theory-of-the-reals": {
+      "name": "Existential Theory Of The Reals",
+      "color": "#57CF71"
+    },
+    "approximate-counting": {
+      "name": "Approximate Counting",
+      "color": "#864ECE"
     }
   },
   "reports": [
+    {
+      "date": "2026-03-26",
+      "path": "posts/2026-03-26.md",
+      "paper_count": 4,
+      "generated_at": "2026-03-26T07:03:24.845305+00:00",
+      "tags": [
+        "approximation-algorithms",
+        "sublinear-algorithms",
+        "average-case-complexity",
+        "auction-theory"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.23970",
+          "title": "Approximation Schemes and Structural Barriers for the Two-Dimensional Knapsack Problem with Rotations",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.23715",
+          "title": "Improved Local Computation Algorithms for Greedy Set Cover via Retroactive Updates",
+          "tags": [
+            "sublinear-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.24545",
+          "title": "Detection of local geometry in random graphs: information-theoretic and computational limits",
+          "tags": [
+            "average-case-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2603.24317",
+          "title": "Efficient Equilibrium Computation in Symmetric First-Price Auctions",
+          "tags": [
+            "auction-theory"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-03-25",
+      "path": "posts/2026-03-25.md",
+      "paper_count": 4,
+      "generated_at": "2026-03-26T04:40:04.852909+00:00",
+      "tags": [
+        "communication-complexity",
+        "succinct-data-structures",
+        "geometric-algorithms",
+        "dynamic-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.22795",
+          "title": "Exponential Separation of Quantum and Classical One-Way Numbers-on-Forehead Communication",
+          "tags": [
+            "communication-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2603.23119",
+          "title": "Compressing Dynamic Fully Indexable Dictionaries in Word-RAM",
+          "tags": [
+            "succinct-data-structures"
+          ]
+        },
+        {
+          "arxiv_id": "2603.23216",
+          "title": "Covering and Partitioning Complex Objects with Small Pieces",
+          "tags": [
+            "geometric-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.23490",
+          "title": "Dynamic Light Spanners in Doubling Metrics",
+          "tags": [
+            "dynamic-algorithms"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-03-24",
+      "path": "posts/2026-03-24.md",
+      "paper_count": 4,
+      "generated_at": "2026-03-25T14:12:11.562471+00:00",
+      "tags": [
+        "approximate-counting",
+        "average-case-complexity",
+        "geometric-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.21406",
+          "title": "Critical window for approximate counting in dense Ising models",
+          "tags": [
+            "approximate-counting"
+          ]
+        },
+        {
+          "arxiv_id": "2603.22192",
+          "title": "Stable Algorithms Lower Bounds for Estimation",
+          "tags": [
+            "average-case-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2603.21617",
+          "title": "Triangulating a Polygon with Holes in Optimal (Deterministic) Time",
+          "tags": [
+            "geometric-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.22204",
+          "title": "Separators for intersection graphs of spheres",
+          "tags": [
+            "geometric-algorithms"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-03-23",
+      "path": "posts/2026-03-23.md",
+      "paper_count": 2,
+      "generated_at": "2026-03-25T12:34:41.494737+00:00",
+      "tags": [
+        "average-case-complexity",
+        "existential-theory-of-the-reals"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.20070",
+          "title": "The monotonicity of the Franz-Parisi potential is equivalent with Low-degree MMSE lower bounds",
+          "tags": [
+            "average-case-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2603.19976",
+          "title": "Constrained Nonnegative Gram Feasibility is $\\exists\\mathbb{R}$-Complete",
+          "tags": [
+            "existential-theory-of-the-reals"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-03-20",
       "path": "posts/2026-03-20.md",
