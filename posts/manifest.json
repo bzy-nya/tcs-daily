@@ -554,9 +554,154 @@
     "approximate-counting": {
       "name": "Approximate Counting",
       "color": "#864ECE"
+    },
+    "lattice-problems": {
+      "name": "Lattice Problems",
+      "color": "#25BF6B"
+    },
+    "enumeration-algorithms": {
+      "name": "Enumeration Algorithms",
+      "color": "#C6565A"
+    },
+    "additive-combinatorics": {
+      "name": "Additive Combinatorics",
+      "color": "#55CDAF"
     }
   },
   "reports": [
+    {
+      "date": "2026-04-08",
+      "path": "posts/2026-04-08.md",
+      "paper_count": 4,
+      "generated_at": "2026-04-08T14:57:18.537609+00:00",
+      "tags": [
+        "pac-learning",
+        "exact-algorithms",
+        "extremal-combinatorics",
+        "dynamic-algorithms",
+        "randomized-algorithms",
+        "voting-theory"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2604.06109",
+          "title": "Learning $\\mathsf{AC}^0$ Under Graphical Models",
+          "tags": [
+            "pac-learning"
+          ]
+        },
+        {
+          "arxiv_id": "2604.05645",
+          "title": "Improved space-time tradeoff for TSP via extremal set systems",
+          "tags": [
+            "exact-algorithms",
+            "extremal-combinatorics"
+          ]
+        },
+        {
+          "arxiv_id": "2604.05606",
+          "title": "Maintaining Random Assignments under Adversarial Dynamics",
+          "tags": [
+            "dynamic-algorithms",
+            "randomized-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2604.05953",
+          "title": "Polynomial-Time Algorithm for Thiele Voting Rules with Voter Interval Preferences",
+          "tags": [
+            "voting-theory"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-04-07",
+      "path": "posts/2026-04-07.md",
+      "paper_count": 3,
+      "generated_at": "2026-04-08T14:15:21.371016+00:00",
+      "tags": [
+        "communication-complexity",
+        "online-algorithms",
+        "additive-combinatorics"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2604.03805",
+          "title": "No Constant-Cost Protocol for Point-Line Incidence",
+          "tags": [
+            "communication-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2604.04159",
+          "title": "Online Graph Balancing and the Power of Two Choices",
+          "tags": [
+            "online-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2604.04547",
+          "title": "An algorithmic Polynomial Freiman-Ruzsa theorem",
+          "tags": [
+            "additive-combinatorics"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-03-31",
+      "path": "posts/2026-03-31.md",
+      "paper_count": 5,
+      "generated_at": "2026-04-08T13:17:34.385755+00:00",
+      "tags": [
+        "lattice-problems",
+        "approximation-algorithms",
+        "sublinear-algorithms",
+        "distributed-graph-algorithms",
+        "graph-coloring",
+        "enumeration-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2603.27398",
+          "title": "NP-hardness of SVP in Euclidean Space",
+          "tags": [
+            "lattice-problems"
+          ]
+        },
+        {
+          "arxiv_id": "2603.28700",
+          "title": "Improved Approximation Algorithms for Multiway Cut by Large Mixtures of New and Old Rounding Schemes",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.27795",
+          "title": "An Optimal Algorithm for Stochastic Vertex Cover",
+          "tags": [
+            "approximation-algorithms",
+            "sublinear-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.28637",
+          "title": "Sublogarithmic Distributed Vertex Coloring with Optimal Number of Colors",
+          "tags": [
+            "distributed-graph-algorithms",
+            "graph-coloring"
+          ]
+        },
+        {
+          "arxiv_id": "2603.28118",
+          "title": "Constant delay Gray code enumeration of ideals and antichains in posets",
+          "tags": [
+            "enumeration-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-03-26",
       "path": "posts/2026-03-26.md",
