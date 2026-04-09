@@ -1,64 +1,39 @@
 {
   "version": 1,
   "tags": {
-    "time-complexity": {
-      "name": "Time Complexity",
-      "color": "#27C244",
-      "category": "complexity-theory"
-    },
-    "space-complexity": {
-      "name": "Space Complexity",
-      "color": "#2466D0",
-      "category": "complexity-theory"
-    },
-    "circuit-complexity": {
-      "name": "Circuit Complexity",
-      "color": "#3328CC",
-      "category": "complexity-theory"
-    },
-    "communication-complexity": {
-      "name": "Communication Complexity",
-      "color": "#4CC652",
-      "category": "complexity-theory"
-    },
-    "proof-complexity": {
-      "name": "Proof Complexity",
-      "color": "#94D835",
-      "category": "complexity-theory"
-    },
-    "parameterized-complexity": {
-      "name": "Parameterized Complexity",
-      "color": "#D9437D",
-      "category": "complexity-theory"
-    },
-    "fine-grained-complexity": {
-      "name": "Fine-grained Complexity",
-      "color": "#8334BA",
-      "category": "complexity-theory"
-    },
     "average-case-complexity": {
-      "name": "Average-case Complexity",
+      "name": "Average-Case Complexity",
       "color": "#28D63F",
       "category": "complexity-theory"
     },
-    "interactive-proofs": {
-      "name": "Interactive Proofs",
-      "color": "#2756D7",
-      "category": "complexity-theory"
-    },
-    "pcp-theory": {
-      "name": "PCP Theory",
-      "color": "#4A61E2",
-      "category": "complexity-theory"
+    "probabilistic-method": {
+      "name": "Probabilistic Method",
+      "color": "#83D84A",
+      "category": "combinatorics-in-tcs"
     },
     "exact-algorithms": {
       "name": "Exact Algorithms",
       "color": "#C5B829",
       "category": "algorithms"
     },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#CE5DC5",
+    "differential-privacy": {
+      "name": "Differential Privacy",
+      "color": "#2AC9A4",
+      "category": "learning-theory"
+    },
+    "pac-learning": {
+      "name": "PAC Learning",
+      "color": "#CAB439",
+      "category": "learning-theory"
+    },
+    "extremal-combinatorics": {
+      "name": "Extremal Combinatorics",
+      "color": "#2FAFB6",
+      "category": "combinatorics-in-tcs"
+    },
+    "dynamic-algorithms": {
+      "name": "Dynamic Algorithms",
+      "color": "#5D3EBB",
       "category": "algorithms"
     },
     "randomized-algorithms": {
@@ -66,14 +41,34 @@
       "color": "#B9852B",
       "category": "algorithms"
     },
+    "voting-theory": {
+      "name": "Voting Theory",
+      "color": "#48CB5B",
+      "category": "computational-social-choice"
+    },
+    "communication-complexity": {
+      "name": "Communication Complexity",
+      "color": "#4CC652",
+      "category": "complexity-theory"
+    },
     "online-algorithms": {
       "name": "Online Algorithms",
       "color": "#AD3840",
       "category": "algorithms"
     },
-    "streaming-algorithms": {
-      "name": "Streaming Algorithms",
-      "color": "#C525AD",
+    "additive-combinatorics": {
+      "name": "Additive Combinatorics",
+      "color": "#55CDAF",
+      "category": "combinatorics-in-tcs"
+    },
+    "lattice-problems": {
+      "name": "Lattice Problems",
+      "color": "#25BF6B",
+      "category": "cryptography"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#CE5DC5",
       "category": "algorithms"
     },
     "sublinear-algorithms": {
@@ -81,84 +76,54 @@
       "color": "#9DC539",
       "category": "algorithms"
     },
-    "distributed-algorithms": {
-      "name": "Distributed Algorithms",
-      "color": "#36D25A",
+    "distributed-graph-algorithms": {
+      "name": "Distributed Graph Algorithms",
+      "color": "#C18842",
+      "category": "distributed-computing-theory"
+    },
+    "graph-coloring": {
+      "name": "Graph Coloring",
+      "color": "#9433D0",
+      "category": "graph-theory"
+    },
+    "enumeration-algorithms": {
+      "name": "Enumeration Algorithms",
+      "color": "#C6565A",
       "category": "algorithms"
     },
-    "parallel-algorithms": {
-      "name": "Parallel Algorithms",
-      "color": "#9DC138",
-      "category": "algorithms"
-    },
-    "dynamic-algorithms": {
-      "name": "Dynamic Algorithms",
-      "color": "#5D3EBB",
-      "category": "algorithms"
-    },
-    "external-memory-algorithms": {
-      "name": "External Memory Algorithms",
-      "color": "#28CC9D",
-      "category": "algorithms"
-    },
-    "static-data-structures": {
-      "name": "Static Data Structures",
-      "color": "#CE8D5D",
-      "category": "data-structures"
-    },
-    "dynamic-data-structures": {
-      "name": "Dynamic Data Structures",
-      "color": "#CC6146",
-      "category": "data-structures"
+    "auction-theory": {
+      "name": "Auction Theory",
+      "color": "#7FBC3D",
+      "category": "algorithmic-game-theory"
     },
     "succinct-data-structures": {
       "name": "Succinct Data Structures",
       "color": "#5CD740",
       "category": "data-structures"
     },
-    "persistent-data-structures": {
-      "name": "Persistent Data Structures",
-      "color": "#C152D5",
-      "category": "data-structures"
+    "geometric-algorithms": {
+      "name": "Geometric Algorithms",
+      "color": "#B13957",
+      "category": "computational-geometry"
     },
-    "cache-oblivious-data-structures": {
-      "name": "Cache-Oblivious Data Structures",
-      "color": "#CC2C54",
-      "category": "data-structures"
+    "approximate-counting": {
+      "name": "Approximate Counting",
+      "color": "#864ECE",
+      "category": "complexity-theory"
     },
-    "geometric-data-structures": {
-      "name": "Geometric Data Structures",
-      "color": "#25DE5D",
-      "category": "data-structures"
+    "existential-theory-of-the-reals": {
+      "name": "Existential Theory of the Reals",
+      "color": "#57CF71",
+      "category": "computational-geometry"
     },
-    "string-data-structures": {
-      "name": "String Data Structures",
-      "color": "#C124DA",
-      "category": "data-structures"
+    "statistical-learning-theory": {
+      "name": "Statistical Learning Theory",
+      "color": "#33B658",
+      "category": "learning-theory"
     },
-    "graph-algorithms": {
-      "name": "Graph Algorithms",
-      "color": "#33CADB",
-      "category": "graph-theory"
-    },
-    "spectral-graph-theory": {
-      "name": "Spectral Graph Theory",
-      "color": "#C741BA",
-      "category": "graph-theory"
-    },
-    "extremal-graph-theory": {
-      "name": "Extremal Graph Theory",
-      "color": "#D8514A",
-      "category": "graph-theory"
-    },
-    "random-graphs": {
-      "name": "Random Graphs",
-      "color": "#DC4B93",
-      "category": "graph-theory"
-    },
-    "graph-coloring": {
-      "name": "Graph Coloring",
-      "color": "#9433D0",
+    "matching-theory": {
+      "name": "Matching Theory",
+      "color": "#67D458",
       "category": "graph-theory"
     },
     "graph-minor-theory": {
@@ -166,414 +131,145 @@
       "color": "#D64693",
       "category": "graph-theory"
     },
-    "network-flows": {
-      "name": "Network Flows",
-      "color": "#7038AD",
+    "graph-drawing": {
+      "name": "Graph Drawing",
+      "color": "#E0CC4C",
       "category": "graph-theory"
     },
-    "matching-theory": {
-      "name": "Matching Theory",
-      "color": "#67D458",
-      "category": "graph-theory"
+    "parameterized-complexity": {
+      "name": "Parameterized Complexity",
+      "color": "#D9437D",
+      "category": "complexity-theory"
     },
-    "symmetric-cryptography": {
-      "name": "Symmetric Cryptography",
-      "color": "#9ED458",
-      "category": "cryptography"
+    "time-complexity": {
+      "name": "Time Complexity",
+      "color": "#27C244",
+      "category": "complexity-theory"
     },
-    "public-key-cryptography": {
-      "name": "Public-key Cryptography",
-      "color": "#4AA5DD",
-      "category": "cryptography"
-    },
-    "cryptographic-protocols": {
-      "name": "Cryptographic Protocols",
-      "color": "#33A1D0",
-      "category": "cryptography"
-    },
-    "secure-multiparty-computation": {
-      "name": "Secure Multiparty Computation",
-      "color": "#7ABE31",
-      "category": "cryptography"
-    },
-    "zero-knowledge-proofs": {
-      "name": "Zero-Knowledge Proofs",
-      "color": "#22D254",
-      "category": "cryptography"
-    },
-    "homomorphic-encryption": {
-      "name": "Homomorphic Encryption",
-      "color": "#37B343",
-      "category": "cryptography"
-    },
-    "post-quantum-cryptography": {
-      "name": "Post-quantum Cryptography",
-      "color": "#61C52F",
-      "category": "cryptography"
-    },
-    "cryptographic-hash-functions": {
-      "name": "Cryptographic Hash Functions",
-      "color": "#51DB8F",
-      "category": "cryptography"
-    },
-    "error-correcting-codes": {
-      "name": "Error-Correcting Codes",
-      "color": "#3BD033",
-      "category": "coding-theory"
-    },
-    "list-decoding": {
-      "name": "List Decoding",
-      "color": "#D2CA2C",
-      "category": "coding-theory"
-    },
-    "locally-decodable-codes": {
-      "name": "Locally Decodable Codes",
-      "color": "#34CAA0",
-      "category": "coding-theory"
-    },
-    "network-coding": {
-      "name": "Network Coding",
-      "color": "#61CBA8",
-      "category": "coding-theory"
-    },
-    "algebraic-coding-theory": {
-      "name": "Algebraic Coding Theory",
-      "color": "#52D23B",
-      "category": "coding-theory"
-    },
-    "pac-learning": {
-      "name": "PAC Learning",
-      "color": "#CAB439",
-      "category": "learning-theory"
-    },
-    "online-learning": {
-      "name": "Online Learning",
-      "color": "#C92050",
-      "category": "learning-theory"
-    },
-    "statistical-learning-theory": {
-      "name": "Statistical Learning Theory",
-      "color": "#33B658",
-      "category": "learning-theory"
-    },
-    "boosting": {
-      "name": "Boosting",
-      "color": "#D0517E",
-      "category": "learning-theory"
+    "proof-complexity": {
+      "name": "Proof Complexity",
+      "color": "#94D835",
+      "category": "complexity-theory"
     },
     "sample-complexity": {
       "name": "Sample Complexity",
       "color": "#3844CB",
       "category": "learning-theory"
     },
-    "active-learning": {
-      "name": "Active Learning",
-      "color": "#5BC3D0",
-      "category": "learning-theory"
+    "fine-grained-complexity": {
+      "name": "Fine-Grained Complexity",
+      "color": "#8334BA",
+      "category": "complexity-theory"
     },
-    "quantum-algorithms": {
-      "name": "Quantum Algorithms",
-      "color": "#5282DA",
-      "category": "quantum-computing"
+    "circuit-complexity": {
+      "name": "Circuit Complexity",
+      "color": "#3328CC",
+      "category": "complexity-theory"
     },
-    "quantum-complexity-theory": {
-      "name": "Quantum Complexity Theory",
-      "color": "#B9357A",
-      "category": "quantum-computing"
+    "graph-algorithms": {
+      "name": "Graph Algorithms",
+      "color": "#33CADB",
+      "category": "graph-theory"
     },
-    "quantum-information": {
-      "name": "Quantum Information",
-      "color": "#33D091",
-      "category": "quantum-computing"
-    },
-    "quantum-cryptography": {
-      "name": "Quantum Cryptography",
-      "color": "#5146CC",
-      "category": "quantum-computing"
-    },
-    "quantum-error-correction": {
-      "name": "Quantum Error Correction",
-      "color": "#4759C1",
-      "category": "quantum-computing"
-    },
-    "proof-theory": {
-      "name": "Proof Theory",
-      "color": "#2C9BD2",
-      "category": "logic-and-formal-methods"
-    },
-    "model-theory": {
-      "name": "Model Theory",
-      "color": "#BCDB33",
-      "category": "logic-and-formal-methods"
-    },
-    "type-theory": {
-      "name": "Type Theory",
-      "color": "#4EDEA2",
-      "category": "logic-and-formal-methods"
-    },
-    "program-verification": {
-      "name": "Program Verification",
-      "color": "#C9D94E",
-      "category": "logic-and-formal-methods"
-    },
-    "model-checking": {
-      "name": "Model Checking",
-      "color": "#D3E042",
-      "category": "logic-and-formal-methods"
-    },
-    "temporal-logic": {
-      "name": "Temporal Logic",
-      "color": "#C255C8",
-      "category": "logic-and-formal-methods"
-    },
-    "hoare-logic": {
-      "name": "Hoare Logic",
-      "color": "#D0437B",
-      "category": "logic-and-formal-methods"
-    },
-    "finite-automata": {
-      "name": "Finite Automata",
-      "color": "#CA39AD",
-      "category": "automata-and-formal-languages"
-    },
-    "pushdown-automata": {
-      "name": "Pushdown Automata",
-      "color": "#B9C750",
-      "category": "automata-and-formal-languages"
-    },
-    "turing-machines": {
-      "name": "Turing Machines",
-      "color": "#4FBCC9",
-      "category": "automata-and-formal-languages"
-    },
-    "formal-language-theory": {
-      "name": "Formal Language Theory",
-      "color": "#E146AD",
-      "category": "automata-and-formal-languages"
-    },
-    "tree-automata": {
-      "name": "Tree Automata",
-      "color": "#74D435",
-      "category": "automata-and-formal-languages"
-    },
-    "omega-automata": {
-      "name": "ω-automata",
-      "color": "#C55C2F",
-      "category": "automata-and-formal-languages"
-    },
-    "geometric-algorithms": {
-      "name": "Geometric Algorithms",
-      "color": "#B13957",
-      "category": "computational-geometry"
-    },
-    "range-searching": {
-      "name": "Range Searching",
-      "color": "#E1B23B",
-      "category": "computational-geometry"
-    },
-    "convex-hull": {
-      "name": "Convex Hull",
-      "color": "#4789D1",
-      "category": "computational-geometry"
-    },
-    "voronoi-diagrams": {
-      "name": "Voronoi Diagrams",
-      "color": "#3124C0",
-      "category": "computational-geometry"
-    },
-    "consensus": {
-      "name": "Consensus",
-      "color": "#B1333C",
-      "category": "distributed-computing-theory"
-    },
-    "fault-tolerance": {
-      "name": "Fault Tolerance",
-      "color": "#9F5BCC",
-      "category": "distributed-computing-theory"
-    },
-    "self-stabilization": {
-      "name": "Self-stabilization",
-      "color": "#DA4773",
-      "category": "distributed-computing-theory"
-    },
-    "distributed-graph-algorithms": {
-      "name": "Distributed Graph Algorithms",
-      "color": "#C18842",
-      "category": "distributed-computing-theory"
-    },
-    "asynchronous-computation": {
-      "name": "Asynchronous Computation",
-      "color": "#A5C43F",
-      "category": "distributed-computing-theory"
+    "string-data-structures": {
+      "name": "String Data Structures",
+      "color": "#C124DA",
+      "category": "data-structures"
     },
     "mechanism-design": {
       "name": "Mechanism Design",
       "color": "#44CE82",
       "category": "algorithmic-game-theory"
     },
-    "auction-theory": {
-      "name": "Auction Theory",
-      "color": "#7FBC3D",
-      "category": "algorithmic-game-theory"
+    "streaming-algorithms": {
+      "name": "Streaming Algorithms",
+      "color": "#C525AD",
+      "category": "algorithms"
     },
-    "price-of-anarchy": {
-      "name": "Price of Anarchy",
-      "color": "#CBE14B",
-      "category": "algorithmic-game-theory"
+    "parallel-algorithms": {
+      "name": "Parallel Algorithms",
+      "color": "#9DC138",
+      "category": "algorithms"
     },
-    "fair-division": {
-      "name": "Fair Division",
-      "color": "#CCCF39",
-      "category": "algorithmic-game-theory"
+    "distributed-algorithms": {
+      "name": "Distributed Algorithms",
+      "color": "#36D25A",
+      "category": "algorithms"
     },
-    "market-design": {
-      "name": "Market Design",
-      "color": "#52CF65",
-      "category": "algorithmic-game-theory"
-    },
-    "pseudorandom-generators": {
-      "name": "Pseudorandom Generators",
-      "color": "#27A6CD",
-      "category": "randomness-and-pseudorandomness"
-    },
-    "extractors": {
-      "name": "Extractors",
-      "color": "#DB5B37",
-      "category": "randomness-and-pseudorandomness"
-    },
-    "derandomization": {
-      "name": "Derandomization",
-      "color": "#34D9C6",
-      "category": "randomness-and-pseudorandomness"
-    },
-    "random-walks": {
-      "name": "Random Walks",
-      "color": "#50C78A",
-      "category": "randomness-and-pseudorandomness"
-    },
-    "expanders": {
-      "name": "Expanders",
-      "color": "#D7509F",
-      "category": "randomness-and-pseudorandomness"
-    },
-    "extremal-combinatorics": {
-      "name": "Extremal Combinatorics",
-      "color": "#2FAFB6",
-      "category": "combinatorics-in-tcs"
-    },
-    "ramsey-theory": {
-      "name": "Ramsey Theory",
-      "color": "#E13B51",
-      "category": "combinatorics-in-tcs"
-    },
-    "probabilistic-method": {
-      "name": "Probabilistic Method",
-      "color": "#83D84A",
-      "category": "combinatorics-in-tcs"
-    },
-    "combinatorial-designs": {
-      "name": "Combinatorial Designs",
-      "color": "#CACE4E",
-      "category": "combinatorics-in-tcs"
-    },
-    "property-testing": {
-      "name": "Property Testing",
-      "color": "#A326DD",
-      "category": "property-testing"
+    "quantum-complexity-theory": {
+      "name": "Quantum Complexity Theory",
+      "color": "#B9357A",
+      "category": "quantum-computing"
     },
     "distribution-testing": {
       "name": "Distribution Testing",
       "color": "#5FD043",
       "category": "property-testing"
     },
-    "graph-property-testing": {
-      "name": "Graph Property Testing",
-      "color": "#B03AB4",
-      "category": "property-testing"
+    "locally-decodable-codes": {
+      "name": "Locally Decodable Codes",
+      "color": "#34CAA0",
+      "category": "coding-theory"
     },
-    "sublinear-time-algorithms": {
-      "name": "Sublinear-time Algorithms",
-      "color": "#4F32B8",
-      "category": "property-testing"
+    "proof-theory": {
+      "name": "Proof Theory",
+      "color": "#2C9BD2",
+      "category": "logic-and-formal-methods"
     },
-    "voting-theory": {
-      "name": "Voting Theory",
-      "color": "#48CB5B",
-      "category": "computational-social-choice"
-    },
-    "fairness": {
-      "name": "Fairness",
-      "color": "#4BC920",
-      "category": "computational-social-choice"
-    },
-    "preference-aggregation": {
-      "name": "Preference Aggregation",
-      "color": "#39D53B",
-      "category": "computational-social-choice"
-    },
-    "complexity": {
-      "name": "Complexity",
-      "color": "#FF6B6B"
-    },
-    "algorithms": {
-      "name": "Algorithms",
-      "color": "#87CEEB"
-    },
-    "linear-algebra": {
-      "name": "Linear Algebra",
-      "color": "#8A2BE2"
-    },
-    "distributed": {
-      "name": "Distributed",
-      "color": "#2ECC71"
-    },
-    "lattice": {
-      "name": "Lattice",
-      "color": "#E67E22"
-    },
-    "statistics": {
-      "name": "Statistics",
-      "color": "#F39C12"
-    },
-    "graph-theory": {
-      "name": "Graph Theory",
-      "color": "#1ABC9C"
-    },
-    "graph-drawing": {
-      "name": "Graph Drawing",
-      "color": "#E0CC4C"
-    },
-    "differential-privacy": {
-      "name": "Differential Privacy",
-      "color": "#2AC9A4"
-    },
-    "existential-theory-of-the-reals": {
-      "name": "Existential Theory Of The Reals",
-      "color": "#57CF71"
-    },
-    "approximate-counting": {
-      "name": "Approximate Counting",
-      "color": "#864ECE"
-    },
-    "lattice-problems": {
-      "name": "Lattice Problems",
-      "color": "#25BF6B"
-    },
-    "enumeration-algorithms": {
-      "name": "Enumeration Algorithms",
-      "color": "#C6565A"
-    },
-    "additive-combinatorics": {
-      "name": "Additive Combinatorics",
-      "color": "#55CDAF"
+    "linear-algebraic-algorithms": {
+      "name": "Linear Algebraic Algorithms",
+      "color": "#3550B9",
+      "category": "algorithms"
     }
   },
   "reports": [
     {
+      "date": "2026-04-09",
+      "path": "posts/2026-04-09.md",
+      "paper_count": 4,
+      "generated_at": "2026-04-09T10:15:06.628882+00:00",
+      "tags": [
+        "average-case-complexity",
+        "probabilistic-method",
+        "exact-algorithms",
+        "differential-privacy"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2604.07278v1",
+          "title": "Multiple Planted Structures Below $\\sqrt{n}$: An SoS Integrality Gap and an SQ Lower Bound",
+          "tags": [
+            "average-case-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2604.06590v1",
+          "title": "When Majority Fails: Tight Bounds for Correlation Distillation Conjectures",
+          "tags": [
+            "probabilistic-method"
+          ]
+        },
+        {
+          "arxiv_id": "2604.06335v1",
+          "title": "Toward a Uniform Algorithm and Uniform Reduction for Constraint Problems",
+          "tags": [
+            "exact-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2604.07238v1",
+          "title": "On the Price of Privacy for Language Identification and Generation",
+          "tags": [
+            "differential-privacy"
+          ]
+        }
+      ]
+    },
+    {
       "date": "2026-04-08",
       "path": "posts/2026-04-08.md",
       "paper_count": 4,
-      "generated_at": "2026-04-08T14:57:18.537609+00:00",
+      "generated_at": "2026-04-09T08:51:34.709408+00:00",
       "tags": [
         "pac-learning",
         "exact-algorithms",
@@ -619,7 +315,7 @@
       "date": "2026-04-07",
       "path": "posts/2026-04-07.md",
       "paper_count": 3,
-      "generated_at": "2026-04-08T14:15:21.371016+00:00",
+      "generated_at": "2026-04-09T08:51:34.659345+00:00",
       "tags": [
         "communication-complexity",
         "online-algorithms",
@@ -653,7 +349,7 @@
       "date": "2026-03-31",
       "path": "posts/2026-03-31.md",
       "paper_count": 5,
-      "generated_at": "2026-04-08T13:17:34.385755+00:00",
+      "generated_at": "2026-04-09T08:51:34.611157+00:00",
       "tags": [
         "lattice-problems",
         "approximation-algorithms",
@@ -706,7 +402,7 @@
       "date": "2026-03-26",
       "path": "posts/2026-03-26.md",
       "paper_count": 4,
-      "generated_at": "2026-03-26T07:03:24.845305+00:00",
+      "generated_at": "2026-04-09T08:51:34.562574+00:00",
       "tags": [
         "approximation-algorithms",
         "sublinear-algorithms",
@@ -748,7 +444,7 @@
       "date": "2026-03-25",
       "path": "posts/2026-03-25.md",
       "paper_count": 4,
-      "generated_at": "2026-03-26T04:40:04.852909+00:00",
+      "generated_at": "2026-04-09T08:51:34.514495+00:00",
       "tags": [
         "communication-complexity",
         "succinct-data-structures",
@@ -790,7 +486,7 @@
       "date": "2026-03-24",
       "path": "posts/2026-03-24.md",
       "paper_count": 4,
-      "generated_at": "2026-03-25T14:12:11.562471+00:00",
+      "generated_at": "2026-04-09T08:51:34.466463+00:00",
       "tags": [
         "approximate-counting",
         "average-case-complexity",
@@ -831,7 +527,7 @@
       "date": "2026-03-23",
       "path": "posts/2026-03-23.md",
       "paper_count": 2,
-      "generated_at": "2026-03-25T12:34:41.494737+00:00",
+      "generated_at": "2026-04-09T08:51:34.418479+00:00",
       "tags": [
         "average-case-complexity",
         "existential-theory-of-the-reals"
@@ -857,7 +553,7 @@
       "date": "2026-03-20",
       "path": "posts/2026-03-20.md",
       "paper_count": 5,
-      "generated_at": "2026-03-20T09:47:29.423193+00:00",
+      "generated_at": "2026-04-09T08:51:34.370758+00:00",
       "tags": [
         "differential-privacy",
         "statistical-learning-theory",
@@ -907,7 +603,7 @@
       "date": "2026-03-19",
       "path": "posts/2026-03-19.md",
       "paper_count": 4,
-      "generated_at": "2026-03-20T08:48:20.916022+00:00",
+      "generated_at": "2026-04-09T08:51:34.322504+00:00",
       "tags": [
         "graph-drawing",
         "approximation-algorithms",
@@ -949,7 +645,7 @@
       "date": "2026-03-18",
       "path": "posts/2026-03-18.md",
       "paper_count": 4,
-      "generated_at": "2026-03-20T07:57:18.175094+00:00",
+      "generated_at": "2026-04-09T08:51:34.274313+00:00",
       "tags": [
         "approximation-algorithms",
         "geometric-algorithms",
@@ -991,7 +687,7 @@
       "date": "2026-03-17",
       "path": "posts/2026-03-17.md",
       "paper_count": 5,
-      "generated_at": "2026-03-17T12:47:09.564162+00:00",
+      "generated_at": "2026-04-09T08:51:34.226011+00:00",
       "tags": [
         "exact-algorithms",
         "fine-grained-complexity",
@@ -1043,7 +739,7 @@
       "date": "2026-03-16",
       "path": "posts/2026-03-16.md",
       "paper_count": 4,
-      "generated_at": "2026-03-16T10:55:08.195300+00:00",
+      "generated_at": "2026-04-09T08:51:34.177867+00:00",
       "tags": [
         "fine-grained-complexity",
         "graph-algorithms",
@@ -1085,10 +781,10 @@
       "date": "2026-03-13",
       "path": "posts/2026-03-13.md",
       "paper_count": 4,
-      "generated_at": "2026-03-13T16:19:13.640572+00:00",
+      "generated_at": "2026-04-09T09:05:43.342111+00:00",
       "tags": [
         "distributed-graph-algorithms",
-        "graph-algorithms",
+        "enumeration-algorithms",
         "time-complexity",
         "streaming-algorithms"
       ],
@@ -1104,7 +800,7 @@
           "arxiv_id": "2603.11763v1",
           "title": "Enumerating All Directed Spanning Trees in Optimal Time",
           "tags": [
-            "graph-algorithms"
+            "enumeration-algorithms"
           ]
         },
         {
@@ -1127,7 +823,7 @@
       "date": "2026-03-12",
       "path": "posts/2026-03-12.md",
       "paper_count": 6,
-      "generated_at": "2026-03-12T10:05:21.955749+00:00",
+      "generated_at": "2026-04-09T08:51:34.080131+00:00",
       "tags": [
         "online-algorithms",
         "graph-algorithms",
@@ -1185,7 +881,7 @@
       "date": "2026-03-11",
       "path": "posts/2026-03-11.md",
       "paper_count": 5,
-      "generated_at": "2026-03-11T11:45:40.630397+00:00",
+      "generated_at": "2026-04-09T08:51:34.031625+00:00",
       "tags": [
         "approximation-algorithms",
         "parameterized-complexity",
@@ -1234,7 +930,7 @@
       "date": "2026-03-10",
       "path": "posts/2026-03-10.md",
       "paper_count": 3,
-      "generated_at": "2026-03-10T04:44:41.495752+00:00",
+      "generated_at": "2026-04-09T08:51:33.983250+00:00",
       "tags": [
         "circuit-complexity",
         "average-case-complexity",
@@ -1268,7 +964,7 @@
       "date": "2026-03-09",
       "path": "posts/2026-03-09.md",
       "paper_count": 3,
-      "generated_at": "2026-03-09T05:03:38.871088+00:00",
+      "generated_at": "2026-04-09T08:51:33.934521+00:00",
       "tags": [
         "quantum-complexity-theory",
         "statistical-learning-theory",
@@ -1302,7 +998,7 @@
       "date": "2026-03-06",
       "path": "posts/2026-03-06.md",
       "paper_count": 3,
-      "generated_at": "2026-03-06T09:19:18.961153+00:00",
+      "generated_at": "2026-04-09T08:51:33.885032+00:00",
       "tags": [
         "time-complexity",
         "parameterized-complexity",
@@ -1336,7 +1032,7 @@
       "date": "2026-03-05",
       "path": "posts/2026-03-05.md",
       "paper_count": 5,
-      "generated_at": "2026-03-05T08:38:50.074371+00:00",
+      "generated_at": "2026-04-09T08:51:33.836435+00:00",
       "tags": [
         "circuit-complexity",
         "locally-decodable-codes",
@@ -1345,35 +1041,35 @@
       ],
       "papers": [
         {
-          "arxiv_id": "2603.04255v1",
+          "arxiv_id": "2603.04255",
           "title": "Learning Read-Once Determinants and the Principal Minor Assignment Problem",
           "tags": [
             "circuit-complexity"
           ]
         },
         {
-          "arxiv_id": "2603.03717v1",
+          "arxiv_id": "2603.03717",
           "title": "When Relaxation Does Not Help: RLDCs with Small Soundness Yield LDCs",
           "tags": [
             "locally-decodable-codes"
           ]
         },
         {
-          "arxiv_id": "2603.03488v1",
+          "arxiv_id": "2603.03488",
           "title": "Planar Graph Orientation Frameworks, Applied to KPlumber and Polyomino Tiling",
           "tags": [
             "graph-algorithms"
           ]
         },
         {
-          "arxiv_id": "2603.04015v1",
+          "arxiv_id": "2603.04015",
           "title": "Truth Predicate of Inductive Definitions and Logical Complexity of Infinite-Descent Proofs",
           "tags": [
             "proof-theory"
           ]
         },
         {
-          "arxiv_id": "2603.03612v1",
+          "arxiv_id": "2603.03612",
           "title": "Why Are Linear RNNs More Parallelizable?",
           "tags": [
             "circuit-complexity"
@@ -1385,56 +1081,122 @@
       "date": "2026-03-04",
       "path": "posts/2026-03-04.md",
       "paper_count": 5,
+      "generated_at": "2026-04-09T08:51:33.787713+00:00",
       "tags": [
-        "complexity",
-        "algorithms",
-        "linear-algebra",
-        "distributed",
-        "lattice"
+        "lattice-problems",
+        "linear-algebraic-algorithms",
+        "average-case-complexity",
+        "statistical-learning-theory",
+        "distributed-graph-algorithms"
       ],
       "papers": [
         {
-          "arxiv_id": "2603.02594v1",
+          "arxiv_id": "2603.03219",
+          "title": "Hardness of the Binary Covering Radius Problem in Large $\\ell_p$ Norms",
+          "tags": [
+            "lattice-problems"
+          ]
+        },
+        {
+          "arxiv_id": "2603.02425",
+          "title": "Matrices with displacement structure: a deterministic approach for linear systems and nullspace bases",
+          "tags": [
+            "linear-algebraic-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2603.02594",
           "title": "Low-Degree Method Fails to Predict Robust Subspace Recovery",
           "tags": [
-            "complexity",
-            "statistics"
+            "average-case-complexity",
+            "statistical-learning-theory"
           ]
         },
         {
-          "arxiv_id": "2603.02607v1",
+          "arxiv_id": "2603.02607",
           "title": "Combinatorial Sparse PCA Beyond the Spiked Identity Model",
           "tags": [
-            "algorithms",
-            "statistics"
+            "statistical-learning-theory"
           ]
         },
         {
-          "arxiv_id": "2603.02425v1",
-          "title": "Matrices with displacement structure: deterministic approach",
-          "tags": [
-            "linear-algebra",
-            "algorithms"
-          ]
-        },
-        {
-          "arxiv_id": "2603.02689v1",
+          "arxiv_id": "2603.02689",
           "title": "Deterministic Edge Coloring with few Colors in CONGEST",
           "tags": [
-            "distributed",
-            "graph-theory"
-          ]
-        },
-        {
-          "arxiv_id": "2603.03219v1",
-          "title": "Hardness of the Binary Covering Radius Problem",
-          "tags": [
-            "lattice",
-            "complexity"
+            "distributed-graph-algorithms"
           ]
         }
-      ],
-      "generated_at": "2026-03-04T12:00:00Z"
+      ]
     }
-  ]
+  ],
+  "categories": {
+    "complexity-theory": {
+      "name": "Complexity Theory",
+      "order": 0
+    },
+    "algorithms": {
+      "name": "Algorithms",
+      "order": 1
+    },
+    "data-structures": {
+      "name": "Data Structures",
+      "order": 2
+    },
+    "graph-theory": {
+      "name": "Graph Theory",
+      "order": 3
+    },
+    "cryptography": {
+      "name": "Cryptography",
+      "order": 4
+    },
+    "coding-theory": {
+      "name": "Coding Theory",
+      "order": 5
+    },
+    "learning-theory": {
+      "name": "Learning Theory",
+      "order": 6
+    },
+    "quantum-computing": {
+      "name": "Quantum Computing",
+      "order": 7
+    },
+    "logic-and-formal-methods": {
+      "name": "Logic & Formal Methods",
+      "order": 8
+    },
+    "automata-and-formal-languages": {
+      "name": "Automata & Formal Languages",
+      "order": 9
+    },
+    "computational-geometry": {
+      "name": "Computational Geometry",
+      "order": 10
+    },
+    "distributed-computing-theory": {
+      "name": "Distributed Computing Theory",
+      "order": 11
+    },
+    "algorithmic-game-theory": {
+      "name": "Algorithmic Game Theory",
+      "order": 12
+    },
+    "randomness-and-pseudorandomness": {
+      "name": "Randomness & Pseudorandomness",
+      "order": 13
+    },
+    "combinatorics-in-tcs": {
+      "name": "Combinatorics in TCS",
+      "order": 14
+    },
+    "property-testing": {
+      "name": "Property Testing",
+      "order": 15
+    },
+    "computational-social-choice": {
+      "name": "Computational Social Choice",
+      "order": 16
+    }
+  }
 }
