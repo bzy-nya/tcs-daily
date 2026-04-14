@@ -48,11 +48,14 @@ class Paths:
     def arxiv_cache(self, arxiv_id: str) -> Path:
         return self.cache / "arxiv" / f"{arxiv_id}.json"
 
+    def selection_cache(self, date: str) -> Path:
+        return self.cache / "selection" / f"{date}.json"
+
     def selected_papers_cache(self, date: str) -> Path:
-        return self.cache / "selected-papers" / f"{date}.json"
+        return self.selection_cache(date)
 
     def draft_cache(self, date: str, arxiv_id: str) -> Path:
-        return self.cache / "drafts" / date / f"{arxiv_id}.json"
+        return self.cache / "drafts" / date / f"{arxiv_id}.md"
 
     def pdf_file(self, arxiv_id: str) -> Path:
         return self.pdf / f"{arxiv_id}.pdf"

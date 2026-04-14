@@ -19,7 +19,7 @@ description: TCS daily report — tool interfaces for paper fetching, PDF extrac
 - **研究脉络**：已有的经典结果、best known bounds、关键 open problems（附作者年份和 arXiv 链接）
 - **本文定位**：这篇论文在这条脉络中具体推进了什么？
 
-如果涉及此前日报讨论过的论文，引用往期链接即可（格式：`[之前的日报](../posts/YYYY-MM-DD.md)`）。对于背景中出现的专业概念，善用旁注语法（见下文）做解释。
+如果涉及此前日报讨论过的论文，引用往期链接即可（格式：`[之前的日报](#YYYY-MM-DD)`）。对于背景中出现的专业概念，善用旁注语法（见下文）做解释。
 
 **检验标准：一个刚通过本科算法课的学生，读完你的背景段落后，应该能理解这篇论文试图解决什么问题，以及为什么这个问题重要。如果做不到，你的背景写得不够。**
 
@@ -104,7 +104,7 @@ description: TCS daily report — tool interfaces for paper fetching, PDF extrac
 ### 链接与引用
 
 - arXiv 链接：`[arXiv:2603.03219](https://arxiv.org/abs/2603.03219)`
-- 往期日报链接：`[2026-03-03 日报](../posts/2026-03-03.md)`
+- 往期日报链接：`[2026-03-03 日报](#2026-03-03)`
 - 学术引用格式：`作者 (年份)` 或 `作者 et al. (年份)`，重要结果附 arXiv 链接
 - 脚注 `[^1]` + `[^1]: content`（用于补充说明，不用于参考文献列表）
 
@@ -156,8 +156,7 @@ $\mathrm{depth}_{\nu}(x) = \min_{H \ni x} \nu(H)$，
 - 块内第一个 `##` 标题会作为折叠时显示的论文标题
 - 旁注 `:::aside[...]` 可以正常嵌套在 `::::issue` 内部
 
-**Tag 选择**：从以下预定义标签体系中选取，每篇 **1-2 个**（优先 1 个最精准的），小写 kebab-case。
-如果论文**实在**不属于下列任何二级标签，可以新建 tag（`tcs-daily manifest` 会自动注册）。
+**Tag 选择**：先运行 `tcs-daily tags`，它给出唯一允许使用的标签集合。每篇默认 **1 个**、最多 **2 个**，小写 kebab-case。只能使用该命令返回的 tag key，**不要新建 tag**。下面的分类表仅作为阅读参考，以 `tcs-daily tags` 的输出为准。
 
 | 一级大类 | 二级标签（使用这些作为 tag） |
 |---|---|
@@ -227,6 +226,7 @@ tcs-daily memory stats
 ### 搜索与管理
 
 ```bash
+tcs-daily tags                             # 查看唯一允许使用的 report tags
 tcs-daily history "steiner tree"                    # 搜索往期日报
 tcs-daily manifest 2026-03-04 posts/2026-03-04.md 5  # 更新 manifest
 tcs-daily validate 2026-03-04                       # 验证输出

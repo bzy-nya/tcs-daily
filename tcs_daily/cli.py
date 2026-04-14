@@ -8,12 +8,22 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import time
 from datetime import date as date_type
 from pathlib import Path
 
 from .config import Config
+from .tags import category_defs, normalize_tags, tag_defs
+
+
+ISSUE_RE = re.compile(
+    r"^::::issue(?:\[([^\]]*)\])?\s*\n(.*?)^::::\s*$",
+    re.MULTILINE | re.DOTALL,
+)
+ISSUE_LINE_RE = re.compile(r"^::::issue(?:\[([^\]]*)\])?\s*$")
+MD_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 
 
 def _out(data: object) -> None:
@@ -23,6 +33,27 @@ def _out(data: object) -> None:
 def _err(msg: str) -> None:
     print(json.dumps({"error": msg}), file=sys.stderr)
     raise SystemExit(1)
+
+
+def _parse_issue_tags(raw: str | None) -> list[str]:
+    tags = [t.strip() for t in (raw or "").split(",") if t.strip()]
+    normalized, _unknown = normalize_tags(tags)
+    return normalized
+
+
+def _iter_issue_blocks(md_text: str):
+    for match in ISSUE_RE.finditer(md_text):
+        yield _parse_issue_tags(match.group(1)), match.group(2)
+
+
+def _is_report_markdown_link(href: str) -> bool:
+    href = href.strip()
+    if href.startswith("#"):
+        return False
+    return bool(
+        re.match(r"^(?:\.\./)?posts/\d{4}-\d{2}-\d{2}\.md(?:[#?].*)?$", href)
+        or re.match(r"^\d{4}-\d{2}-\d{2}\.md(?:[#?].*)?$", href)
+    )
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -104,6 +135,28 @@ def cmd_history(args: argparse.Namespace, cfg: Config) -> None:
     _out(results)
 
 
+def cmd_tags(args: argparse.Namespace, cfg: Config) -> None:
+    defs = tag_defs()
+    cats = category_defs()
+    payload = {
+        "categories": [
+            {
+                "key": key,
+                "name": info["name"],
+                "order": info["order"],
+                "tags": [
+                    {"key": tag, **defs[tag]}
+                    for tag, tag_info in defs.items()
+                    if tag_info["category"] == key
+                ],
+            }
+            for key, info in cats.items()
+        ],
+        "tags": defs,
+    }
+    _out(payload)
+
+
 # ═══════════════════════════════════════════════════════════════
 #  Manifest
 # ═══════════════════════════════════════════════════════════════
@@ -128,7 +181,6 @@ def cmd_manifest(args: argparse.Namespace, cfg: Config) -> None:
     Parses the report markdown to extract papers and tags from
     ::::issue[tags] blocks, so manifest always matches the rendered report.
     """
-    import re
     from datetime import datetime, timezone
 
     from .cache import read_json, write_json
@@ -144,21 +196,15 @@ def cmd_manifest(args: argparse.Namespace, cfg: Config) -> None:
     papers_list: list[dict] = []
     if report_path.exists():
         md_text = report_path.read_text("utf-8")
-        issue_re = re.compile(
-            r'^::::issue\[([^\]]*)\]\s*\n(.*?)^::::\s*$',
-            re.MULTILINE | re.DOTALL,
-        )
-        for m in issue_re.finditer(md_text):
-            tags = [t.strip() for t in m.group(1).split(',') if t.strip()]
-            body = m.group(2)
+        for tags, body in _iter_issue_blocks(md_text):
             # Title = first ## heading, strip trailing arXiv link
-            title_m = re.search(r'^##\s+(.+)', body, re.MULTILINE)
+            title_m = re.search(r"^##\s+(.+)", body, re.MULTILINE)
             raw_title = title_m.group(1).strip() if title_m else ""
             title = re.sub(
-                r'\s*\[arXiv:[^\]]*\]\([^)]*\)\s*$', '', raw_title,
+                r"\s*\[arXiv:[^\]]*\]\([^)]*\)\s*$", "", raw_title,
             ).strip()
             # arXiv id from first [arXiv:...] link
-            arxiv_m = re.search(r'\[arXiv:(\S+?)\]', body)
+            arxiv_m = re.search(r"\[arXiv:(\S+?)\]", body)
             arxiv_id = arxiv_m.group(1) if arxiv_m else ""
             paper: dict = {}
             if arxiv_id:
@@ -187,20 +233,13 @@ def cmd_manifest(args: argparse.Namespace, cfg: Config) -> None:
         t for p in papers_list for t in p.get("tags", [])
     ))
 
-    # ── Auto-populate tag definitions (keep existing colors) ───
-    tag_defs = manifest.get("tags", {})
-    for tag in report_tags:
-        if tag not in tag_defs:
-            tag_defs[tag] = {
-                "name": tag.replace("-", " ").title(),
-                "color": _tag_color(tag),
-            }
-    manifest["tags"] = tag_defs
+    known_tag_defs = tag_defs()
+    manifest["categories"] = category_defs()
 
     entry = {
         "date": args.date,
         "path": args.path,
-        "paper_count": args.paper_count,
+        "paper_count": len(papers_list) if papers_list else args.paper_count,
         "generated_at": datetime.now(timezone.utc).isoformat(),
     }
     if report_tags:
@@ -212,6 +251,25 @@ def cmd_manifest(args: argparse.Namespace, cfg: Config) -> None:
     reports.append(entry)
     reports.sort(key=lambda r: r["date"], reverse=True)
     manifest["reports"] = reports
+
+    used_tags = list(dict.fromkeys(
+        t
+        for report in reports
+        for t in (
+            list(report.get("tags", []))
+            + [tag for paper in report.get("papers", []) for tag in paper.get("tags", [])]
+        )
+    ))
+    prior_defs = manifest.get("tags", {})
+    manifest["tags"] = {
+        tag: {
+            "name": known_tag_defs.get(tag, {}).get("name", tag.replace("-", " ").title()),
+            "color": prior_defs.get(tag, {}).get("color", _tag_color(tag)),
+            "category": known_tag_defs.get(tag, {}).get("category", "uncategorized"),
+        }
+        for tag in used_tags
+    }
+
     write_json(mp, manifest)
     _out({"ok": True, "manifest_path": str(mp), "entry": entry})
 
@@ -238,6 +296,33 @@ def cmd_validate(args: argparse.Namespace, cfg: Config) -> None:
             errors.append("Report missing YAML frontmatter")
         elif f"date: {args.date}" not in text.split("---")[1]:
             errors.append("Frontmatter missing correct date field")
+
+        known_tags = tag_defs()
+        for lineno, line in enumerate(text.splitlines(), start=1):
+            issue_match = ISSUE_LINE_RE.match(line)
+            if not issue_match:
+                for href in MD_LINK_RE.findall(line):
+                    if _is_report_markdown_link(href):
+                        errors.append(
+                            f"Line {lineno}: report link must use hash route, not {href}"
+                        )
+                continue
+
+            raw_tags = [t.strip() for t in (issue_match.group(1) or "").split(",") if t.strip()]
+            tags, unknown = normalize_tags(raw_tags)
+            if not tags:
+                errors.append(f"Line {lineno}: issue block must have 1-2 canonical tags")
+            if len(tags) > 2:
+                errors.append(f"Line {lineno}: issue block has {len(tags)} tags; max is 2")
+            for raw in raw_tags:
+                canonical = normalize_tags([raw])[0][0] if raw else ""
+                if canonical != raw:
+                    errors.append(
+                        f"Line {lineno}: non-canonical tag `{raw}`; use `{canonical}`"
+                    )
+            for tag in unknown:
+                if tag not in known_tags:
+                    errors.append(f"Line {lineno}: unknown tag `{tag}`")
 
     mp = cfg.paths.manifest_file()
     if not mp.exists() or not mp.read_text("utf-8").strip():
@@ -377,6 +462,8 @@ def main() -> None:
     p = sub.add_parser("history", help="Search past reports")
     p.add_argument("query")
 
+    sub.add_parser("tags", help="List canonical report tags")
+
     # ── manifest ───────────────────────────────────────────────
     p = sub.add_parser("manifest", help="Update posts/manifest.json")
     p.add_argument("date")
@@ -437,6 +524,7 @@ def main() -> None:
         "download": cmd_download,
         "extract": cmd_extract,
         "history": cmd_history,
+        "tags": cmd_tags,
         "manifest": cmd_manifest,
         "validate": cmd_validate,
     }

@@ -224,6 +224,24 @@
   },
   "reports": [
     {
+      "date": "2026-04-14",
+      "path": "posts/2026-04-14.md",
+      "paper_count": 1,
+      "generated_at": "2026-04-14T06:18:38.071190+00:00",
+      "tags": [
+        "average-case-complexity"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2604.10457",
+          "title": "Near Optimal Algorithms for Noisy $k$-XOR under Low-Degree Heuristic",
+          "tags": [
+            "average-case-complexity"
+          ]
+        }
+      ]
+    },
+    {
       "date": "2026-04-09",
       "path": "posts/2026-04-09.md",
       "paper_count": 4,

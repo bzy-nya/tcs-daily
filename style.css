@@ -184,6 +184,7 @@ a.pixel-badge:hover {
     color: var(--text);
     clip-path: none;
     opacity: 0.5;
+    align-self: flex-start;
 }
 .tag-filter.clear-btn:hover {
     opacity: 0.8;
@@ -695,10 +696,66 @@ a.pixel-badge:hover {
 /* Tag filter bar */
 .index-tags {
     display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+.tag-category {
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.06);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.tag-category.expanded {
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.1);
+}
+
+.tag-category-toggle {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+}
+
+.tag-category-toggle::after {
+    content: "▸";
+    font-size: 12px;
+    opacity: 0.6;
+    transition: transform 0.2s ease;
+}
+
+.tag-category.expanded .tag-category-toggle::after {
+    transform: rotate(90deg);
+}
+
+.tag-category-name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    color: var(--accent);
+}
+
+.tag-category-meta {
+    font-size: 12px;
+    opacity: 0.65;
+}
+
+.tag-category-tags {
+    display: none;
+    padding: 0 12px 12px;
+}
+
+.tag-category.expanded .tag-category-tags {
+    display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    justify-content: center;
-    margin-bottom: 32px;
 }
 
 /* Date-grouped list */

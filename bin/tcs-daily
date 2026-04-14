@@ -2,4 +2,7 @@
 # Wrapper so that `bin/tcs-daily` works without venv activation.
 # Codex sandbox sees this via PATH or direct invocation.
 DIR="$(cd "$(dirname "$0")/.." && pwd)"
-exec "$DIR/.venv/bin/python3" -m tcs_daily "$@"
+if [ -x "$DIR/.venv/bin/python3" ]; then
+  exec "$DIR/.venv/bin/python3" -m tcs_daily "$@"
+fi
+exec python3 -m tcs_daily "$@"

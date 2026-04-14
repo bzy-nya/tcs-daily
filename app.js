@@ -171,6 +171,7 @@ function initMarked() {
    ═══════════════════════════════════════════════════════════ */
 
 let manifest = null;
+const expandedTagCategories = new Set();
 
 async function loadManifest() {
     if (manifest) return manifest;
@@ -237,6 +238,28 @@ function ensureMathBlockSpacing(md) {
         }
     }
     return out.join('\n');
+}
+
+function prettyCategoryName(slug) {
+    return slug.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
+}
+
+function normalizeReportHref(href) {
+    if (!href) return href;
+    const match = href.match(/^(?:\.\.\/)?posts\/(\d{4}-\d{2}-\d{2})\.md(?:[#?].*)?$/)
+        || href.match(/^(\d{4}-\d{2}-\d{2})\.md(?:[#?].*)?$/);
+    return match ? `#${match[1]}` : href;
+}
+
+function normalizeArticleLinks(container) {
+    if (!container) return;
+    container.querySelectorAll('a[href]').forEach(link => {
+        const href = link.getAttribute('href');
+        const normalized = normalizeReportHref(href);
+        if (normalized !== href) {
+            link.setAttribute('href', normalized);
+        }
+    });
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -326,9 +349,11 @@ async function showArticle(date, expandIssue) {
 
     // Body
     document.getElementById('article-body').innerHTML = html;
+    normalizeArticleLinks(document.getElementById('article-body'));
 
     // Extract sidenotes from <template> data carriers into the external column
     buildSidenoteColumn();
+    normalizeArticleLinks(document.getElementById('sidenote-column'));
 
     // Expand a specific issue if requested (via #date:N), otherwise all start collapsed
     if (expandIssue) {
@@ -441,27 +466,63 @@ async function showIndex(filterTag) {
     const man = await loadManifest();
     const reports = man.reports || [];
     const tagDefs = man.tags || {};
-
-    // Collect all tags across all papers
-    const allTags = new Set();
+    const categoryDefs = man.categories || {};
+    const tagUsage = new Map();
     reports.forEach(r => {
-        (r.tags || []).forEach(t => allTags.add(t));
-        (r.papers || []).forEach(p => (p.tags || []).forEach(t => allTags.add(t)));
+        (r.papers || []).forEach(p => {
+            [...new Set(p.tags || [])].forEach(t => {
+                tagUsage.set(t, (tagUsage.get(t) || 0) + 1);
+            });
+        });
     });
+
+    const groupedTags = new Map();
+    for (const [tag, count] of tagUsage.entries()) {
+        const info = tagDefs[tag] || {};
+        const category = info.category || 'uncategorized';
+        if (!groupedTags.has(category)) groupedTags.set(category, []);
+        groupedTags.get(category).push({ tag, count, info });
+    }
+
+    if (filterTag) {
+        const category = (tagDefs[filterTag] || {}).category || 'uncategorized';
+        expandedTagCategories.add(category);
+    }
 
     // --- Tag filter bar ---
     const tagsEl = document.getElementById('index-tags');
-    const tagArr = [...allTags].sort();
-    tagsEl.innerHTML = tagArr.map(t => {
-        const info = tagDefs[t] || {};
-        const bg = info.color || 'var(--secondary)';
-        const active = filterTag === t;
-        return `<a class="pixel-badge tag-filter${active ? ' active' : ''}"
-                    href="#tag/${encodeURIComponent(t)}"
-                    style="--tag-color:${bg};background:${bg}">${info.name || t}</a>`;
-    }).join('') + (filterTag
-        ? ` <a class="pixel-badge tag-filter clear-btn" href="#index">✕ clear</a>`
-        : '');
+    const categoryOrder = Object.entries(categoryDefs)
+        .sort((a, b) => (a[1].order ?? 999) - (b[1].order ?? 999))
+        .map(([key]) => key);
+    const orderedCategories = [
+        ...categoryOrder.filter(key => groupedTags.has(key)),
+        ...[...groupedTags.keys()].filter(key => !categoryOrder.includes(key)).sort(),
+    ];
+    tagsEl.innerHTML = (filterTag
+        ? `<a class="pixel-badge tag-filter clear-btn" href="#index">clear filter</a>`
+        : '')
+        + orderedCategories.map(category => {
+            const catInfo = categoryDefs[category] || { name: prettyCategoryName(category) };
+            const tags = (groupedTags.get(category) || []).sort((a, b) =>
+                b.count - a.count || (a.info.name || a.tag).localeCompare(b.info.name || b.tag)
+            );
+            const expanded = expandedTagCategories.has(category);
+            return `<section class="tag-category${expanded ? ' expanded' : ''}">
+                        <button class="tag-category-toggle" type="button" data-tag-category="${category}">
+                            <span class="tag-category-name">${catInfo.name}</span>
+                            <span class="tag-category-meta">${tags.length} tags</span>
+                        </button>
+                        <div class="tag-category-tags">
+                            ${tags.map(({ tag, info }) => {
+                                const bg = info.color || 'var(--secondary)';
+                                const active = filterTag === tag;
+                                return `<a class="pixel-badge tag-filter${active ? ' active' : ''}"
+                                            href="#tag/${encodeURIComponent(tag)}"
+                                            style="--tag-color:${bg};background:${bg}">${info.name || tag}</a>`;
+                            }).join('')}
+                        </div>
+                    </section>`;
+        }).join('');
 
     // --- Build date-grouped list ---
     const listEl = document.getElementById('index-list');
@@ -588,6 +649,20 @@ async function init() {
             syncSidenoteVisibility();
             requestAnimationFrame(positionSidenotes);
         }
+    });
+
+    document.getElementById('index-tags').addEventListener('click', e => {
+        const button = e.target.closest('.tag-category-toggle');
+        if (!button) return;
+        const category = button.dataset.tagCategory;
+        const section = button.closest('.tag-category');
+        if (!category || !section) return;
+        if (expandedTagCategories.has(category)) {
+            expandedTagCategories.delete(category);
+        } else {
+            expandedTagCategories.add(category);
+        }
+        section.classList.toggle('expanded');
     });
 
     window.addEventListener('hashchange', route);

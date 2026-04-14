@@ -27,19 +27,19 @@ memory.db             ← accumulated knowledge
 
 ```bash
 # Install
-pip install -e .
+python3 -m pip install -e .
 
 # Generate today's report
-python run_codex.py
+python3 run_codex.py
 
 # Generate for a specific date
-python run_codex.py --date 2026-03-04
+python3 run_codex.py --date 2026-03-04
 
 # Dry run (see what would be sent to Codex)
-python run_codex.py --dry-run
+python3 run_codex.py --dry-run
 
 # Use a specific model
-python run_codex.py --model o3
+python3 run_codex.py --model o3
 ```
 
 ## CLI Tools
@@ -51,6 +51,7 @@ tcs-daily fetch <date>                # Fetch candidates + arXiv metadata
 tcs-daily metadata <arxiv_id>         # arXiv metadata for one paper
 tcs-daily download <arxiv_id>         # Download PDF
 tcs-daily extract <arxiv_id>          # Extract PDF text sections
+tcs-daily tags                        # Canonical allowed report tags
 tcs-daily history <query>             # Search past reports
 tcs-daily manifest <date> <path> <n>  # Update manifest.json
 tcs-daily validate <date>             # Check outputs
@@ -78,7 +79,7 @@ Reports are served from `posts/` as markdown.
 
 ```bash
 # Local preview
-python serve.py          # → http://localhost:8000/
+python3 serve.py         # → http://localhost:8000/
 ```
 
 ### Deployment

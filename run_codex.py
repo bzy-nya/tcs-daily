@@ -37,6 +37,10 @@ def tool(*args: str) -> dict | list | None:
         return None
 
 
+def _looks_complete(path: Path, *, min_size: int = 200) -> bool:
+    return path.exists() and path.stat().st_size >= min_size
+
+
 def codex(prompt: str, *, model: str = "", full_auto: bool = True) -> int:
     """Run ``codex exec`` with *prompt* piped to stdin."""
     import os
@@ -120,10 +124,11 @@ Use the $tcs-daily skill.
 ```
 `skipped_notable` 只列值得一提但未入选的，不需要穷举所有候选。
 
-**关于 tags**：从 SKILL.md 中预定义的二级标签体系中选取，每篇 **1-2 个**（优先 1 个最精准的），小写 kebab-case。
-举例：`graph-coloring`, `approximation-algorithms`, `circuit-complexity`, `list-decoding`, `distributed-graph-algorithms`
-**不要**用 `algorithms` `complexity` `graph-theory` 这种一级大类做 tag。
-如果论文实在不属于任何预定义二级标签，可以新建（manifest 会自动注册）。
+**关于 tags**：
+1. 先运行 `tcs-daily tags`，它给出**唯一允许使用**的标签集合。
+2. 每篇只打 **1 个** tag；只有论文确实横跨两个独立子方向时才允许 **2 个**。
+3. 只能从 `tcs-daily tags` 返回的 tag key 中选择；**不要**新建 tag。
+4. **不要**用 `algorithms` `complexity` `graph-theory` 这种一级大类。
 """
 
 
@@ -207,6 +212,7 @@ Use the $tcs-daily skill.
 
 ### 链接
 - arXiv 链接：`[arXiv:{aid}](https://arxiv.org/abs/{aid.rstrip('v1234567890')})`
+- 往期日报链接必须使用 hash route：`[2026-03-05 日报](#2026-03-05)`
 - 作者引用格式：`作者 (年份)` 或 `作者 et al. (年份)`，重要结果附 arXiv 链接
 
 ### 旁注
@@ -267,6 +273,7 @@ Use the $tcs-daily skill.
 {listing}
 
 用 `cat` 逐个读取上面的文件。也读取 `{selection_rel}` 查看筛选结果。
+开始编辑前先运行一次 `tcs-daily tags`，确认最终稿里使用的 tag 都来自允许集合。
 
 ## 任务
 
@@ -298,10 +305,10 @@ Use the $tcs-daily skill.
      ```
    - `::::issue` 使用四个冒号（和旁注 `:::aside` 的三个冒号区分）
    - 方括号内填写该论文的 tags（从 SKILL.md 预定义标签体系中选取，小写 kebab-case）
-     **每篇 1-2 个 tag**（优先 1 个最精准的子方向，只有论文确实横跨两个方向时才用 2 个）
+     **默认每篇 1 个 tag**；只有论文确实横跨两个独立方向时才用 2 个
+     **只能**使用 `tcs-daily tags` 返回的 tag key
      **不要用** `algorithms` `complexity` `graph-theory` 这种一级大类——用二级子方向标签
-     如果论文实在不属于预定义标签，可以新建
-   - `tcs-daily manifest` 会自动从 markdown 中解析 tags 并注册新标签，无需手动保持一致
+     **不要新建 tag**
    - 保留原稿的深度分析和数学公式
    - 可以润色语言、删除冗余，但核心 technical 内容不要丢
    - 可以调整论文顺序、加过渡句
@@ -366,6 +373,7 @@ Use the $tcs-daily skill.
 - 不要写"综上所述""总体来看"之类的套话
 - 不要每篇结尾都加一段总结——如果评价已经融入分析中了，就不需要单独总结段
 - arXiv 链接必须是可点击的 Markdown 超链接
+- 往期日报链接必须写成 hash route：`[2026-03-05 日报](#2026-03-05)`；不要写 `../posts/2026-03-05.md`
 
 完成后：
 - `tcs-daily manifest {dt} posts/{dt}.md {n}`
@@ -384,15 +392,25 @@ def main() -> None:
     ap.add_argument("--no-full-auto", action="store_true")
     ap.add_argument("--stage", type=int, choices=[1, 2, 3],
                     help="Run only this stage (assumes prior stages done)")
+    ap.add_argument(
+        "--force-stage",
+        type=int,
+        choices=[1, 2, 3],
+        action="append",
+        default=[],
+        help="Rerun a stage even if its cached outputs already exist",
+    )
     args = ap.parse_args()
 
     dt = args.date
     fa = not args.no_full_auto
     model = args.model
     run_stage = args.stage  # None = all
+    force_stages = set(args.force_stage)
 
     sel_path = ROOT / "data" / "cache" / "selection" / f"{dt}.json"
     drafts_dir = ROOT / "data" / "cache" / "drafts" / dt
+    report_path = ROOT / "posts" / f"{dt}.md"
 
     # ── preflight ──────────────────────────────────────────────
     print(f"[preflight] Fetching candidates for {dt} …", file=sys.stderr)
@@ -406,17 +424,20 @@ def main() -> None:
     #  Stage 1 — screening
     # ════════════════════════════════════════════════════════════
     if run_stage in (None, 1):
-        print("\n[stage 1] Screening …", file=sys.stderr)
-        p1 = prompt_screening(dt)
-
-        if args.dry_run:
-            print(f"{'='*60}\nStage 1 prompt\n{'='*60}\n{p1}")
+        if not args.dry_run and 1 not in force_stages and _looks_complete(sel_path):
+            print("\n[stage 1] Reusing cached selection", file=sys.stderr)
         else:
-            sel_path.parent.mkdir(parents=True, exist_ok=True)
-            rc = codex(p1, model=model, full_auto=fa)
-            if rc != 0:
-                print("[stage 1] Codex failed", file=sys.stderr)
-                raise SystemExit(rc)
+            print("\n[stage 1] Screening …", file=sys.stderr)
+            p1 = prompt_screening(dt)
+
+            if args.dry_run:
+                print(f"{'='*60}\nStage 1 prompt\n{'='*60}\n{p1}")
+            else:
+                sel_path.parent.mkdir(parents=True, exist_ok=True)
+                rc = codex(p1, model=model, full_auto=fa)
+                if rc != 0:
+                    print("[stage 1] Codex failed", file=sys.stderr)
+                    raise SystemExit(rc)
 
     # ── read selection ─────────────────────────────────────────
     if not args.dry_run:
@@ -429,19 +450,26 @@ def main() -> None:
         for p in selected:
             print(f"  • {p['arxiv_id']}  {p.get('title','')[:60]}", file=sys.stderr)
     else:
-        selected = [{"arxiv_id": "XXXX.XXXXXv1", "title": "(example)", "tags": ["TCS"], "reason": "…"}]
+        selected = [{"arxiv_id": "XXXX.XXXXXv1", "title": "(example)", "tags": ["exact-algorithms"], "reason": "…"}]
 
     # ════════════════════════════════════════════════════════════
     #  Stage 2 — per-paper deep analysis
     # ════════════════════════════════════════════════════════════
     if run_stage in (None, 2):
         drafts_dir.mkdir(parents=True, exist_ok=True)
+        pending = []
+        for p in selected:
+            draft_path = drafts_dir / f"{p['arxiv_id']}.md"
+            if not args.dry_run and 2 not in force_stages and _looks_complete(draft_path, min_size=1200):
+                print(f"[stage 2] Reusing cached draft: {p['arxiv_id']}", file=sys.stderr)
+                continue
+            pending.append(p)
 
         # pre-download + pre-extract all selected papers
-        if not args.dry_run:
+        if not args.dry_run and pending:
             print("\n[stage 2] Pre-downloading & extracting PDFs …", file=sys.stderr)
             failed: list[str] = []
-            for p in selected:
+            for p in pending:
                 aid = p["arxiv_id"]
                 dl = tool("download", aid)
                 if dl is None:
@@ -458,12 +486,12 @@ def main() -> None:
             if failed:
                 print(f"\n[stage 2] Skipping {len(failed)} paper(s) with no PDF: {failed}",
                       file=sys.stderr)
-                selected = [p for p in selected if p["arxiv_id"] not in failed]
+                pending = [p for p in pending if p["arxiv_id"] not in failed]
 
-        for i, paper in enumerate(selected, 1):
+        for i, paper in enumerate(pending, 1):
             aid = paper["arxiv_id"]
             tags = paper.get("tags", [])
-            print(f"\n[stage 2] Paper {i}/{len(selected)}: {aid}", file=sys.stderr)
+            print(f"\n[stage 2] Paper {i}/{len(pending)}: {aid}", file=sys.stderr)
 
             mem_ctx = "(dry-run)" if args.dry_run else memory_context_for(tags)
             p2 = prompt_paper(dt, paper, mem_ctx)
@@ -480,25 +508,37 @@ def main() -> None:
     #  Stage 3 — assembly
     # ════════════════════════════════════════════════════════════
     if run_stage in (None, 3):
-        print(f"\n[stage 3] Assembling report …", file=sys.stderr)
+        can_reuse_report = (
+            not args.dry_run
+            and 3 not in force_stages
+            and _looks_complete(report_path, min_size=2000)
+        )
+        if can_reuse_report:
+            cached_validation = tool("validate", dt)
+            can_reuse_report = bool(cached_validation and cached_validation.get("ok"))
 
-        if not args.dry_run:
-            drafts = sorted(drafts_dir.glob("*.md"))
-            draft_rels = [str(d.relative_to(ROOT)) for d in drafts]
+        if can_reuse_report:
+            print("\n[stage 3] Reusing existing validated report", file=sys.stderr)
         else:
-            draft_rels = ["data/cache/drafts/{dt}/XXXX.XXXXXv1.md"]
+            print(f"\n[stage 3] Assembling report …", file=sys.stderr)
 
-        sel_rel = str(sel_path.relative_to(ROOT))
-        p3 = prompt_assembly(dt, draft_rels, sel_rel)
+            if not args.dry_run:
+                drafts = sorted(drafts_dir.glob("*.md"))
+                draft_rels = [str(d.relative_to(ROOT)) for d in drafts]
+            else:
+                draft_rels = [f"data/cache/drafts/{dt}/XXXX.XXXXXv1.md"]
 
-        if args.dry_run:
-            print(f"{'='*60}\nStage 3 prompt\n{'='*60}\n{p3}")
-            return
-        else:
-            rc = codex(p3, model=model, full_auto=fa)
-            if rc != 0:
-                print("[stage 3] Codex failed", file=sys.stderr)
-                raise SystemExit(rc)
+            sel_rel = str(sel_path.relative_to(ROOT))
+            p3 = prompt_assembly(dt, draft_rels, sel_rel)
+
+            if args.dry_run:
+                print(f"{'='*60}\nStage 3 prompt\n{'='*60}\n{p3}")
+                return
+            else:
+                rc = codex(p3, model=model, full_auto=fa)
+                if rc != 0:
+                    print("[stage 3] Codex failed", file=sys.stderr)
+                    raise SystemExit(rc)
 
     # ── post-flight ────────────────────────────────────────────
     result = tool("validate", dt)
