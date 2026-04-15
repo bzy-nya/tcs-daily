@@ -15,7 +15,7 @@ from datetime import date as date_type
 from pathlib import Path
 
 from .config import Config
-from .tags import category_defs, normalize_tags, tag_defs
+from .tags import category_defs, normalize_tags, tag_color, tag_defs
 
 
 ISSUE_RE = re.compile(
@@ -62,10 +62,10 @@ def _is_report_markdown_link(href: str) -> bool:
 
 
 def cmd_fetch(args: argparse.Namespace, cfg: Config) -> None:
-    """Fetch candidates from theory.report + arXiv metadata (all cached)."""
-    from .fetch import fetch_arxiv_metadata, fetch_theory_report
+    """Fetch candidates from arXiv recent listings + metadata (all cached)."""
+    from .fetch import fetch_arxiv_metadata, fetch_recent_arxiv
 
-    entries = fetch_theory_report(args.date, cfg.paths)
+    entries = fetch_recent_arxiv(args.date, cfg.paths)
     papers: list[dict] = []
     for entry in entries:
         try:
@@ -157,24 +157,6 @@ def cmd_tags(args: argparse.Namespace, cfg: Config) -> None:
     _out(payload)
 
 
-# ═══════════════════════════════════════════════════════════════
-#  Manifest
-# ═══════════════════════════════════════════════════════════════
-
-
-def _tag_color(tag: str) -> str:
-    """Deterministic pleasing hex color from a tag name."""
-    import colorsys
-    import hashlib
-
-    h = int(hashlib.md5(tag.encode()).hexdigest()[:8], 16)
-    hue = (h % 360) / 360.0
-    sat = 0.50 + ((h >> 12) % 25) / 100.0   # 0.50-0.75
-    light = 0.45 + ((h >> 20) % 15) / 100.0  # 0.45-0.60
-    r, g, b = colorsys.hls_to_rgb(hue, light, sat)
-    return f"#{int(r * 255):02X}{int(g * 255):02X}{int(b * 255):02X}"
-
-
 def cmd_manifest(args: argparse.Namespace, cfg: Config) -> None:
     """Upsert one entry in posts/manifest.json.
 
@@ -260,11 +242,13 @@ def cmd_manifest(args: argparse.Namespace, cfg: Config) -> None:
             + [tag for paper in report.get("papers", []) for tag in paper.get("tags", [])]
         )
     ))
-    prior_defs = manifest.get("tags", {})
     manifest["tags"] = {
         tag: {
             "name": known_tag_defs.get(tag, {}).get("name", tag.replace("-", " ").title()),
-            "color": prior_defs.get(tag, {}).get("color", _tag_color(tag)),
+            "color": tag_color(
+                tag,
+                known_tag_defs.get(tag, {}).get("category", "uncategorized"),
+            ),
             "category": known_tag_defs.get(tag, {}).get("category", "uncategorized"),
         }
         for tag in used_tags

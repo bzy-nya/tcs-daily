@@ -173,19 +173,19 @@ function initMarked() {
 let manifest = null;
 const expandedTagCategories = new Set();
 
-async function loadManifest() {
-    if (manifest) return manifest;
+async function loadManifest(force = false) {
+    if (manifest && !force) return manifest;
     try {
-        const resp = await fetch('posts/manifest.json');
+        const resp = await fetch('posts/manifest.json', { cache: 'no-store' });
         manifest = await resp.json();
     } catch {
-        manifest = { version: 1, reports: [] };
+        manifest = manifest || { version: 1, reports: [] };
     }
     return manifest;
 }
 
 async function loadMarkdown(date) {
-    const resp = await fetch(`posts/${date}.md`);
+    const resp = await fetch(`posts/${date}.md`, { cache: 'no-store' });
     if (!resp.ok) return null;
     return resp.text();
 }
@@ -284,19 +284,25 @@ function hideLoading() {
 async function showArticle(date, expandIssue) {
     showLoading();
 
-    const man = await loadManifest();
-    const reports = man.reports || [];
-    const entry = reports.find(r => r.date === date);
-
-    // Expose tag definitions globally for issue-block tag rendering
-    window._tagDefs = man.tags || {};
-
     const md = await loadMarkdown(date);
     if (!md) {
         document.getElementById('loading').innerHTML =
             `<div class="loading-text">404 — no report for ${date}</div>`;
         return;
     }
+
+    let man = await loadManifest();
+    let reports = man.reports || [];
+    let entry = reports.find(r => r.date === date);
+    if (!entry) {
+        // A stale manifest can hide newly deployed reports from navigation/index.
+        man = await loadManifest(true);
+        reports = man.reports || [];
+        entry = reports.find(r => r.date === date);
+    }
+
+    // Expose tag definitions globally for issue-block tag rendering
+    window._tagDefs = man.tags || {};
 
     const { meta, body } = parseFrontmatter(md);
     // Reset issue counter before each render
@@ -463,7 +469,7 @@ function positionSidenotes() {
 async function showIndex(filterTag) {
     showLoading();
 
-    const man = await loadManifest();
+    const man = await loadManifest(true);
     const reports = man.reports || [];
     const tagDefs = man.tags || {};
     const categoryDefs = man.categories || {};
@@ -486,6 +492,7 @@ async function showIndex(filterTag) {
 
     if (filterTag) {
         const category = (tagDefs[filterTag] || {}).category || 'uncategorized';
+        expandedTagCategories.clear();
         expandedTagCategories.add(category);
     }
 
@@ -498,20 +505,29 @@ async function showIndex(filterTag) {
         ...categoryOrder.filter(key => groupedTags.has(key)),
         ...[...groupedTags.keys()].filter(key => !categoryOrder.includes(key)).sort(),
     ];
-    tagsEl.innerHTML = (filterTag
-        ? `<a class="pixel-badge tag-filter clear-btn" href="#index">clear filter</a>`
-        : '')
-        + orderedCategories.map(category => {
+    tagsEl.innerHTML = orderedCategories.map(category => {
             const catInfo = categoryDefs[category] || { name: prettyCategoryName(category) };
             const tags = (groupedTags.get(category) || []).sort((a, b) =>
                 b.count - a.count || (a.info.name || a.tag).localeCompare(b.info.name || b.tag)
             );
             const expanded = expandedTagCategories.has(category);
-            return `<section class="tag-category${expanded ? ' expanded' : ''}">
+            const preview = tags.slice(0, 2);
+            const accent = catInfo.accent || 'var(--accent)';
+            return `<section class="tag-category${expanded ? ' expanded' : ''}"
+                             style="--category-accent:${accent}">
                         <button class="tag-category-toggle" type="button" data-tag-category="${category}">
-                            <span class="tag-category-name">${catInfo.name}</span>
-                            <span class="tag-category-meta">${tags.length} tags</span>
+                            <span class="tag-category-heading">
+                                <span class="tag-category-name">${catInfo.name}</span>
+                                <span class="tag-category-meta">${tags.length} tags</span>
+                            </span>
                         </button>
+                        <div class="tag-category-preview">
+                            ${preview.map(({ tag, info }) => {
+                                const bg = info.color || 'var(--secondary)';
+                                return `<span class="pixel-badge tag-preview-badge"
+                                            style="--tag-color:${bg};background:${bg}">${info.name || tag}</span>`;
+                            }).join('')}
+                        </div>
                         <div class="tag-category-tags">
                             ${tags.map(({ tag, info }) => {
                                 const bg = info.color || 'var(--secondary)';
@@ -604,7 +620,7 @@ async function route() {
 
     // Empty hash or unknown — show latest issue
     if (hash === '' || hash === '#') {
-        const man = await loadManifest();
+        const man = await loadManifest(true);
         const dates = (man.reports || []).map(r => r.date).sort();
         if (dates.length) {
             showArticle(dates[dates.length - 1]);
@@ -652,6 +668,19 @@ async function init() {
     });
 
     document.getElementById('index-tags').addEventListener('click', e => {
+        const tag = e.target.closest('.tag-filter');
+        if (tag) {
+            const href = tag.getAttribute('href') || '';
+            const targetTag = href.startsWith('#tag/') ? decodeURIComponent(href.slice(5)) : '';
+            const currentMatch = location.hash.slice(1).match(/^tag\/(.+)$/);
+            const currentTag = currentMatch ? decodeURIComponent(currentMatch[1]) : '';
+            if (targetTag && targetTag === currentTag) {
+                e.preventDefault();
+                location.hash = 'index';
+            }
+            return;
+        }
+
         const button = e.target.closest('.tag-category-toggle');
         if (!button) return;
         const category = button.dataset.tagCategory;
@@ -660,8 +689,12 @@ async function init() {
         if (expandedTagCategories.has(category)) {
             expandedTagCategories.delete(category);
         } else {
+            expandedTagCategories.clear();
             expandedTagCategories.add(category);
         }
+        document.querySelectorAll('.tag-category.expanded').forEach(node => {
+            if (node !== section) node.classList.remove('expanded');
+        });
         section.classList.toggle('expanded');
     });
 

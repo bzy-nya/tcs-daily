@@ -11,7 +11,7 @@ run_codex.py          ← entry point: prefetch → codex exec → validate
   ↓
 codex exec            ← the agent, using .agents/skills/tcs-daily/SKILL.md
   ↓ calls
-tcs-daily fetch       ← theory.report + arXiv metadata
+tcs-daily fetch       ← arXiv recent listings + arXiv metadata
 tcs-daily download    ← PDF download
 tcs-daily extract     ← PDF text extraction
 tcs-daily memory ...  ← persistent knowledge base (SQLite)
@@ -69,7 +69,7 @@ tcs-daily memory stats                # KB statistics
 
 ## Data Sources
 
-- [theory.report](https://theory.report) — daily TCS paper aggregator
+- [arXiv recent listings](https://arxiv.org/list/cs.CC/recent) — candidate papers from `cs.CC`, `cs.CG`, `cs.DS`
 - [arXiv API](https://arxiv.org/help/api) — paper metadata and PDFs
 
 ## Frontend
@@ -104,7 +104,7 @@ app.js                             ← hash-router + marked.js renderer
 tcs_daily/                         ← Python package (tools only)
   cli.py                           ← CLI argument parsing + dispatch
   config.py                        ← path layout
-  fetch.py                         ← theory.report + arXiv fetching
+  fetch.py                         ← arXiv recent listing + metadata fetching
   pdf.py                           ← PDF download + text extraction
   memory.py                        ← SQLite knowledge base
   cache.py                         ← JSON cache read/write

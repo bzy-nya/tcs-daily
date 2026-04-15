@@ -1,4 +1,4 @@
-"""Fetch paper lists from theory.report and metadata from arXiv."""
+"""Fetch candidate papers from arXiv recent listings and metadata from arXiv."""
 
 from __future__ import annotations
 
@@ -12,27 +12,12 @@ from . import _http
 from .cache import read_json, write_json
 from .config import Paths
 
-# ── theory.report ──────────────────────────────────────────────
+ARXIV_RECENT_CATEGORIES = ("cs.CC", "cs.CG", "cs.DS")
+ARXIV_RECENT_URL = "https://arxiv.org/list/{category}/recent"
 
-THEORY_REPORT_URL = "https://theory.report/"
 
-
-def _date_labels(date: str) -> set[str]:
-    dt = datetime.strptime(date, "%Y-%m-%d")
-    return {
-        dt.strftime(fmt)
-        for fmt in (
-            "%A, %B %d",
-            "%A, %B %-d",
-            "%a, %b %d",
-            "%a, %b %-d",
-            "%b %d, %Y",
-            "%b %-d, %Y",
-            "%B %d, %Y",
-            "%B %-d, %Y",
-            "%Y-%m-%d",
-        )
-    }
+def _normalize_space(text: str) -> str:
+    return " ".join(text.split())
 
 
 def _extract_arxiv_id(href: str) -> str:
@@ -43,87 +28,138 @@ def _extract_arxiv_id(href: str) -> str:
     return path.rsplit("/", 1)[-1].removesuffix(".pdf")
 
 
-def _parse_entry(heading: Tag, date: str) -> dict | None:
-    link = heading.find("a", href=True)
-    if link is None or "arxiv.org" not in link["href"]:
+def _heading_date(text: str) -> str | None:
+    head = _normalize_space(text).split(" (", 1)[0]
+    try:
+        return datetime.strptime(head, "%a, %d %b %Y").strftime("%Y-%m-%d")
+    except ValueError:
         return None
-    title = " ".join(link.get_text(" ", strip=True).split())
-    arxiv_id = _extract_arxiv_id(link["href"])
-    authors: list[str] = []
-    source_hint = ""
 
-    sib = heading.find_next_sibling()
-    while sib and sib.name not in {"h2", "h3"}:
-        if sib.name:
-            text = " ".join(sib.get_text(" ", strip=True).split())
-            if text.startswith("Authors:") and not authors:
-                raw = text.removeprefix("Authors:").strip()
-                if "," in raw:
-                    authors = [a.strip() for a in raw.split(",") if a.strip()]
-                elif " and " in raw:
-                    authors = [a.strip() for a in raw.split(" and ") if a.strip()]
-                elif raw:
-                    authors = [raw]
-            elif text.startswith("from ") and not source_hint:
-                source_hint = text
-        sib = sib.find_next_sibling()
+
+def _parse_recent_entry(dt: Tag, dd: Tag, *, date: str, category: str) -> dict | None:
+    abs_link = next(
+        (link for link in dt.find_all("a", href=True) if "/abs/" in link["href"]),
+        None,
+    )
+    if abs_link is None:
+        return None
+
+    title_block = dd.find("div", class_="list-title")
+    title = _normalize_space(title_block.get_text(" ", strip=True)) if title_block else ""
+    title = title.removeprefix("Title:").strip()
+    if not title:
+        return None
+
+    authors = [
+        _normalize_space(link.get_text(" ", strip=True))
+        for link in dd.select(".list-authors a")
+    ]
+    subjects_block = dd.find("div", class_="list-subjects")
+    comments_block = dd.find("div", class_="list-comments")
+    subjects = (
+        _normalize_space(subjects_block.get_text(" ", strip=True)).removeprefix("Subjects:").strip()
+        if subjects_block else ""
+    )
+    comments = (
+        _normalize_space(comments_block.get_text(" ", strip=True)).removeprefix("Comments:").strip()
+        if comments_block else ""
+    )
+
+    source_parts = [f"arXiv recent {category}"]
+    if subjects:
+        source_parts.append(f"Subjects: {subjects}")
+    if comments:
+        source_parts.append(f"Comments: {comments}")
 
     return {
-        "arxiv_id": arxiv_id,
+        "arxiv_id": _extract_arxiv_id(abs_link["href"]),
         "title": title,
         "authors": authors,
         "date": date,
-        "source_hint": source_hint,
+        "source_hint": " | ".join(source_parts),
+        "listing_categories": [category],
     }
 
 
-def fetch_theory_report(date: str, paths: Paths) -> list[dict]:
-    """Fetch candidate papers from theory.report for *date*.
+def _parse_recent_listing(html: str, *, date: str, category: str) -> list[dict]:
+    soup = BeautifulSoup(html, "html.parser")
+    entries: list[dict] = []
 
-    Returns cached result if available.
-    """
-    cache = paths.theory_report_cache(date)
+    for heading in soup.find_all("h3"):
+        if _heading_date(heading.get_text(" ", strip=True)) != date:
+            continue
+
+        pending_dt: Tag | None = None
+        node = heading.find_next_sibling()
+        while node is not None:
+            if not isinstance(node, Tag):
+                node = node.find_next_sibling()
+                continue
+            if node.name == "h3":
+                break
+            if node.name == "dt":
+                pending_dt = node
+            elif node.name == "dd" and pending_dt is not None:
+                entry = _parse_recent_entry(
+                    pending_dt, node, date=date, category=category
+                )
+                if entry is not None:
+                    entries.append(entry)
+                pending_dt = None
+            node = node.find_next_sibling()
+        break
+
+    return entries
+
+
+def fetch_recent_arxiv(date: str, paths: Paths) -> list[dict]:
+    """Fetch candidate papers from recent arXiv category pages for *date*."""
+    cache = paths.candidates_cache(date)
     if cache.exists():
         return read_json(cache)["entries"]
 
-    html = _http.get_text(THEORY_REPORT_URL)
-    soup = BeautifulSoup(html, "html.parser")
-    labels = _date_labels(date)
-    section = None
-    headings_seen: list[str] = []
+    merged: dict[str, dict] = {}
+    for category in ARXIV_RECENT_CATEGORIES:
+        html = _http.get_text(ARXIV_RECENT_URL.format(category=category))
+        for entry in _parse_recent_listing(html, date=date, category=category):
+            existing = merged.get(entry["arxiv_id"])
+            if existing is None:
+                merged[entry["arxiv_id"]] = entry
+                continue
 
-    for h2 in soup.find_all("h2"):
-        text = " ".join(h2.get_text(" ", strip=True).split())
-        headings_seen.append(text)
-        if text in labels:
-            section = h2
-            break
+            categories = existing.setdefault("listing_categories", [])
+            for item in entry.get("listing_categories", []):
+                if item not in categories:
+                    categories.append(item)
+            existing["source_hint"] = " | ".join(
+                sorted(
+                    {
+                        part.strip()
+                        for part in (
+                            existing.get("source_hint", "").split("|")
+                            + entry.get("source_hint", "").split("|")
+                        )
+                        if part.strip()
+                    }
+                )
+            )
 
-    if section is None:
+    entries = list(merged.values())
+    if not entries:
         raise RuntimeError(
-            f"theory.report has no section for {date}.\n"
-            f"Expected one of: {sorted(labels)}\n"
-            f"Saw: {', '.join(headings_seen[:8])}"
+            f"No arXiv entries found for {date} in recent listings for "
+            f"{', '.join(ARXIV_RECENT_CATEGORIES)}."
         )
 
-    entries: list[dict] = []
-    seen: set[str] = set()
-    for node in section.find_all_next():
-        if not isinstance(node, Tag):
-            continue
-        if node.name == "h2":
-            break
-        if node.name != "h3":
-            continue
-        entry = _parse_entry(node, date)
-        if entry and entry["arxiv_id"] not in seen:
-            seen.add(entry["arxiv_id"])
-            entries.append(entry)
-
-    if not entries:
-        raise RuntimeError(f"No arXiv entries found for {date} on theory.report.")
-
-    write_json(cache, {"date": date, "count": len(entries), "entries": entries})
+    write_json(
+        cache,
+        {
+            "date": date,
+            "sources": list(ARXIV_RECENT_CATEGORIES),
+            "count": len(entries),
+            "entries": entries,
+        },
+    )
     return entries
 
 

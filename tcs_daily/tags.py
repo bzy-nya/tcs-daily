@@ -1,7 +1,9 @@
-"""Canonical tag taxonomy for reports and frontend grouping."""
+"""Canonical tag taxonomy, grouping, and color palette."""
 
 from __future__ import annotations
 
+import colorsys
+import hashlib
 from dataclasses import dataclass
 
 
@@ -9,26 +11,27 @@ from dataclasses import dataclass
 class CategoryDef:
     key: str
     name: str
+    hue: int
 
 
 CATEGORY_DEFS: tuple[CategoryDef, ...] = (
-    CategoryDef("complexity-theory", "Complexity Theory"),
-    CategoryDef("algorithms", "Algorithms"),
-    CategoryDef("data-structures", "Data Structures"),
-    CategoryDef("graph-theory", "Graph Theory"),
-    CategoryDef("cryptography", "Cryptography"),
-    CategoryDef("coding-theory", "Coding Theory"),
-    CategoryDef("learning-theory", "Learning Theory"),
-    CategoryDef("quantum-computing", "Quantum Computing"),
-    CategoryDef("logic-and-formal-methods", "Logic & Formal Methods"),
-    CategoryDef("automata-and-formal-languages", "Automata & Formal Languages"),
-    CategoryDef("computational-geometry", "Computational Geometry"),
-    CategoryDef("distributed-computing-theory", "Distributed Computing Theory"),
-    CategoryDef("algorithmic-game-theory", "Algorithmic Game Theory"),
-    CategoryDef("randomness-and-pseudorandomness", "Randomness & Pseudorandomness"),
-    CategoryDef("combinatorics-in-tcs", "Combinatorics in TCS"),
-    CategoryDef("property-testing", "Property Testing"),
-    CategoryDef("computational-social-choice", "Computational Social Choice"),
+    CategoryDef("complexity-theory", "Complexity Theory", 228),
+    CategoryDef("algorithms", "Algorithms", 18),
+    CategoryDef("data-structures", "Data Structures", 166),
+    CategoryDef("graph-theory", "Graph Theory", 142),
+    CategoryDef("cryptography", "Cryptography", 282),
+    CategoryDef("coding-theory", "Coding Theory", 334),
+    CategoryDef("learning-theory", "Learning Theory", 58),
+    CategoryDef("quantum-computing", "Quantum Computing", 252),
+    CategoryDef("logic-and-formal-methods", "Logic & Formal Methods", 204),
+    CategoryDef("automata-and-formal-languages", "Automata & Formal Languages", 34),
+    CategoryDef("computational-geometry", "Computational Geometry", 188),
+    CategoryDef("distributed-computing-theory", "Distributed Computing Theory", 126),
+    CategoryDef("algorithmic-game-theory", "Algorithmic Game Theory", 6),
+    CategoryDef("randomness-and-pseudorandomness", "Randomness & Pseudorandomness", 94),
+    CategoryDef("combinatorics-in-tcs", "Combinatorics in TCS", 318),
+    CategoryDef("property-testing", "Property Testing", 76),
+    CategoryDef("computational-social-choice", "Computational Social Choice", 346),
 )
 
 
@@ -205,9 +208,44 @@ def _display_name(tag: str) -> str:
     return SPECIAL_TAG_NAMES.get(tag, tag.replace("-", " ").title())
 
 
+def _hex_from_hsl(hue: float, sat: float, light: float) -> str:
+    r, g, b = colorsys.hls_to_rgb((hue % 360) / 360.0, light, sat)
+    return f"#{int(r * 255):02X}{int(g * 255):02X}{int(b * 255):02X}"
+
+
+def category_accent(category: str) -> str:
+    info = next((item for item in CATEGORY_DEFS if item.key == category), None)
+    if info is None:
+        return "#5E7A8B"
+    return _hex_from_hsl(info.hue, 0.58, 0.54)
+
+
+def tag_color(tag: str, category: str | None = None) -> str:
+    defs = tag_defs()
+    resolved_category = category or defs.get(tag, {}).get("category", "uncategorized")
+    base = next(
+        (item for item in CATEGORY_DEFS if item.key == resolved_category),
+        None,
+    )
+    if base is None:
+        digest = int(hashlib.md5(tag.encode()).hexdigest()[:8], 16)
+        return _hex_from_hsl(digest % 360, 0.22, 0.52)
+
+    digest = int(hashlib.md5(tag.encode()).hexdigest()[:8], 16)
+    hue_offset = ((digest % 2801) / 2800.0 - 0.5) * 28.0
+    sat = 0.57 + ((digest >> 11) % 10) / 100.0
+    light = 0.49 + ((digest >> 19) % 8) / 100.0
+    return _hex_from_hsl(base.hue + hue_offset, sat, light)
+
+
 def category_defs() -> dict[str, dict[str, str | int]]:
     return {
-        category.key: {"name": category.name, "order": idx}
+        category.key: {
+            "name": category.name,
+            "order": idx,
+            "hue": category.hue,
+            "accent": category_accent(category.key),
+        }
         for idx, category in enumerate(CATEGORY_DEFS)
     }
 

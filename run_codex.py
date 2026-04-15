@@ -100,7 +100,7 @@ Use the $tcs-daily skill.
 
 今天是 {dt}。请为日报筛选论文。
 
-1. `tcs-daily fetch {dt}` 查看候选列表（已缓存，秒回）。
+1. `tcs-daily fetch {dt}` 查看候选列表（来自 `cs.CC` / `cs.CG` / `cs.DS` 的 arXiv recent 页面，已缓存）。
 2. `tcs-daily memory stats` 和 `tcs-daily memory topics` 回顾知识库积累。
 3. 浏览每篇论文的摘要，选出 2-5 篇**最值得深入讲解**的论文。
 

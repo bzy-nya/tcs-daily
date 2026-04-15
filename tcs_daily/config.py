@@ -42,9 +42,6 @@ class Paths:
 
     # ── per-date / per-paper cache paths ───────────────────────
 
-    def theory_report_cache(self, date: str) -> Path:
-        return self.cache / "theory-report" / f"{date}.json"
-
     def arxiv_cache(self, arxiv_id: str) -> Path:
         return self.cache / "arxiv" / f"{arxiv_id}.json"
 
@@ -68,6 +65,9 @@ class Paths:
 
     def candidates_cache(self, date: str) -> Path:
         return self.cache / "candidates" / f"{date}.json"
+
+    def theory_report_cache(self, date: str) -> Path:
+        return self.candidates_cache(date)
 
     def manifest_file(self) -> Path:
         return self.posts / "manifest.json"
