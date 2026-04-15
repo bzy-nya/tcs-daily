@@ -1,6 +1,21 @@
 {
   "version": 1,
   "tags": {
+    "approximate-counting": {
+      "name": "Approximate Counting",
+      "color": "#864ECE",
+      "category": "complexity-theory"
+    },
+    "interactive-proofs": {
+      "name": "Interactive Proofs",
+      "color": "#2756D7",
+      "category": "complexity-theory"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#CE5DC5",
+      "category": "algorithms"
+    },
     "average-case-complexity": {
       "name": "Average-Case Complexity",
       "color": "#28D63F",
@@ -66,11 +81,6 @@
       "color": "#25BF6B",
       "category": "cryptography"
     },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#CE5DC5",
-      "category": "algorithms"
-    },
     "sublinear-algorithms": {
       "name": "Sublinear Algorithms",
       "color": "#9DC539",
@@ -105,11 +115,6 @@
       "name": "Geometric Algorithms",
       "color": "#B13957",
       "category": "computational-geometry"
-    },
-    "approximate-counting": {
-      "name": "Approximate Counting",
-      "color": "#864ECE",
-      "category": "complexity-theory"
     },
     "existential-theory-of-the-reals": {
       "name": "Existential Theory of the Reals",
@@ -223,6 +228,40 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-04-15",
+      "path": "posts/2026-04-15.md",
+      "paper_count": 3,
+      "generated_at": "2026-04-15T04:28:30.822234+00:00",
+      "tags": [
+        "approximate-counting",
+        "interactive-proofs",
+        "approximation-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2604.11938",
+          "title": "Sampling Colorings Close to the Maximum Degree: Non-Markovian Coupling and Local Uniformity",
+          "tags": [
+            "approximate-counting"
+          ]
+        },
+        {
+          "arxiv_id": "2604.11952",
+          "title": "A Relativizing MIP for BQP",
+          "tags": [
+            "interactive-proofs"
+          ]
+        },
+        {
+          "arxiv_id": "2604.12036",
+          "title": "Constant-Factor Approximation for the Uniform Decision Tree",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-04-14",
       "path": "posts/2026-04-14.md",
