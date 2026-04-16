@@ -1,6 +1,21 @@
 {
   "version": 1,
   "tags": {
+    "probabilistic-method": {
+      "name": "Probabilistic Method",
+      "color": "#C935AB",
+      "category": "combinatorics-in-tcs"
+    },
+    "program-verification": {
+      "name": "Program Verification",
+      "color": "#3987CA",
+      "category": "logic-and-formal-methods"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
     "approximate-counting": {
       "name": "Approximate Counting",
       "color": "#3951CF",
@@ -10,11 +25,6 @@
       "name": "Interactive Proofs",
       "color": "#2A46CF",
       "category": "complexity-theory"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
-      "category": "algorithms"
     },
     "average-case-complexity": {
       "name": "Average-Case Complexity",
@@ -50,11 +60,6 @@
       "name": "Online Algorithms",
       "color": "#D08D4C",
       "category": "algorithms"
-    },
-    "probabilistic-method": {
-      "name": "Probabilistic Method",
-      "color": "#C935AB",
-      "category": "combinatorics-in-tcs"
     },
     "exact-algorithms": {
       "name": "Exact Algorithms",
@@ -238,6 +243,40 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-04-16",
+      "path": "posts/2026-04-16.md",
+      "paper_count": 3,
+      "generated_at": "2026-04-16T04:29:07.558431+00:00",
+      "tags": [
+        "probabilistic-method",
+        "program-verification",
+        "approximation-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2604.13355",
+          "title": "Near-Optimal Constructive Bounds for $\\ell_2$ Prefix Discrepancy and Steinitz Problems via Affine Spectral Independence",
+          "tags": [
+            "probabilistic-method"
+          ]
+        },
+        {
+          "arxiv_id": "2604.13683",
+          "title": "On the Decidability of Verification under Release/Acquire",
+          "tags": [
+            "program-verification"
+          ]
+        },
+        {
+          "arxiv_id": "2604.13971",
+          "title": "Max Cut with Small-Dimensional SDP Solutions",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-04-15",
       "path": "posts/2026-04-15.md",

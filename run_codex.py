@@ -22,6 +22,23 @@ ROOT = Path(__file__).resolve().parent
 # ── helpers ────────────────────────────────────────────────────
 
 
+def _log(message: str) -> None:
+    print(message, file=sys.stderr)
+
+
+def _tool_error(stderr: str) -> str:
+    text = stderr.strip()
+    if not text:
+        return "unknown error"
+    try:
+        payload = json.loads(text.splitlines()[-1])
+        if isinstance(payload, dict) and payload.get("error"):
+            return str(payload["error"])
+    except json.JSONDecodeError:
+        pass
+    return text.splitlines()[-1]
+
+
 def tool(*args: str) -> dict | list | None:
     """Run a tcs-daily CLI command, return parsed JSON or None."""
     r = subprocess.run(
@@ -29,7 +46,7 @@ def tool(*args: str) -> dict | list | None:
         capture_output=True, text=True, cwd=ROOT,
     )
     if r.returncode != 0:
-        print(f"  [tool] tcs-daily {' '.join(args)}: {r.stderr.strip()}", file=sys.stderr)
+        _log(f"[tool] {' '.join(args)} failed: {_tool_error(r.stderr)}")
         return None
     try:
         return json.loads(r.stdout)
@@ -407,27 +424,35 @@ def main() -> None:
     model = args.model
     run_stage = args.stage  # None = all
     force_stages = set(args.force_stage)
+    requested_stages = [run_stage] if run_stage else [1, 2, 3]
 
     sel_path = ROOT / "data" / "cache" / "selection" / f"{dt}.json"
     drafts_dir = ROOT / "data" / "cache" / "drafts" / dt
     report_path = ROOT / "posts" / f"{dt}.md"
 
-    # ── preflight ──────────────────────────────────────────────
-    print(f"[preflight] Fetching candidates for {dt} …", file=sys.stderr)
-    cand = tool("fetch", dt)
-    if not cand:
-        print("[preflight] FAILED", file=sys.stderr)
-        raise SystemExit(1)
-    print(f"[preflight] {cand['count']} candidates", file=sys.stderr)
+    mode = "dry-run" if args.dry_run else ("manual" if args.no_full_auto else "full-auto")
+    _log(f"[run] date={dt} stages={','.join(str(s) for s in requested_stages)} mode={mode}")
 
     # ════════════════════════════════════════════════════════════
     #  Stage 1 — screening
     # ════════════════════════════════════════════════════════════
     if run_stage in (None, 1):
-        if not args.dry_run and 1 not in force_stages and _looks_complete(sel_path):
-            print("\n[stage 1] Reusing cached selection", file=sys.stderr)
+        needs_screening = (
+            args.dry_run
+            or 1 in force_stages
+            or not _looks_complete(sel_path)
+        )
+        if not needs_screening:
+            _log("[stage 1] reusing cached selection")
         else:
-            print("\n[stage 1] Screening …", file=sys.stderr)
+            if not args.dry_run:
+                _log(f"[stage 1] fetching candidates for {dt}")
+                cand = tool("fetch", dt)
+                if not cand:
+                    raise SystemExit(1)
+                _log(f"[stage 1] screening {cand['count']} candidates")
+            else:
+                _log("[stage 1] dry-run prompt")
             p1 = prompt_screening(dt)
 
             if args.dry_run:
@@ -436,19 +461,18 @@ def main() -> None:
                 sel_path.parent.mkdir(parents=True, exist_ok=True)
                 rc = codex(p1, model=model, full_auto=fa)
                 if rc != 0:
-                    print("[stage 1] Codex failed", file=sys.stderr)
+                    _log("[stage 1] codex failed")
                     raise SystemExit(rc)
 
     # ── read selection ─────────────────────────────────────────
     if not args.dry_run:
         if not sel_path.exists():
-            print(f"[error] {sel_path} not found — did stage 1 run?", file=sys.stderr)
+            _log(f"[error] {sel_path} not found — did stage 1 run?")
             raise SystemExit(1)
         selection = json.loads(sel_path.read_text())
         selected = selection.get("selected", [])
-        print(f"[selection] {len(selected)} papers:", file=sys.stderr)
-        for p in selected:
-            print(f"  • {p['arxiv_id']}  {p.get('title','')[:60]}", file=sys.stderr)
+        selected_ids = ", ".join(p["arxiv_id"] for p in selected) if selected else "(none)"
+        _log(f"[selection] {len(selected)} papers: {selected_ids}")
     else:
         selected = [{"arxiv_id": "XXXX.XXXXXv1", "title": "(example)", "tags": ["exact-algorithms"], "reason": "…"}]
 
@@ -458,40 +482,44 @@ def main() -> None:
     if run_stage in (None, 2):
         drafts_dir.mkdir(parents=True, exist_ok=True)
         pending = []
+        reused_drafts = 0
         for p in selected:
             draft_path = drafts_dir / f"{p['arxiv_id']}.md"
             if not args.dry_run and 2 not in force_stages and _looks_complete(draft_path, min_size=1200):
-                print(f"[stage 2] Reusing cached draft: {p['arxiv_id']}", file=sys.stderr)
+                reused_drafts += 1
                 continue
             pending.append(p)
+        _log(
+            f"[stage 2] selected={len(selected)} cached={reused_drafts} pending={len(pending)}"
+        )
 
         # pre-download + pre-extract all selected papers
         if not args.dry_run and pending:
-            print("\n[stage 2] Pre-downloading & extracting PDFs …", file=sys.stderr)
+            _log("[stage 2] preparing PDFs")
             failed: list[str] = []
-            for p in pending:
+            for i, p in enumerate(pending, 1):
                 aid = p["arxiv_id"]
+                _log(f"[stage 2 prep {i}/{len(pending)}] {aid}")
                 dl = tool("download", aid)
                 if dl is None:
-                    print(f"  ✗ download failed: {aid}", file=sys.stderr)
                     failed.append(aid)
                     continue
                 ex = tool("extract", aid)
                 if ex is None:
-                    print(f"  ✗ extract failed: {aid}", file=sys.stderr)
                     failed.append(aid)
                     continue
-                print(f"  ✓ {aid}", file=sys.stderr)
                 time.sleep(0.3)
             if failed:
-                print(f"\n[stage 2] Skipping {len(failed)} paper(s) with no PDF: {failed}",
-                      file=sys.stderr)
+                _log(
+                    f"[stage 2] unavailable after prep: {', '.join(failed)}"
+                )
                 pending = [p for p in pending if p["arxiv_id"] not in failed]
+            _log(f"[stage 2] ready for drafting: {len(pending)}")
 
         for i, paper in enumerate(pending, 1):
             aid = paper["arxiv_id"]
             tags = paper.get("tags", [])
-            print(f"\n[stage 2] Paper {i}/{len(pending)}: {aid}", file=sys.stderr)
+            _log(f"[stage 2 write {i}/{len(pending)}] {aid}")
 
             mem_ctx = "(dry-run)" if args.dry_run else memory_context_for(tags)
             p2 = prompt_paper(dt, paper, mem_ctx)
@@ -501,7 +529,7 @@ def main() -> None:
             else:
                 rc = codex(p2, model=model, full_auto=fa)
                 if rc != 0:
-                    print(f"[stage 2] Codex failed for {aid}", file=sys.stderr)
+                    _log(f"[stage 2] codex failed for {aid}")
                     # continue with remaining papers
 
     # ════════════════════════════════════════════════════════════
@@ -518,13 +546,14 @@ def main() -> None:
             can_reuse_report = bool(cached_validation and cached_validation.get("ok"))
 
         if can_reuse_report:
-            print("\n[stage 3] Reusing existing validated report", file=sys.stderr)
+            _log("[stage 3] reusing existing validated report")
         else:
-            print(f"\n[stage 3] Assembling report …", file=sys.stderr)
+            _log("[stage 3] assembling report")
 
             if not args.dry_run:
                 drafts = sorted(drafts_dir.glob("*.md"))
                 draft_rels = [str(d.relative_to(ROOT)) for d in drafts]
+                _log(f"[stage 3] drafts={len(draft_rels)}")
             else:
                 draft_rels = [f"data/cache/drafts/{dt}/XXXX.XXXXXv1.md"]
 
@@ -537,16 +566,16 @@ def main() -> None:
             else:
                 rc = codex(p3, model=model, full_auto=fa)
                 if rc != 0:
-                    print("[stage 3] Codex failed", file=sys.stderr)
+                    _log("[stage 3] codex failed")
                     raise SystemExit(rc)
 
     # ── post-flight ────────────────────────────────────────────
     result = tool("validate", dt)
     if result and result.get("ok"):
-        print("\n[post-flight] ✓ All outputs valid", file=sys.stderr)
+        _log("[done] outputs validated")
     else:
         errs = result.get("errors", []) if result else ["validation failed"]
-        print(f"\n[post-flight] Issues: {errs}", file=sys.stderr)
+        _log(f"[done] validation issues: {errs}")
 
 
 if __name__ == "__main__":
