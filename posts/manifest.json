@@ -1,6 +1,26 @@
 {
   "version": 1,
   "tags": {
+    "pac-learning": {
+      "name": "PAC Learning",
+      "color": "#CED646",
+      "category": "learning-theory"
+    },
+    "network-flows": {
+      "name": "Network Flows",
+      "color": "#4CD099",
+      "category": "graph-theory"
+    },
+    "sublinear-algorithms": {
+      "name": "Sublinear Algorithms",
+      "color": "#C9753A",
+      "category": "algorithms"
+    },
+    "quantum-complexity-theory": {
+      "name": "Quantum Complexity Theory",
+      "color": "#4243CB",
+      "category": "quantum-computing"
+    },
     "probabilistic-method": {
       "name": "Probabilistic Method",
       "color": "#C935AB",
@@ -41,11 +61,6 @@
       "color": "#3FCFC4",
       "category": "computational-geometry"
     },
-    "quantum-complexity-theory": {
-      "name": "Quantum Complexity Theory",
-      "color": "#4243CB",
-      "category": "quantum-computing"
-    },
     "quantum-information": {
       "name": "Quantum Information",
       "color": "#7937D1",
@@ -69,11 +84,6 @@
     "differential-privacy": {
       "name": "Differential Privacy",
       "color": "#CCA946",
-      "category": "learning-theory"
-    },
-    "pac-learning": {
-      "name": "PAC Learning",
-      "color": "#CED646",
       "category": "learning-theory"
     },
     "extremal-combinatorics": {
@@ -110,11 +120,6 @@
       "name": "Lattice Problems",
       "color": "#B34AD3",
       "category": "cryptography"
-    },
-    "sublinear-algorithms": {
-      "name": "Sublinear Algorithms",
-      "color": "#C9753A",
-      "category": "algorithms"
     },
     "distributed-graph-algorithms": {
       "name": "Distributed Graph Algorithms",
@@ -243,6 +248,48 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-04-17",
+      "path": "posts/2026-04-17.md",
+      "paper_count": 4,
+      "generated_at": "2026-04-17T04:36:04.523378+00:00",
+      "tags": [
+        "pac-learning",
+        "network-flows",
+        "sublinear-algorithms",
+        "quantum-complexity-theory"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2604.14614",
+          "title": "Tight Bounds for Learning Polyhedra with a Margin",
+          "tags": [
+            "pac-learning"
+          ]
+        },
+        {
+          "arxiv_id": "2604.14633",
+          "title": "Balancing Weights, Directed Sparsification, and Augmenting Paths",
+          "tags": [
+            "network-flows"
+          ]
+        },
+        {
+          "arxiv_id": "2604.14981",
+          "title": "Sublinear Spectral Clustering Oracle with Little Memory",
+          "tags": [
+            "sublinear-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2604.15248",
+          "title": "IQP circuits for 2-Forrelation",
+          "tags": [
+            "quantum-complexity-theory"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-04-16",
       "path": "posts/2026-04-16.md",
