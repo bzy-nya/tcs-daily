@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "communication-complexity": {
+      "name": "Communication Complexity",
+      "color": "#4A5BD3",
+      "category": "complexity-theory"
+    },
+    "parameterized-complexity": {
+      "name": "Parameterized Complexity",
+      "color": "#4963D4",
+      "category": "complexity-theory"
+    },
+    "time-complexity": {
+      "name": "Time Complexity",
+      "color": "#4078CD",
+      "category": "complexity-theory"
+    },
+    "linear-algebraic-algorithms": {
+      "name": "Linear Algebraic Algorithms",
+      "color": "#CE8749",
+      "category": "algorithms"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
     "pac-learning": {
       "name": "PAC Learning",
       "color": "#CED646",
@@ -31,11 +56,6 @@
       "color": "#3987CA",
       "category": "logic-and-formal-methods"
     },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
-      "category": "algorithms"
-    },
     "approximate-counting": {
       "name": "Approximate Counting",
       "color": "#3951CF",
@@ -49,11 +69,6 @@
     "average-case-complexity": {
       "name": "Average-Case Complexity",
       "color": "#2F71CF",
-      "category": "complexity-theory"
-    },
-    "parameterized-complexity": {
-      "name": "Parameterized Complexity",
-      "color": "#4963D4",
       "category": "complexity-theory"
     },
     "geometric-algorithms": {
@@ -105,11 +120,6 @@
       "name": "Voting Theory",
       "color": "#CF3F70",
       "category": "computational-social-choice"
-    },
-    "communication-complexity": {
-      "name": "Communication Complexity",
-      "color": "#4A5BD3",
-      "category": "complexity-theory"
     },
     "additive-combinatorics": {
       "name": "Additive Combinatorics",
@@ -170,11 +180,6 @@
       "name": "Graph Drawing",
       "color": "#48CF60",
       "category": "graph-theory"
-    },
-    "time-complexity": {
-      "name": "Time Complexity",
-      "color": "#4078CD",
-      "category": "complexity-theory"
     },
     "proof-complexity": {
       "name": "Proof Complexity",
@@ -240,14 +245,59 @@
       "name": "Proof Theory",
       "color": "#3EA5CA",
       "category": "logic-and-formal-methods"
-    },
-    "linear-algebraic-algorithms": {
-      "name": "Linear Algebraic Algorithms",
-      "color": "#CE8749",
-      "category": "algorithms"
     }
   },
   "reports": [
+    {
+      "date": "2026-04-20",
+      "path": "posts/2026-04-20.md",
+      "paper_count": 5,
+      "generated_at": "2026-04-20T05:51:50.350745+00:00",
+      "tags": [
+        "communication-complexity",
+        "parameterized-complexity",
+        "time-complexity",
+        "linear-algebraic-algorithms",
+        "approximation-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2604.15601v1",
+          "title": "The Communication Complexity of Pattern Matching with Edits Revisited",
+          "tags": [
+            "communication-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2604.15927v1",
+          "title": "Backdoors for Quantified Boolean Formulas",
+          "tags": [
+            "parameterized-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2604.16030v1",
+          "title": "Hardness, Tractability and Density Thresholds of finite Pinwheel Scheduling Variants",
+          "tags": [
+            "time-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2604.16075v1",
+          "title": "Towards Universal Convergence of Backward Error in Linear System Solvers",
+          "tags": [
+            "linear-algebraic-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2604.16061v1",
+          "title": "Constant-Factor Approximations for Doubly Constrained Fair k-Center, k-Median and k-Means",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-04-17",
       "path": "posts/2026-04-17.md",
