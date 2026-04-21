@@ -1,14 +1,34 @@
 {
   "version": 1,
   "tags": {
-    "communication-complexity": {
-      "name": "Communication Complexity",
-      "color": "#4A5BD3",
-      "category": "complexity-theory"
+    "fair-division": {
+      "name": "Fair Division",
+      "color": "#D05A4C",
+      "category": "algorithmic-game-theory"
+    },
+    "sample-complexity": {
+      "name": "Sample Complexity",
+      "color": "#D8B344",
+      "category": "learning-theory"
     },
     "parameterized-complexity": {
       "name": "Parameterized Complexity",
       "color": "#4963D4",
+      "category": "complexity-theory"
+    },
+    "geometric-algorithms": {
+      "name": "Geometric Algorithms",
+      "color": "#3FCFC4",
+      "category": "computational-geometry"
+    },
+    "existential-theory-of-the-reals": {
+      "name": "Existential Theory of the Reals",
+      "color": "#34A8CA",
+      "category": "computational-geometry"
+    },
+    "communication-complexity": {
+      "name": "Communication Complexity",
+      "color": "#4A5BD3",
       "category": "complexity-theory"
     },
     "time-complexity": {
@@ -70,11 +90,6 @@
       "name": "Average-Case Complexity",
       "color": "#2F71CF",
       "category": "complexity-theory"
-    },
-    "geometric-algorithms": {
-      "name": "Geometric Algorithms",
-      "color": "#3FCFC4",
-      "category": "computational-geometry"
     },
     "quantum-information": {
       "name": "Quantum Information",
@@ -156,11 +171,6 @@
       "color": "#33C6B5",
       "category": "data-structures"
     },
-    "existential-theory-of-the-reals": {
-      "name": "Existential Theory of the Reals",
-      "color": "#34A8CA",
-      "category": "computational-geometry"
-    },
     "statistical-learning-theory": {
       "name": "Statistical Learning Theory",
       "color": "#C7CA34",
@@ -185,11 +195,6 @@
       "name": "Proof Complexity",
       "color": "#3E44D4",
       "category": "complexity-theory"
-    },
-    "sample-complexity": {
-      "name": "Sample Complexity",
-      "color": "#D8B344",
-      "category": "learning-theory"
     },
     "fine-grained-complexity": {
       "name": "Fine-Grained Complexity",
@@ -248,6 +253,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-04-21",
+      "path": "posts/2026-04-21.md",
+      "paper_count": 5,
+      "generated_at": "2026-04-21T07:05:28.787912+00:00",
+      "tags": [
+        "fair-division",
+        "sample-complexity",
+        "parameterized-complexity",
+        "geometric-algorithms",
+        "existential-theory-of-the-reals"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2604.18216v1",
+          "title": "A Counterexample to EFX; $n \\ge 3$ Agents, $m \\ge n + 5$ Items, Monotone Valuations; via SAT-Solving",
+          "tags": [
+            "fair-division"
+          ]
+        },
+        {
+          "arxiv_id": "2604.17461v1",
+          "title": "Optimal Phylogenetic Reconstruction from Sampled Quartets",
+          "tags": [
+            "sample-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2604.17546v1",
+          "title": "Homogeneous Network Caching is Fixed-Parameter Tractable Parameterized by the Number of Caches",
+          "tags": [
+            "parameterized-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2604.16921v1",
+          "title": "Exact Subquadratic Algorithm for Many-to-Many Matching on Planar Point Sets with Integer Coordinates",
+          "tags": [
+            "geometric-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2604.17061v1",
+          "title": "$\\exists\\mathbb{R}$-Completeness of Tensor Degeneracy and a Derandomization Barrier for Hyperdeterminants",
+          "tags": [
+            "existential-theory-of-the-reals"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-04-20",
       "path": "posts/2026-04-20.md",
