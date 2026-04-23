@@ -1,20 +1,30 @@
 {
   "version": 1,
   "tags": {
-    "parameterized-complexity": {
-      "name": "Parameterized Complexity",
-      "color": "#4963D4",
-      "category": "complexity-theory"
+    "dynamic-algorithms": {
+      "name": "Dynamic Algorithms",
+      "color": "#CB6342",
+      "category": "algorithms"
+    },
+    "streaming-algorithms": {
+      "name": "Streaming Algorithms",
+      "color": "#D26036",
+      "category": "algorithms"
     },
     "graph-algorithms": {
       "name": "Graph Algorithms",
       "color": "#35C456",
       "category": "graph-theory"
     },
-    "streaming-algorithms": {
-      "name": "Streaming Algorithms",
-      "color": "#D26036",
-      "category": "algorithms"
+    "circuit-complexity": {
+      "name": "Circuit Complexity",
+      "color": "#3E51D0",
+      "category": "complexity-theory"
+    },
+    "parameterized-complexity": {
+      "name": "Parameterized Complexity",
+      "color": "#4963D4",
+      "category": "complexity-theory"
     },
     "quantum-information": {
       "name": "Quantum Information",
@@ -131,11 +141,6 @@
       "color": "#D641CB",
       "category": "combinatorics-in-tcs"
     },
-    "dynamic-algorithms": {
-      "name": "Dynamic Algorithms",
-      "color": "#CB6342",
-      "category": "algorithms"
-    },
     "randomized-algorithms": {
       "name": "Randomized Algorithms",
       "color": "#C97C30",
@@ -211,11 +216,6 @@
       "color": "#4C60D0",
       "category": "complexity-theory"
     },
-    "circuit-complexity": {
-      "name": "Circuit Complexity",
-      "color": "#3E51D0",
-      "category": "complexity-theory"
-    },
     "string-data-structures": {
       "name": "String Data Structures",
       "color": "#48CF9B",
@@ -253,6 +253,48 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-04-23",
+      "path": "posts/2026-04-23.md",
+      "paper_count": 4,
+      "generated_at": "2026-04-23T04:31:20.426756+00:00",
+      "tags": [
+        "dynamic-algorithms",
+        "streaming-algorithms",
+        "graph-algorithms",
+        "circuit-complexity"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2604.20836",
+          "title": "Dynamic Construction of the Lovász Local Lemma",
+          "tags": [
+            "dynamic-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2604.20394",
+          "title": "Nearly Optimal Bounds for Computing Decision Tree Splits in Data Streams",
+          "tags": [
+            "streaming-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2604.20457",
+          "title": "Cluster Vertex Deletion on Chordal Graphs",
+          "tags": [
+            "graph-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2604.19872",
+          "title": "Border subrank of higher order tensors and algebras",
+          "tags": [
+            "circuit-complexity"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-04-22",
       "path": "posts/2026-04-22.md",
