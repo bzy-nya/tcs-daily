@@ -1,14 +1,29 @@
 {
   "version": 1,
   "tags": {
-    "dynamic-algorithms": {
-      "name": "Dynamic Algorithms",
-      "color": "#CB6342",
-      "category": "algorithms"
+    "quantum-information": {
+      "name": "Quantum Information",
+      "color": "#7937D1",
+      "category": "quantum-computing"
+    },
+    "approximate-counting": {
+      "name": "Approximate Counting",
+      "color": "#3951CF",
+      "category": "complexity-theory"
+    },
+    "parameterized-complexity": {
+      "name": "Parameterized Complexity",
+      "color": "#4963D4",
+      "category": "complexity-theory"
     },
     "streaming-algorithms": {
       "name": "Streaming Algorithms",
       "color": "#D26036",
+      "category": "algorithms"
+    },
+    "dynamic-algorithms": {
+      "name": "Dynamic Algorithms",
+      "color": "#CB6342",
       "category": "algorithms"
     },
     "graph-algorithms": {
@@ -20,16 +35,6 @@
       "name": "Circuit Complexity",
       "color": "#3E51D0",
       "category": "complexity-theory"
-    },
-    "parameterized-complexity": {
-      "name": "Parameterized Complexity",
-      "color": "#4963D4",
-      "category": "complexity-theory"
-    },
-    "quantum-information": {
-      "name": "Quantum Information",
-      "color": "#7937D1",
-      "category": "quantum-computing"
     },
     "fair-division": {
       "name": "Fair Division",
@@ -100,11 +105,6 @@
       "name": "Program Verification",
       "color": "#3987CA",
       "category": "logic-and-formal-methods"
-    },
-    "approximate-counting": {
-      "name": "Approximate Counting",
-      "color": "#3951CF",
-      "category": "complexity-theory"
     },
     "interactive-proofs": {
       "name": "Interactive Proofs",
@@ -253,6 +253,48 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-04-24",
+      "path": "posts/2026-04-24.md",
+      "paper_count": 4,
+      "generated_at": "2026-04-24T04:35:25.582340+00:00",
+      "tags": [
+        "quantum-information",
+        "approximate-counting",
+        "parameterized-complexity",
+        "streaming-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2604.21089",
+          "title": "A rigorous quasipolynomial-time classical algorithm for SYK thermal expectations",
+          "tags": [
+            "quantum-information"
+          ]
+        },
+        {
+          "arxiv_id": "2604.21847",
+          "title": "Sampling from the Hardcore Model on Random Regular Bipartite Graphs above the Uniqueness Threshold",
+          "tags": [
+            "approximate-counting"
+          ]
+        },
+        {
+          "arxiv_id": "2604.21531",
+          "title": "Kernelization Bounds for Constrained Coloring",
+          "tags": [
+            "parameterized-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2604.21922",
+          "title": "Characterizing Streaming Decidability of CSPs via Non-Redundancy",
+          "tags": [
+            "streaming-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-04-23",
       "path": "posts/2026-04-23.md",
