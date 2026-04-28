@@ -1,6 +1,11 @@
 {
   "version": 1,
   "tags": {
+    "streaming-algorithms": {
+      "name": "Streaming Algorithms",
+      "color": "#D26036",
+      "category": "algorithms"
+    },
     "quantum-information": {
       "name": "Quantum Information",
       "color": "#7937D1",
@@ -15,11 +20,6 @@
       "name": "Parameterized Complexity",
       "color": "#4963D4",
       "category": "complexity-theory"
-    },
-    "streaming-algorithms": {
-      "name": "Streaming Algorithms",
-      "color": "#D26036",
-      "category": "algorithms"
     },
     "dynamic-algorithms": {
       "name": "Dynamic Algorithms",
@@ -253,6 +253,24 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-04-27",
+      "path": "posts/2026-04-27.md",
+      "paper_count": 1,
+      "generated_at": "2026-04-28T09:19:04.848276+00:00",
+      "tags": [
+        "streaming-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2604.22052",
+          "title": "Turnstile Streaming Algorithms Might (Still) as Well Be Linear Sketches, for Polynomial-Length Streams",
+          "tags": [
+            "streaming-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-04-24",
       "path": "posts/2026-04-24.md",
