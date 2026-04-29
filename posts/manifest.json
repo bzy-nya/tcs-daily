@@ -1,9 +1,39 @@
 {
   "version": 1,
   "tags": {
+    "proof-theory": {
+      "name": "Proof Theory",
+      "color": "#3EA5CA",
+      "category": "logic-and-formal-methods"
+    },
+    "circuit-complexity": {
+      "name": "Circuit Complexity",
+      "color": "#3E51D0",
+      "category": "complexity-theory"
+    },
+    "geometric-algorithms": {
+      "name": "Geometric Algorithms",
+      "color": "#3FCFC4",
+      "category": "computational-geometry"
+    },
+    "dynamic-algorithms": {
+      "name": "Dynamic Algorithms",
+      "color": "#CB6342",
+      "category": "algorithms"
+    },
+    "parameterized-complexity": {
+      "name": "Parameterized Complexity",
+      "color": "#4963D4",
+      "category": "complexity-theory"
+    },
     "streaming-algorithms": {
       "name": "Streaming Algorithms",
       "color": "#D26036",
+      "category": "algorithms"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
       "category": "algorithms"
     },
     "quantum-information": {
@@ -16,25 +46,10 @@
       "color": "#3951CF",
       "category": "complexity-theory"
     },
-    "parameterized-complexity": {
-      "name": "Parameterized Complexity",
-      "color": "#4963D4",
-      "category": "complexity-theory"
-    },
-    "dynamic-algorithms": {
-      "name": "Dynamic Algorithms",
-      "color": "#CB6342",
-      "category": "algorithms"
-    },
     "graph-algorithms": {
       "name": "Graph Algorithms",
       "color": "#35C456",
       "category": "graph-theory"
-    },
-    "circuit-complexity": {
-      "name": "Circuit Complexity",
-      "color": "#3E51D0",
-      "category": "complexity-theory"
     },
     "fair-division": {
       "name": "Fair Division",
@@ -45,11 +60,6 @@
       "name": "Sample Complexity",
       "color": "#D8B344",
       "category": "learning-theory"
-    },
-    "geometric-algorithms": {
-      "name": "Geometric Algorithms",
-      "color": "#3FCFC4",
-      "category": "computational-geometry"
     },
     "existential-theory-of-the-reals": {
       "name": "Existential Theory of the Reals",
@@ -69,11 +79,6 @@
     "linear-algebraic-algorithms": {
       "name": "Linear Algebraic Algorithms",
       "color": "#CE8749",
-      "category": "algorithms"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
       "category": "algorithms"
     },
     "pac-learning": {
@@ -245,14 +250,63 @@
       "name": "Locally Decodable Codes",
       "color": "#D53354",
       "category": "coding-theory"
-    },
-    "proof-theory": {
-      "name": "Proof Theory",
-      "color": "#3EA5CA",
-      "category": "logic-and-formal-methods"
     }
   },
   "reports": [
+    {
+      "date": "2026-04-29",
+      "path": "posts/2026-04-29.md",
+      "paper_count": 5,
+      "generated_at": "2026-04-29T04:47:20.723553+00:00",
+      "tags": [
+        "proof-theory",
+        "circuit-complexity",
+        "geometric-algorithms",
+        "dynamic-algorithms",
+        "parameterized-complexity",
+        "streaming-algorithms",
+        "approximation-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2604.25251",
+          "title": "From Gödel incompleteness to the consistency of circuit lower bounds",
+          "tags": [
+            "proof-theory",
+            "circuit-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2604.25397",
+          "title": "A dynamic $(1+\\varepsilon)$-spanner for disk intersection graphs",
+          "tags": [
+            "geometric-algorithms",
+            "dynamic-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2604.25841",
+          "title": "Tight Bounds for some W[1]-hard Problems Parameterized by Multi-clique-width",
+          "tags": [
+            "parameterized-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2604.25400",
+          "title": "An Efficient Streaming Algorithm for Approximating Graphlet Distributions",
+          "tags": [
+            "streaming-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2604.24884",
+          "title": "On the Average-Case Performance of Greedy for Maximum Coverage",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-04-27",
       "path": "posts/2026-04-27.md",
