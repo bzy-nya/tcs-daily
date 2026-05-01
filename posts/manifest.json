@@ -1,6 +1,21 @@
 {
   "version": 1,
   "tags": {
+    "graph-algorithms": {
+      "name": "Graph Algorithms",
+      "color": "#35C456",
+      "category": "graph-theory"
+    },
+    "average-case-complexity": {
+      "name": "Average-Case Complexity",
+      "color": "#2F71CF",
+      "category": "complexity-theory"
+    },
+    "quantum-complexity-theory": {
+      "name": "Quantum Complexity Theory",
+      "color": "#4243CB",
+      "category": "quantum-computing"
+    },
     "extractors": {
       "name": "Extractors",
       "color": "#69C836",
@@ -81,11 +96,6 @@
       "color": "#3951CF",
       "category": "complexity-theory"
     },
-    "graph-algorithms": {
-      "name": "Graph Algorithms",
-      "color": "#35C456",
-      "category": "graph-theory"
-    },
     "fair-division": {
       "name": "Fair Division",
       "color": "#D05A4C",
@@ -131,11 +141,6 @@
       "color": "#C9753A",
       "category": "algorithms"
     },
-    "quantum-complexity-theory": {
-      "name": "Quantum Complexity Theory",
-      "color": "#4243CB",
-      "category": "quantum-computing"
-    },
     "probabilistic-method": {
       "name": "Probabilistic Method",
       "color": "#C935AB",
@@ -149,11 +154,6 @@
     "interactive-proofs": {
       "name": "Interactive Proofs",
       "color": "#2A46CF",
-      "category": "complexity-theory"
-    },
-    "average-case-complexity": {
-      "name": "Average-Case Complexity",
-      "color": "#2F71CF",
       "category": "complexity-theory"
     },
     "graph-property-testing": {
@@ -268,6 +268,40 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-05-01",
+      "path": "posts/2026-05-01.md",
+      "paper_count": 3,
+      "generated_at": "2026-05-01T06:39:33.343399+00:00",
+      "tags": [
+        "graph-algorithms",
+        "average-case-complexity",
+        "quantum-complexity-theory"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2604.27142",
+          "title": "New Diameter Approximations via Distance Oracle Techniques",
+          "tags": [
+            "graph-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2604.27336",
+          "title": "Strongly Refuting Random CSP without Literals",
+          "tags": [
+            "average-case-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2604.27886",
+          "title": "Unentangled stoquastic Merlin-Arthur proof systems: the power of unentanglement without destructive interference",
+          "tags": [
+            "quantum-complexity-theory"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-04-30",
       "path": "posts/2026-04-30.md",
