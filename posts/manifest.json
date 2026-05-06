@@ -1,6 +1,21 @@
 {
   "version": 1,
   "tags": {
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
+    "quantum-algorithms": {
+      "name": "Quantum Algorithms",
+      "color": "#5A42CB",
+      "category": "quantum-computing"
+    },
+    "convex-hull": {
+      "name": "Convex Hull",
+      "color": "#34C2C5",
+      "category": "computational-geometry"
+    },
     "graph-algorithms": {
       "name": "Graph Algorithms",
       "color": "#35C456",
@@ -64,11 +79,6 @@
     "streaming-algorithms": {
       "name": "Streaming Algorithms",
       "color": "#D26036",
-      "category": "algorithms"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
       "category": "algorithms"
     },
     "space-complexity": {
@@ -268,6 +278,40 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-05-06",
+      "path": "posts/2026-05-06.md",
+      "paper_count": 3,
+      "generated_at": "2026-05-06T04:40:44.384528+00:00",
+      "tags": [
+        "approximation-algorithms",
+        "quantum-algorithms",
+        "convex-hull"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2605.03071",
+          "title": "A Poisson Process for Submodular Maximization",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2605.03685",
+          "title": "Quantum Multi-Level Estimation of Functionals of Discrete Distributions",
+          "tags": [
+            "quantum-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2605.03904",
+          "title": "Computing Planar Convex Hulls with a Promise",
+          "tags": [
+            "convex-hull"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-05-01",
       "path": "posts/2026-05-01.md",
