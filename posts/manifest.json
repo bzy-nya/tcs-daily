@@ -6,6 +6,21 @@
       "color": "#D55839",
       "category": "algorithms"
     },
+    "static-data-structures": {
+      "name": "Static Data Structures",
+      "color": "#38D6A0",
+      "category": "data-structures"
+    },
+    "fine-grained-complexity": {
+      "name": "Fine-Grained Complexity",
+      "color": "#4C60D0",
+      "category": "complexity-theory"
+    },
+    "string-data-structures": {
+      "name": "String Data Structures",
+      "color": "#48CF9B",
+      "category": "data-structures"
+    },
     "quantum-algorithms": {
       "name": "Quantum Algorithms",
       "color": "#5A42CB",
@@ -85,16 +100,6 @@
       "name": "Space Complexity",
       "color": "#424DCB",
       "category": "complexity-theory"
-    },
-    "fine-grained-complexity": {
-      "name": "Fine-Grained Complexity",
-      "color": "#4C60D0",
-      "category": "complexity-theory"
-    },
-    "string-data-structures": {
-      "name": "String Data Structures",
-      "color": "#48CF9B",
-      "category": "data-structures"
     },
     "market-design": {
       "name": "Market Design",
@@ -278,6 +283,42 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-05-07",
+      "path": "posts/2026-05-07.md",
+      "paper_count": 3,
+      "generated_at": "2026-05-07T07:13:19.424152+00:00",
+      "tags": [
+        "approximation-algorithms",
+        "static-data-structures",
+        "fine-grained-complexity",
+        "string-data-structures"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2605.04428",
+          "title": "Submodular Ground-Set Pruning: Monotone Tightness and a Non-Monotone Separation",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2605.04798",
+          "title": "Online Orthogonal Vectors Revisited",
+          "tags": [
+            "static-data-structures",
+            "fine-grained-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2605.04826",
+          "title": "Faster Algorithms for Shortest Unique or Absent Substrings",
+          "tags": [
+            "string-data-structures"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-05-06",
       "path": "posts/2026-05-06.md",
