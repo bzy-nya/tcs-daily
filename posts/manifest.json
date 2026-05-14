@@ -1,19 +1,94 @@
 {
   "version": 1,
   "tags": {
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
-      "category": "algorithms"
+    "pac-learning": {
+      "name": "PAC Learning",
+      "color": "#CED646",
+      "category": "learning-theory"
+    },
+    "quantum-complexity-theory": {
+      "name": "Quantum Complexity Theory",
+      "color": "#4243CB",
+      "category": "quantum-computing"
+    },
+    "graph-algorithms": {
+      "name": "Graph Algorithms",
+      "color": "#35C456",
+      "category": "graph-theory"
+    },
+    "proof-complexity": {
+      "name": "Proof Complexity",
+      "color": "#3E44D4",
+      "category": "complexity-theory"
+    },
+    "pcp-theory": {
+      "name": "PCP Theory",
+      "color": "#3B58D2",
+      "category": "complexity-theory"
+    },
+    "geometric-data-structures": {
+      "name": "Geometric Data Structures",
+      "color": "#33D5B2",
+      "category": "data-structures"
+    },
+    "parameterized-complexity": {
+      "name": "Parameterized Complexity",
+      "color": "#4963D4",
+      "category": "complexity-theory"
     },
     "static-data-structures": {
       "name": "Static Data Structures",
       "color": "#38D6A0",
       "category": "data-structures"
     },
+    "streaming-algorithms": {
+      "name": "Streaming Algorithms",
+      "color": "#D26036",
+      "category": "algorithms"
+    },
+    "online-algorithms": {
+      "name": "Online Algorithms",
+      "color": "#D08D4C",
+      "category": "algorithms"
+    },
+    "communication-complexity": {
+      "name": "Communication Complexity",
+      "color": "#4A5BD3",
+      "category": "complexity-theory"
+    },
+    "derandomization": {
+      "name": "Derandomization",
+      "color": "#78D32B",
+      "category": "randomness-and-pseudorandomness"
+    },
+    "dynamic-data-structures": {
+      "name": "Dynamic Data Structures",
+      "color": "#45D3B6",
+      "category": "data-structures"
+    },
     "fine-grained-complexity": {
       "name": "Fine-Grained Complexity",
       "color": "#4C60D0",
+      "category": "complexity-theory"
+    },
+    "geometric-algorithms": {
+      "name": "Geometric Algorithms",
+      "color": "#3FCFC4",
+      "category": "computational-geometry"
+    },
+    "graph-minor-theory": {
+      "name": "Graph Minor Theory",
+      "color": "#2BD371",
+      "category": "graph-theory"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
+    "average-case-complexity": {
+      "name": "Average-Case Complexity",
+      "color": "#2F71CF",
       "category": "complexity-theory"
     },
     "string-data-structures": {
@@ -31,21 +106,6 @@
       "color": "#34C2C5",
       "category": "computational-geometry"
     },
-    "graph-algorithms": {
-      "name": "Graph Algorithms",
-      "color": "#35C456",
-      "category": "graph-theory"
-    },
-    "average-case-complexity": {
-      "name": "Average-Case Complexity",
-      "color": "#2F71CF",
-      "category": "complexity-theory"
-    },
-    "quantum-complexity-theory": {
-      "name": "Quantum Complexity Theory",
-      "color": "#4243CB",
-      "category": "quantum-computing"
-    },
     "extractors": {
       "name": "Extractors",
       "color": "#69C836",
@@ -55,11 +115,6 @@
       "name": "Quantum Information",
       "color": "#7937D1",
       "category": "quantum-computing"
-    },
-    "geometric-algorithms": {
-      "name": "Geometric Algorithms",
-      "color": "#3FCFC4",
-      "category": "computational-geometry"
     },
     "differential-privacy": {
       "name": "Differential Privacy",
@@ -84,16 +139,6 @@
     "dynamic-algorithms": {
       "name": "Dynamic Algorithms",
       "color": "#CB6342",
-      "category": "algorithms"
-    },
-    "parameterized-complexity": {
-      "name": "Parameterized Complexity",
-      "color": "#4963D4",
-      "category": "complexity-theory"
-    },
-    "streaming-algorithms": {
-      "name": "Streaming Algorithms",
-      "color": "#D26036",
       "category": "algorithms"
     },
     "space-complexity": {
@@ -126,11 +171,6 @@
       "color": "#34A8CA",
       "category": "computational-geometry"
     },
-    "communication-complexity": {
-      "name": "Communication Complexity",
-      "color": "#4A5BD3",
-      "category": "complexity-theory"
-    },
     "time-complexity": {
       "name": "Time Complexity",
       "color": "#4078CD",
@@ -140,11 +180,6 @@
       "name": "Linear Algebraic Algorithms",
       "color": "#CE8749",
       "category": "algorithms"
-    },
-    "pac-learning": {
-      "name": "PAC Learning",
-      "color": "#CED646",
-      "category": "learning-theory"
     },
     "network-flows": {
       "name": "Network Flows",
@@ -175,11 +210,6 @@
       "name": "Graph Property Testing",
       "color": "#AFCA34",
       "category": "property-testing"
-    },
-    "online-algorithms": {
-      "name": "Online Algorithms",
-      "color": "#D08D4C",
-      "category": "algorithms"
     },
     "exact-algorithms": {
       "name": "Exact Algorithms",
@@ -241,20 +271,10 @@
       "color": "#40D78C",
       "category": "graph-theory"
     },
-    "graph-minor-theory": {
-      "name": "Graph Minor Theory",
-      "color": "#2BD371",
-      "category": "graph-theory"
-    },
     "graph-drawing": {
       "name": "Graph Drawing",
       "color": "#48CF60",
       "category": "graph-theory"
-    },
-    "proof-complexity": {
-      "name": "Proof Complexity",
-      "color": "#3E44D4",
-      "category": "complexity-theory"
     },
     "mechanism-design": {
       "name": "Mechanism Design",
@@ -283,6 +303,225 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-05-14",
+      "path": "posts/2026-05-14.md",
+      "paper_count": 4,
+      "generated_at": "2026-05-14T09:24:47.816960+00:00",
+      "tags": [
+        "pac-learning",
+        "quantum-complexity-theory",
+        "graph-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2605.13840",
+          "title": "What is Learnable in Valiant's Theory of the Learnable?",
+          "tags": [
+            "pac-learning"
+          ]
+        },
+        {
+          "arxiv_id": "2605.12615",
+          "title": "Quantum state isomorphism problems for groups",
+          "tags": [
+            "quantum-complexity-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2605.12669",
+          "title": "Thin Trees for Near Minimum Cuts",
+          "tags": [
+            "graph-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2605.13800",
+          "title": "Low-Cost Arborescence Under Edge Faults",
+          "tags": [
+            "graph-algorithms"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-05-13",
+      "path": "posts/2026-05-13.md",
+      "paper_count": 5,
+      "generated_at": "2026-05-14T06:08:39.749531+00:00",
+      "tags": [
+        "proof-complexity",
+        "pcp-theory",
+        "geometric-data-structures",
+        "parameterized-complexity",
+        "static-data-structures"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2605.12378",
+          "title": "Proof Systems Based on Structured Circuits",
+          "tags": [
+            "proof-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2605.11545",
+          "title": "Strong Inapproximability for a Promise Rank Problem",
+          "tags": [
+            "pcp-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2605.11313",
+          "title": "Performance bounds for nearest neighbor search with k-d trees",
+          "tags": [
+            "geometric-data-structures"
+          ]
+        },
+        {
+          "arxiv_id": "2605.11757",
+          "title": "Connectivity augmentation is fixed-parameter tractable",
+          "tags": [
+            "parameterized-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2605.11921",
+          "title": "On the LSH Distortion of Ulam and Cayley Similarities",
+          "tags": [
+            "static-data-structures"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-05-12",
+      "path": "posts/2026-05-12.md",
+      "paper_count": 3,
+      "generated_at": "2026-05-12T16:08:42.122458+00:00",
+      "tags": [
+        "streaming-algorithms",
+        "online-algorithms",
+        "proof-complexity",
+        "communication-complexity"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2605.09814",
+          "title": "Streaming Complexity Separations for Dense and Sparse Graphs",
+          "tags": [
+            "streaming-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2605.10927",
+          "title": "Chasing Small Sets Optimally Against Adaptive Adversaries",
+          "tags": [
+            "online-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2605.10941",
+          "title": "Average-Case Hardness of Binary-Encoded Clique in Proof and Communication Complexity",
+          "tags": [
+            "proof-complexity",
+            "communication-complexity"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-05-11",
+      "path": "posts/2026-05-11.md",
+      "paper_count": 4,
+      "generated_at": "2026-05-12T14:55:23.086646+00:00",
+      "tags": [
+        "derandomization",
+        "dynamic-data-structures",
+        "fine-grained-complexity",
+        "geometric-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2605.07150",
+          "title": "Deterministic Monotone Min-Plus Product and Convolution",
+          "tags": [
+            "derandomization"
+          ]
+        },
+        {
+          "arxiv_id": "2605.07168",
+          "title": "Connectivity Oracle Under Vertex Failures by Shortcutting Unbreakable Decomposition",
+          "tags": [
+            "dynamic-data-structures"
+          ]
+        },
+        {
+          "arxiv_id": "2605.07289",
+          "title": "On the Complexity of the Matching Problem of Regular Expressions with Backreferences",
+          "tags": [
+            "fine-grained-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2605.07882",
+          "title": "Touring a Sequence of Orthogonal Polygons",
+          "tags": [
+            "geometric-algorithms"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-05-08",
+      "path": "posts/2026-05-08.md",
+      "paper_count": 5,
+      "generated_at": "2026-05-12T14:24:05.372467+00:00",
+      "tags": [
+        "graph-minor-theory",
+        "approximation-algorithms",
+        "average-case-complexity",
+        "parameterized-complexity",
+        "dynamic-data-structures"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2605.05494",
+          "title": "A Separator for Minor-Free Graphs Beyond the Flow Barrier",
+          "tags": [
+            "graph-minor-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2605.05602",
+          "title": "Nearly Optimal Attention Coresets",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2605.05618",
+          "title": "Algorithmic Phase Transition for Large Independent Sets in Dense Hypergraphs",
+          "tags": [
+            "average-case-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2605.06262",
+          "title": "Bilateral Treewidth for QBF: Where Strategies and Resolution Meet",
+          "tags": [
+            "parameterized-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2605.06555",
+          "title": "Fast decremental tree sums in forests",
+          "tags": [
+            "dynamic-data-structures"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-05-07",
       "path": "posts/2026-05-07.md",
