@@ -1,15 +1,25 @@
 {
   "version": 1,
   "tags": {
-    "pac-learning": {
-      "name": "PAC Learning",
-      "color": "#CED646",
-      "category": "learning-theory"
+    "randomized-algorithms": {
+      "name": "Randomized Algorithms",
+      "color": "#C97C30",
+      "category": "algorithms"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
     },
     "quantum-complexity-theory": {
       "name": "Quantum Complexity Theory",
       "color": "#4243CB",
       "category": "quantum-computing"
+    },
+    "pac-learning": {
+      "name": "PAC Learning",
+      "color": "#CED646",
+      "category": "learning-theory"
     },
     "graph-algorithms": {
       "name": "Graph Algorithms",
@@ -80,11 +90,6 @@
       "name": "Graph Minor Theory",
       "color": "#2BD371",
       "category": "graph-theory"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
-      "category": "algorithms"
     },
     "average-case-complexity": {
       "name": "Average-Case Complexity",
@@ -221,11 +226,6 @@
       "color": "#D641CB",
       "category": "combinatorics-in-tcs"
     },
-    "randomized-algorithms": {
-      "name": "Randomized Algorithms",
-      "color": "#C97C30",
-      "category": "algorithms"
-    },
     "voting-theory": {
       "name": "Voting Theory",
       "color": "#CF3F70",
@@ -303,6 +303,40 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-05-26",
+      "path": "posts/2026-05-26.md",
+      "paper_count": 3,
+      "generated_at": "2026-05-26T05:50:33.834699+00:00",
+      "tags": [
+        "randomized-algorithms",
+        "approximation-algorithms",
+        "quantum-complexity-theory"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2605.25078",
+          "title": "The Dirichlet Mechanism for rounding with strong negative correlation, with applications",
+          "tags": [
+            "randomized-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2605.25303",
+          "title": "Algorithms with Polynomially-Improved Approximation Factors for the $2 \\rightarrow q$ Norm, and Applications",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2605.26096",
+          "title": "Rounding Almost Commuting Hamiltonians",
+          "tags": [
+            "quantum-complexity-theory"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-05-14",
       "path": "posts/2026-05-14.md",
