@@ -1,6 +1,21 @@
 {
   "version": 1,
   "tags": {
+    "property-testing": {
+      "name": "Property Testing",
+      "color": "#C9D033",
+      "category": "property-testing"
+    },
+    "exact-algorithms": {
+      "name": "Exact Algorithms",
+      "color": "#C9543A",
+      "category": "algorithms"
+    },
+    "geometric-algorithms": {
+      "name": "Geometric Algorithms",
+      "color": "#3FCFC4",
+      "category": "computational-geometry"
+    },
     "randomized-algorithms": {
       "name": "Randomized Algorithms",
       "color": "#C97C30",
@@ -80,11 +95,6 @@
       "name": "Fine-Grained Complexity",
       "color": "#4C60D0",
       "category": "complexity-theory"
-    },
-    "geometric-algorithms": {
-      "name": "Geometric Algorithms",
-      "color": "#3FCFC4",
-      "category": "computational-geometry"
     },
     "graph-minor-theory": {
       "name": "Graph Minor Theory",
@@ -216,11 +226,6 @@
       "color": "#AFCA34",
       "category": "property-testing"
     },
-    "exact-algorithms": {
-      "name": "Exact Algorithms",
-      "color": "#C9543A",
-      "category": "algorithms"
-    },
     "extremal-combinatorics": {
       "name": "Extremal Combinatorics",
       "color": "#D641CB",
@@ -303,6 +308,40 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-05-27",
+      "path": "posts/2026-05-27.md",
+      "paper_count": 3,
+      "generated_at": "2026-05-27T05:49:41.770686+00:00",
+      "tags": [
+        "property-testing",
+        "exact-algorithms",
+        "geometric-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2605.26450",
+          "title": "Low Soundness Linearity Testing on the Half-Slice",
+          "tags": [
+            "property-testing"
+          ]
+        },
+        {
+          "arxiv_id": "2605.26748",
+          "title": "Polynomial-time isomorphism test for groups with abelian Sylow subgroups",
+          "tags": [
+            "exact-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2605.26633",
+          "title": "Euclidean Steiner Shallow-Light Trees in Higher Dimensions",
+          "tags": [
+            "geometric-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-05-26",
       "path": "posts/2026-05-26.md",
