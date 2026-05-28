@@ -1,6 +1,26 @@
 {
   "version": 1,
   "tags": {
+    "pac-learning": {
+      "name": "PAC Learning",
+      "color": "#CED646",
+      "category": "learning-theory"
+    },
+    "differential-privacy": {
+      "name": "Differential Privacy",
+      "color": "#CCA946",
+      "category": "learning-theory"
+    },
+    "graph-algorithms": {
+      "name": "Graph Algorithms",
+      "color": "#35C456",
+      "category": "graph-theory"
+    },
+    "geometric-algorithms": {
+      "name": "Geometric Algorithms",
+      "color": "#3FCFC4",
+      "category": "computational-geometry"
+    },
     "property-testing": {
       "name": "Property Testing",
       "color": "#C9D033",
@@ -10,11 +30,6 @@
       "name": "Exact Algorithms",
       "color": "#C9543A",
       "category": "algorithms"
-    },
-    "geometric-algorithms": {
-      "name": "Geometric Algorithms",
-      "color": "#3FCFC4",
-      "category": "computational-geometry"
     },
     "randomized-algorithms": {
       "name": "Randomized Algorithms",
@@ -30,16 +45,6 @@
       "name": "Quantum Complexity Theory",
       "color": "#4243CB",
       "category": "quantum-computing"
-    },
-    "pac-learning": {
-      "name": "PAC Learning",
-      "color": "#CED646",
-      "category": "learning-theory"
-    },
-    "graph-algorithms": {
-      "name": "Graph Algorithms",
-      "color": "#35C456",
-      "category": "graph-theory"
     },
     "proof-complexity": {
       "name": "Proof Complexity",
@@ -130,11 +135,6 @@
       "name": "Quantum Information",
       "color": "#7937D1",
       "category": "quantum-computing"
-    },
-    "differential-privacy": {
-      "name": "Differential Privacy",
-      "color": "#CCA946",
-      "category": "learning-theory"
     },
     "auction-theory": {
       "name": "Auction Theory",
@@ -308,6 +308,48 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-05-28",
+      "path": "posts/2026-05-28.md",
+      "paper_count": 4,
+      "generated_at": "2026-05-28T04:25:10.361806+00:00",
+      "tags": [
+        "pac-learning",
+        "differential-privacy",
+        "graph-algorithms",
+        "geometric-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2605.27594",
+          "title": "Proper Agnostic Learning of Functions of Halfspaces under Gaussian Marginals",
+          "tags": [
+            "pac-learning"
+          ]
+        },
+        {
+          "arxiv_id": "2605.27912",
+          "title": "Privately Estimating Monotone Statistics in Polynomial Time",
+          "tags": [
+            "differential-privacy"
+          ]
+        },
+        {
+          "arxiv_id": "2605.27490",
+          "title": "Tree Search With Predictions",
+          "tags": [
+            "graph-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2605.27604",
+          "title": "Powers and Limitations of Synchronous Self-Assembly",
+          "tags": [
+            "geometric-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-05-27",
       "path": "posts/2026-05-27.md",
