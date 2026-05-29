@@ -1,6 +1,21 @@
 {
   "version": 1,
   "tags": {
+    "average-case-complexity": {
+      "name": "Average-Case Complexity",
+      "color": "#2F71CF",
+      "category": "complexity-theory"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
+    "formal-language-theory": {
+      "name": "Formal Language Theory",
+      "color": "#CF7334",
+      "category": "automata-and-formal-languages"
+    },
     "pac-learning": {
       "name": "PAC Learning",
       "color": "#CED646",
@@ -34,11 +49,6 @@
     "randomized-algorithms": {
       "name": "Randomized Algorithms",
       "color": "#C97C30",
-      "category": "algorithms"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
       "category": "algorithms"
     },
     "quantum-complexity-theory": {
@@ -105,11 +115,6 @@
       "name": "Graph Minor Theory",
       "color": "#2BD371",
       "category": "graph-theory"
-    },
-    "average-case-complexity": {
-      "name": "Average-Case Complexity",
-      "color": "#2F71CF",
-      "category": "complexity-theory"
     },
     "string-data-structures": {
       "name": "String Data Structures",
@@ -308,6 +313,40 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-05-29",
+      "path": "posts/2026-05-29.md",
+      "paper_count": 3,
+      "generated_at": "2026-05-29T04:30:04.122911+00:00",
+      "tags": [
+        "average-case-complexity",
+        "approximation-algorithms",
+        "formal-language-theory"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2605.30113",
+          "title": "Low-degree estimation thresholds in planted hypergraphs and tensor PCA",
+          "tags": [
+            "average-case-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2605.30053",
+          "title": "A Radius-Sensitive Approximation Algorithm for Connected Submodular Maximization",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2605.30324",
+          "title": "On Language Generation in the Limit with Bounded Memory",
+          "tags": [
+            "formal-language-theory"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-05-28",
       "path": "posts/2026-05-28.md",
