@@ -1,6 +1,26 @@
 {
   "version": 1,
   "tags": {
+    "enumeration-algorithms": {
+      "name": "Enumeration Algorithms",
+      "color": "#CA5F39",
+      "category": "algorithms"
+    },
+    "parameterized-complexity": {
+      "name": "Parameterized Complexity",
+      "color": "#4963D4",
+      "category": "complexity-theory"
+    },
+    "circuit-complexity": {
+      "name": "Circuit Complexity",
+      "color": "#3E51D0",
+      "category": "complexity-theory"
+    },
+    "distributed-graph-algorithms": {
+      "name": "Distributed Graph Algorithms",
+      "color": "#51D043",
+      "category": "distributed-computing-theory"
+    },
     "average-case-complexity": {
       "name": "Average-Case Complexity",
       "color": "#2F71CF",
@@ -70,11 +90,6 @@
       "name": "Geometric Data Structures",
       "color": "#33D5B2",
       "category": "data-structures"
-    },
-    "parameterized-complexity": {
-      "name": "Parameterized Complexity",
-      "color": "#4963D4",
-      "category": "complexity-theory"
     },
     "static-data-structures": {
       "name": "Static Data Structures",
@@ -150,11 +165,6 @@
       "name": "Proof Theory",
       "color": "#3EA5CA",
       "category": "logic-and-formal-methods"
-    },
-    "circuit-complexity": {
-      "name": "Circuit Complexity",
-      "color": "#3E51D0",
-      "category": "complexity-theory"
     },
     "dynamic-algorithms": {
       "name": "Dynamic Algorithms",
@@ -251,20 +261,10 @@
       "color": "#B34AD3",
       "category": "cryptography"
     },
-    "distributed-graph-algorithms": {
-      "name": "Distributed Graph Algorithms",
-      "color": "#51D043",
-      "category": "distributed-computing-theory"
-    },
     "graph-coloring": {
       "name": "Graph Coloring",
       "color": "#3FD395",
       "category": "graph-theory"
-    },
-    "enumeration-algorithms": {
-      "name": "Enumeration Algorithms",
-      "color": "#CA5F39",
-      "category": "algorithms"
     },
     "succinct-data-structures": {
       "name": "Succinct Data Structures",
@@ -313,6 +313,48 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-06-01",
+      "path": "posts/2026-06-01.md",
+      "paper_count": 4,
+      "generated_at": "2026-06-01T05:21:50.050613+00:00",
+      "tags": [
+        "enumeration-algorithms",
+        "parameterized-complexity",
+        "circuit-complexity",
+        "distributed-graph-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2605.30564",
+          "title": "Listing Even Cycles Faster than the Submodular-Width Barrier",
+          "tags": [
+            "enumeration-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2605.31417",
+          "title": "An Optimal Algorithm for Binary Closest String",
+          "tags": [
+            "parameterized-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2605.30523",
+          "title": "Revisiting Padded Transformer Expressivity: Which Architectural Choices Matter and Which Don't",
+          "tags": [
+            "circuit-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2605.30546",
+          "title": "Energy-Efficient Aggregation and Minimum-Degree Spanning Trees in Radio Networks",
+          "tags": [
+            "distributed-graph-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-05-29",
       "path": "posts/2026-05-29.md",
