@@ -1,10 +1,30 @@
 {
   "version": 1,
   "tags": {
+    "expanders": {
+      "name": "Expanders",
+      "color": "#8BCB2E",
+      "category": "randomness-and-pseudorandomness"
+    },
+    "matching-theory": {
+      "name": "Matching Theory",
+      "color": "#40D78C",
+      "category": "graph-theory"
+    },
+    "dynamic-algorithms": {
+      "name": "Dynamic Algorithms",
+      "color": "#CB6342",
+      "category": "algorithms"
+    },
     "enumeration-algorithms": {
       "name": "Enumeration Algorithms",
       "color": "#CA5F39",
       "category": "algorithms"
+    },
+    "proof-complexity": {
+      "name": "Proof Complexity",
+      "color": "#3E44D4",
+      "category": "complexity-theory"
     },
     "parameterized-complexity": {
       "name": "Parameterized Complexity",
@@ -75,11 +95,6 @@
       "name": "Quantum Complexity Theory",
       "color": "#4243CB",
       "category": "quantum-computing"
-    },
-    "proof-complexity": {
-      "name": "Proof Complexity",
-      "color": "#3E44D4",
-      "category": "complexity-theory"
     },
     "pcp-theory": {
       "name": "PCP Theory",
@@ -165,11 +180,6 @@
       "name": "Proof Theory",
       "color": "#3EA5CA",
       "category": "logic-and-formal-methods"
-    },
-    "dynamic-algorithms": {
-      "name": "Dynamic Algorithms",
-      "color": "#CB6342",
-      "category": "algorithms"
     },
     "space-complexity": {
       "name": "Space Complexity",
@@ -276,11 +286,6 @@
       "color": "#C7CA34",
       "category": "learning-theory"
     },
-    "matching-theory": {
-      "name": "Matching Theory",
-      "color": "#40D78C",
-      "category": "graph-theory"
-    },
     "graph-drawing": {
       "name": "Graph Drawing",
       "color": "#48CF60",
@@ -313,6 +318,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-06-02",
+      "path": "posts/2026-06-02.md",
+      "paper_count": 5,
+      "generated_at": "2026-06-02T08:40:14.287083+00:00",
+      "tags": [
+        "expanders",
+        "matching-theory",
+        "dynamic-algorithms",
+        "enumeration-algorithms",
+        "proof-complexity"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2606.00292",
+          "title": "High-Dimensional Expanders, the Sparsest Cut Problem, and Steurer's Conjecture",
+          "tags": [
+            "expanders"
+          ]
+        },
+        {
+          "arxiv_id": "2606.01330",
+          "title": "On Thin Perfect Matchings up to Polylogarithmic Factors",
+          "tags": [
+            "matching-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2606.01809",
+          "title": "A Near-Optimal Offline Algorithm for Dynamic All-Pairs Shortest Paths in Planar Digraphs",
+          "tags": [
+            "dynamic-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2606.02183",
+          "title": "Efficiently Listing Projected Trees, and Equivalence of Listing and Enumeration",
+          "tags": [
+            "enumeration-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2606.01242",
+          "title": "Recursive Jump Operators and Optimal Proof Systems",
+          "tags": [
+            "proof-complexity"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-06-01",
       "path": "posts/2026-06-01.md",
