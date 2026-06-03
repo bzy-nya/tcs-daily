@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "circuit-complexity": {
+      "name": "Circuit Complexity",
+      "color": "#3E51D0",
+      "category": "complexity-theory"
+    },
+    "communication-complexity": {
+      "name": "Communication Complexity",
+      "color": "#4A5BD3",
+      "category": "complexity-theory"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
+    "enumeration-algorithms": {
+      "name": "Enumeration Algorithms",
+      "color": "#CA5F39",
+      "category": "algorithms"
+    },
+    "distributed-graph-algorithms": {
+      "name": "Distributed Graph Algorithms",
+      "color": "#51D043",
+      "category": "distributed-computing-theory"
+    },
     "expanders": {
       "name": "Expanders",
       "color": "#8BCB2E",
@@ -16,11 +41,6 @@
       "color": "#CB6342",
       "category": "algorithms"
     },
-    "enumeration-algorithms": {
-      "name": "Enumeration Algorithms",
-      "color": "#CA5F39",
-      "category": "algorithms"
-    },
     "proof-complexity": {
       "name": "Proof Complexity",
       "color": "#3E44D4",
@@ -31,25 +51,10 @@
       "color": "#4963D4",
       "category": "complexity-theory"
     },
-    "circuit-complexity": {
-      "name": "Circuit Complexity",
-      "color": "#3E51D0",
-      "category": "complexity-theory"
-    },
-    "distributed-graph-algorithms": {
-      "name": "Distributed Graph Algorithms",
-      "color": "#51D043",
-      "category": "distributed-computing-theory"
-    },
     "average-case-complexity": {
       "name": "Average-Case Complexity",
       "color": "#2F71CF",
       "category": "complexity-theory"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
-      "category": "algorithms"
     },
     "formal-language-theory": {
       "name": "Formal Language Theory",
@@ -120,11 +125,6 @@
       "name": "Online Algorithms",
       "color": "#D08D4C",
       "category": "algorithms"
-    },
-    "communication-complexity": {
-      "name": "Communication Complexity",
-      "color": "#4A5BD3",
-      "category": "complexity-theory"
     },
     "derandomization": {
       "name": "Derandomization",
@@ -318,6 +318,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-06-03",
+      "path": "posts/2026-06-03.md",
+      "paper_count": 5,
+      "generated_at": "2026-06-03T04:59:45.633205+00:00",
+      "tags": [
+        "circuit-complexity",
+        "communication-complexity",
+        "approximation-algorithms",
+        "enumeration-algorithms",
+        "distributed-graph-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2606.03975",
+          "title": "Planar Perfect Matching Counting is as Hard as Determinants",
+          "tags": [
+            "circuit-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2606.03249",
+          "title": "Quantum-Classical Equivalence for AND-Functions",
+          "tags": [
+            "communication-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2606.03991",
+          "title": "The Grothendieck Constant is Less Than $\\frac{\\pi}{2\\log(1+\\sqrt{2})}-10^{-5}$",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2606.03947",
+          "title": "Ranked MSO-enumeration over compressed words",
+          "tags": [
+            "enumeration-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2606.03674",
+          "title": "Deterministic Distance Approximation in MPC via Improved Hitting Sets",
+          "tags": [
+            "distributed-graph-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-06-02",
       "path": "posts/2026-06-02.md",
