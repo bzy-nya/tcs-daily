@@ -6,15 +6,25 @@
       "color": "#3E51D0",
       "category": "complexity-theory"
     },
-    "communication-complexity": {
-      "name": "Communication Complexity",
-      "color": "#4A5BD3",
-      "category": "complexity-theory"
+    "pseudorandom-generators": {
+      "name": "Pseudorandom Generators",
+      "color": "#83D232",
+      "category": "randomness-and-pseudorandomness"
+    },
+    "dynamic-algorithms": {
+      "name": "Dynamic Algorithms",
+      "color": "#CB6342",
+      "category": "algorithms"
     },
     "approximation-algorithms": {
       "name": "Approximation Algorithms",
       "color": "#D55839",
       "category": "algorithms"
+    },
+    "communication-complexity": {
+      "name": "Communication Complexity",
+      "color": "#4A5BD3",
+      "category": "complexity-theory"
     },
     "enumeration-algorithms": {
       "name": "Enumeration Algorithms",
@@ -35,11 +45,6 @@
       "name": "Matching Theory",
       "color": "#40D78C",
       "category": "graph-theory"
-    },
-    "dynamic-algorithms": {
-      "name": "Dynamic Algorithms",
-      "color": "#CB6342",
-      "category": "algorithms"
     },
     "proof-complexity": {
       "name": "Proof Complexity",
@@ -318,6 +323,48 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-07-14",
+      "path": "posts/2026-07-14.md",
+      "paper_count": 4,
+      "generated_at": "2026-07-14T11:55:25.824469+00:00",
+      "tags": [
+        "circuit-complexity",
+        "pseudorandom-generators",
+        "dynamic-algorithms",
+        "approximation-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2607.09963",
+          "title": "Near-Maximum Circuit Lower Bounds for Exponential Time with Merlin-Arthur Queries",
+          "tags": [
+            "circuit-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2607.10255",
+          "title": "Limited Independence Suffices for Large-k Min-wise Hashing",
+          "tags": [
+            "pseudorandom-generators"
+          ]
+        },
+        {
+          "arxiv_id": "2607.10689",
+          "title": "Fully Dynamic Edge Connectivity in $\\widetilde O(n^{12/13})$ Time",
+          "tags": [
+            "dynamic-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2607.11413",
+          "title": "Minimum Degree Spanning Tree: $(1+\\varepsilon,1)$-Approximation in Near-Linear Time",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-06-03",
       "path": "posts/2026-06-03.md",
