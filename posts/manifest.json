@@ -1,6 +1,26 @@
 {
   "version": 1,
   "tags": {
+    "pac-learning": {
+      "name": "PAC Learning",
+      "color": "#CED646",
+      "category": "learning-theory"
+    },
+    "graph-coloring": {
+      "name": "Graph Coloring",
+      "color": "#3FD395",
+      "category": "graph-theory"
+    },
+    "parallel-algorithms": {
+      "name": "Parallel Algorithms",
+      "color": "#CA5439",
+      "category": "algorithms"
+    },
+    "quantum-information": {
+      "name": "Quantum Information",
+      "color": "#7937D1",
+      "category": "quantum-computing"
+    },
     "circuit-complexity": {
       "name": "Circuit Complexity",
       "color": "#3E51D0",
@@ -65,11 +85,6 @@
       "name": "Formal Language Theory",
       "color": "#CF7334",
       "category": "automata-and-formal-languages"
-    },
-    "pac-learning": {
-      "name": "PAC Learning",
-      "color": "#CED646",
-      "category": "learning-theory"
     },
     "differential-privacy": {
       "name": "Differential Privacy",
@@ -171,11 +186,6 @@
       "color": "#69C836",
       "category": "randomness-and-pseudorandomness"
     },
-    "quantum-information": {
-      "name": "Quantum Information",
-      "color": "#7937D1",
-      "category": "quantum-computing"
-    },
     "auction-theory": {
       "name": "Auction Theory",
       "color": "#CC3C42",
@@ -276,11 +286,6 @@
       "color": "#B34AD3",
       "category": "cryptography"
     },
-    "graph-coloring": {
-      "name": "Graph Coloring",
-      "color": "#3FD395",
-      "category": "graph-theory"
-    },
     "succinct-data-structures": {
       "name": "Succinct Data Structures",
       "color": "#33C6B5",
@@ -301,11 +306,6 @@
       "color": "#D54439",
       "category": "algorithmic-game-theory"
     },
-    "parallel-algorithms": {
-      "name": "Parallel Algorithms",
-      "color": "#CA5439",
-      "category": "algorithms"
-    },
     "distributed-algorithms": {
       "name": "Distributed Algorithms",
       "color": "#D2532C",
@@ -323,6 +323,48 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-07-15",
+      "path": "posts/2026-07-15.md",
+      "paper_count": 4,
+      "generated_at": "2026-07-15T12:51:53.962217+00:00",
+      "tags": [
+        "pac-learning",
+        "graph-coloring",
+        "parallel-algorithms",
+        "quantum-information"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2607.12331",
+          "title": "ETH-Hardness of Learning Monotone Circuits and Approximating Their Size",
+          "tags": [
+            "pac-learning"
+          ]
+        },
+        {
+          "arxiv_id": "2607.13025",
+          "title": "The Balanced Four-Color Theorem",
+          "tags": [
+            "graph-coloring"
+          ]
+        },
+        {
+          "arxiv_id": "2607.12348",
+          "title": "Parallel Sampling from the Ising $p$-Spin Model",
+          "tags": [
+            "parallel-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2607.12983",
+          "title": "The log log jam in Gaussian state tomography",
+          "tags": [
+            "quantum-information"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-07-14",
       "path": "posts/2026-07-14.md",
