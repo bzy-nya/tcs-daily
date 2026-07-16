@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "extremal-combinatorics": {
+      "name": "Extremal Combinatorics",
+      "color": "#D641CB",
+      "category": "combinatorics-in-tcs"
+    },
+    "quantum-information": {
+      "name": "Quantum Information",
+      "color": "#7937D1",
+      "category": "quantum-computing"
+    },
+    "time-complexity": {
+      "name": "Time Complexity",
+      "color": "#4078CD",
+      "category": "complexity-theory"
+    },
+    "static-data-structures": {
+      "name": "Static Data Structures",
+      "color": "#38D6A0",
+      "category": "data-structures"
+    },
+    "randomized-algorithms": {
+      "name": "Randomized Algorithms",
+      "color": "#C97C30",
+      "category": "algorithms"
+    },
     "pac-learning": {
       "name": "PAC Learning",
       "color": "#CED646",
@@ -15,11 +40,6 @@
       "name": "Parallel Algorithms",
       "color": "#CA5439",
       "category": "algorithms"
-    },
-    "quantum-information": {
-      "name": "Quantum Information",
-      "color": "#7937D1",
-      "category": "quantum-computing"
     },
     "circuit-complexity": {
       "name": "Circuit Complexity",
@@ -111,11 +131,6 @@
       "color": "#C9543A",
       "category": "algorithms"
     },
-    "randomized-algorithms": {
-      "name": "Randomized Algorithms",
-      "color": "#C97C30",
-      "category": "algorithms"
-    },
     "quantum-complexity-theory": {
       "name": "Quantum Complexity Theory",
       "color": "#4243CB",
@@ -129,11 +144,6 @@
     "geometric-data-structures": {
       "name": "Geometric Data Structures",
       "color": "#33D5B2",
-      "category": "data-structures"
-    },
-    "static-data-structures": {
-      "name": "Static Data Structures",
-      "color": "#38D6A0",
       "category": "data-structures"
     },
     "streaming-algorithms": {
@@ -226,11 +236,6 @@
       "color": "#34A8CA",
       "category": "computational-geometry"
     },
-    "time-complexity": {
-      "name": "Time Complexity",
-      "color": "#4078CD",
-      "category": "complexity-theory"
-    },
     "linear-algebraic-algorithms": {
       "name": "Linear Algebraic Algorithms",
       "color": "#CE8749",
@@ -265,11 +270,6 @@
       "name": "Graph Property Testing",
       "color": "#AFCA34",
       "category": "property-testing"
-    },
-    "extremal-combinatorics": {
-      "name": "Extremal Combinatorics",
-      "color": "#D641CB",
-      "category": "combinatorics-in-tcs"
     },
     "voting-theory": {
       "name": "Voting Theory",
@@ -323,6 +323,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-07-16",
+      "path": "posts/2026-07-16.md",
+      "paper_count": 5,
+      "generated_at": "2026-07-16T12:32:56.132737+00:00",
+      "tags": [
+        "extremal-combinatorics",
+        "quantum-information",
+        "time-complexity",
+        "static-data-structures",
+        "randomized-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2607.14068",
+          "title": "The even-uniform hypergraph Moore bound",
+          "tags": [
+            "extremal-combinatorics"
+          ]
+        },
+        {
+          "arxiv_id": "2607.13476",
+          "title": "Quantum memory advantage for quantum process tomography",
+          "tags": [
+            "quantum-information"
+          ]
+        },
+        {
+          "arxiv_id": "2607.13335",
+          "title": "Closing the Oracle-Complexity Gap in Derivative-Free Convex Optimization: A Near-Quadratic Lower Bound from Exact Function Values",
+          "tags": [
+            "time-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2607.13247",
+          "title": "Quadratic Probing Revisited: Smoothed Analysis and the Fall of Robin Hood",
+          "tags": [
+            "static-data-structures"
+          ]
+        },
+        {
+          "arxiv_id": "2607.13990",
+          "title": "Effective Resistance in Fixed-Rank External-Field Measures and Constant-Stretch Correlated Sampling on the Hypersimplex",
+          "tags": [
+            "randomized-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-07-15",
       "path": "posts/2026-07-15.md",
