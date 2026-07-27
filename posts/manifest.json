@@ -1,6 +1,26 @@
 {
   "version": 1,
   "tags": {
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
+    "communication-complexity": {
+      "name": "Communication Complexity",
+      "color": "#4A5BD3",
+      "category": "complexity-theory"
+    },
+    "online-algorithms": {
+      "name": "Online Algorithms",
+      "color": "#D08D4C",
+      "category": "algorithms"
+    },
+    "dynamic-algorithms": {
+      "name": "Dynamic Algorithms",
+      "color": "#CB6342",
+      "category": "algorithms"
+    },
     "graph-algorithms": {
       "name": "Graph Algorithms",
       "color": "#35C456",
@@ -51,19 +71,9 @@
       "color": "#D8B344",
       "category": "learning-theory"
     },
-    "online-algorithms": {
-      "name": "Online Algorithms",
-      "color": "#D08D4C",
-      "category": "algorithms"
-    },
     "streaming-algorithms": {
       "name": "Streaming Algorithms",
       "color": "#D26036",
-      "category": "algorithms"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
       "category": "algorithms"
     },
     "extremal-combinatorics": {
@@ -105,16 +115,6 @@
       "name": "Pseudorandom Generators",
       "color": "#83D232",
       "category": "randomness-and-pseudorandomness"
-    },
-    "dynamic-algorithms": {
-      "name": "Dynamic Algorithms",
-      "color": "#CB6342",
-      "category": "algorithms"
-    },
-    "communication-complexity": {
-      "name": "Communication Complexity",
-      "color": "#4A5BD3",
-      "category": "complexity-theory"
     },
     "distributed-graph-algorithms": {
       "name": "Distributed Graph Algorithms",
@@ -323,6 +323,48 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-07-27",
+      "path": "posts/2026-07-27.md",
+      "paper_count": 4,
+      "generated_at": "2026-07-27T05:06:13.428280+00:00",
+      "tags": [
+        "approximation-algorithms",
+        "communication-complexity",
+        "online-algorithms",
+        "dynamic-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2607.21858",
+          "title": "Approximation Algorithms for Inventory Problems with Decomposable Submodular Ordering Costs",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2607.22033",
+          "title": "Exponentially Fewer-Server PIR from Sparser $S$-Decoding Polynomials",
+          "tags": [
+            "communication-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2607.22179",
+          "title": "Online Geometric Packing through Online TSP Scheduling",
+          "tags": [
+            "online-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2607.22384",
+          "title": "Dynamic domination and independence in sparse graphs",
+          "tags": [
+            "dynamic-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-07-22",
       "path": "posts/2026-07-22.md",
