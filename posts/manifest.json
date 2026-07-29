@@ -1,6 +1,26 @@
 {
   "version": 1,
   "tags": {
+    "graph-coloring": {
+      "name": "Graph Coloring",
+      "color": "#3FD395",
+      "category": "graph-theory"
+    },
+    "space-complexity": {
+      "name": "Space Complexity",
+      "color": "#424DCB",
+      "category": "complexity-theory"
+    },
+    "geometric-algorithms": {
+      "name": "Geometric Algorithms",
+      "color": "#3FCFC4",
+      "category": "computational-geometry"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
     "circuit-complexity": {
       "name": "Circuit Complexity",
       "color": "#3E51D0",
@@ -10,16 +30,6 @@
       "name": "Streaming Algorithms",
       "color": "#D26036",
       "category": "algorithms"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
-      "category": "algorithms"
-    },
-    "geometric-algorithms": {
-      "name": "Geometric Algorithms",
-      "color": "#3FCFC4",
-      "category": "computational-geometry"
     },
     "communication-complexity": {
       "name": "Communication Complexity",
@@ -61,11 +71,6 @@
       "color": "#4243CB",
       "category": "quantum-computing"
     },
-    "space-complexity": {
-      "name": "Space Complexity",
-      "color": "#424DCB",
-      "category": "complexity-theory"
-    },
     "distribution-testing": {
       "name": "Distribution Testing",
       "color": "#8ACC41",
@@ -105,11 +110,6 @@
       "name": "PAC Learning",
       "color": "#CED646",
       "category": "learning-theory"
-    },
-    "graph-coloring": {
-      "name": "Graph Coloring",
-      "color": "#3FD395",
-      "category": "graph-theory"
     },
     "parallel-algorithms": {
       "name": "Parallel Algorithms",
@@ -323,6 +323,55 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-07-29",
+      "path": "posts/2026-07-29.md",
+      "paper_count": 5,
+      "generated_at": "2026-07-29T05:24:01.061502+00:00",
+      "tags": [
+        "graph-coloring",
+        "space-complexity",
+        "geometric-algorithms",
+        "approximation-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2607.25973",
+          "title": "k-Coloring is Faster than Computing the Chromatic Number",
+          "tags": [
+            "graph-coloring"
+          ]
+        },
+        {
+          "arxiv_id": "2607.24827",
+          "title": "Stronger Memory-Query Tradeoffs for Convex Optimization: The Limitations of Subquadratic Memory",
+          "tags": [
+            "space-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2607.25040",
+          "title": "Geometric $(1+\\varepsilon)$-Spanners with Few Crossings",
+          "tags": [
+            "geometric-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2607.25693",
+          "title": "A Unifying Framework for Quasi-Polynomial Optimization of Fixed-degree Polynomials",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2607.25183",
+          "title": "Stochastic Load Balancing with Machine Reservations",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-07-28",
       "path": "posts/2026-07-28.md",
