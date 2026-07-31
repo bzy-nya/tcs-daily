@@ -1,6 +1,16 @@
 {
   "version": 1,
   "tags": {
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
+    "quantum-algorithms": {
+      "name": "Quantum Algorithms",
+      "color": "#5A42CB",
+      "category": "quantum-computing"
+    },
     "average-case-complexity": {
       "name": "Average-Case Complexity",
       "color": "#2F71CF",
@@ -30,11 +40,6 @@
       "name": "Geometric Algorithms",
       "color": "#3FCFC4",
       "category": "computational-geometry"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
-      "category": "algorithms"
     },
     "circuit-complexity": {
       "name": "Circuit Complexity",
@@ -196,11 +201,6 @@
       "color": "#48CF9B",
       "category": "data-structures"
     },
-    "quantum-algorithms": {
-      "name": "Quantum Algorithms",
-      "color": "#5A42CB",
-      "category": "quantum-computing"
-    },
     "convex-hull": {
       "name": "Convex Hull",
       "color": "#34C2C5",
@@ -323,6 +323,46 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-07-31",
+      "path": "posts/2026-07-31.md",
+      "paper_count": 4,
+      "generated_at": "2026-07-31T04:52:44.685868+00:00",
+      "tags": [
+        "approximation-algorithms",
+        "quantum-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2607.27264",
+          "title": "Stronger Lower Bounds for Tree Covers via Cyclic Symmetry",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2607.27829",
+          "title": "Approximate Dual Separation for the Cluster LP: a 1.387 approximation for Correlation Clustering",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2607.28099",
+          "title": "Optimal PSPACE-hardness of Approximating $q$-CSP Reconfiguration",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2607.28260",
+          "title": "Optimal T Counts under Sparsity: from QROM to State Preparation and Block Encoding",
+          "tags": [
+            "quantum-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-07-30",
       "path": "posts/2026-07-30.md",
