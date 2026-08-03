@@ -1,6 +1,16 @@
 {
   "version": 1,
   "tags": {
+    "streaming-algorithms": {
+      "name": "Streaming Algorithms",
+      "color": "#D26036",
+      "category": "algorithms"
+    },
+    "quantum-information": {
+      "name": "Quantum Information",
+      "color": "#7937D1",
+      "category": "quantum-computing"
+    },
     "approximation-algorithms": {
       "name": "Approximation Algorithms",
       "color": "#D55839",
@@ -21,11 +31,6 @@
       "color": "#C97C30",
       "category": "algorithms"
     },
-    "quantum-information": {
-      "name": "Quantum Information",
-      "color": "#7937D1",
-      "category": "quantum-computing"
-    },
     "graph-coloring": {
       "name": "Graph Coloring",
       "color": "#3FD395",
@@ -45,11 +50,6 @@
       "name": "Circuit Complexity",
       "color": "#3E51D0",
       "category": "complexity-theory"
-    },
-    "streaming-algorithms": {
-      "name": "Streaming Algorithms",
-      "color": "#D26036",
-      "category": "algorithms"
     },
     "communication-complexity": {
       "name": "Communication Complexity",
@@ -323,6 +323,32 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-08-03",
+      "path": "posts/2026-08-03.md",
+      "paper_count": 2,
+      "generated_at": "2026-08-03T04:28:35.513876+00:00",
+      "tags": [
+        "streaming-algorithms",
+        "quantum-information"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2607.28819",
+          "title": "A Matrix Factorization Approach in Turnstile Streaming",
+          "tags": [
+            "streaming-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2607.29686",
+          "title": "Online Shadow Tomography Matching the Classical Bounds",
+          "tags": [
+            "quantum-information"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-07-31",
       "path": "posts/2026-07-31.md",
