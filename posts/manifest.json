@@ -1,6 +1,26 @@
 {
   "version": 1,
   "tags": {
+    "communication-complexity": {
+      "name": "Communication Complexity",
+      "color": "#4A5BD3",
+      "category": "complexity-theory"
+    },
+    "mechanism-design": {
+      "name": "Mechanism Design",
+      "color": "#D54439",
+      "category": "algorithmic-game-theory"
+    },
+    "dynamic-data-structures": {
+      "name": "Dynamic Data Structures",
+      "color": "#45D3B6",
+      "category": "data-structures"
+    },
+    "randomized-algorithms": {
+      "name": "Randomized Algorithms",
+      "color": "#C97C30",
+      "category": "algorithms"
+    },
     "geometric-algorithms": {
       "name": "Geometric Algorithms",
       "color": "#3FCFC4",
@@ -9,11 +29,6 @@
     "approximate-counting": {
       "name": "Approximate Counting",
       "color": "#3951CF",
-      "category": "complexity-theory"
-    },
-    "communication-complexity": {
-      "name": "Communication Complexity",
-      "color": "#4A5BD3",
       "category": "complexity-theory"
     },
     "lattice-problems": {
@@ -51,11 +66,6 @@
       "color": "#2F71CF",
       "category": "complexity-theory"
     },
-    "randomized-algorithms": {
-      "name": "Randomized Algorithms",
-      "color": "#C97C30",
-      "category": "algorithms"
-    },
     "graph-coloring": {
       "name": "Graph Coloring",
       "color": "#3FD395",
@@ -80,11 +90,6 @@
       "name": "Graph Algorithms",
       "color": "#35C456",
       "category": "graph-theory"
-    },
-    "dynamic-data-structures": {
-      "name": "Dynamic Data Structures",
-      "color": "#45D3B6",
-      "category": "data-structures"
     },
     "enumeration-algorithms": {
       "name": "Enumeration Algorithms",
@@ -306,11 +311,6 @@
       "color": "#48CF60",
       "category": "graph-theory"
     },
-    "mechanism-design": {
-      "name": "Mechanism Design",
-      "color": "#D54439",
-      "category": "algorithmic-game-theory"
-    },
     "distributed-algorithms": {
       "name": "Distributed Algorithms",
       "color": "#D2532C",
@@ -323,6 +323,48 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-08-06",
+      "path": "posts/2026-08-06.md",
+      "paper_count": 4,
+      "generated_at": "2026-08-06T04:57:09.394893+00:00",
+      "tags": [
+        "communication-complexity",
+        "mechanism-design",
+        "dynamic-data-structures",
+        "randomized-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2608.04141",
+          "title": "Zero-error information equals amortized communication complexity",
+          "tags": [
+            "communication-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2608.04337",
+          "title": "From Compensation Design to Budget-Feasible Mechanisms: A Constant Approximation for Subadditive Valuations",
+          "tags": [
+            "mechanism-design"
+          ]
+        },
+        {
+          "arxiv_id": "2608.04410",
+          "title": "The Greedy Binary Search Tree is Non-trivially Competitive",
+          "tags": [
+            "dynamic-data-structures"
+          ]
+        },
+        {
+          "arxiv_id": "2608.05022",
+          "title": "Exact simulation of diffusions and improved algorithms for log-concave sampling",
+          "tags": [
+            "randomized-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-08-05",
       "path": "posts/2026-08-05.md",
