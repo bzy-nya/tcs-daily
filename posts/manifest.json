@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "average-case-complexity": {
+      "name": "Average-Case Complexity",
+      "color": "#2F71CF",
+      "category": "complexity-theory"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
+    "succinct-data-structures": {
+      "name": "Succinct Data Structures",
+      "color": "#33C6B5",
+      "category": "data-structures"
+    },
+    "pac-learning": {
+      "name": "PAC Learning",
+      "color": "#CED646",
+      "category": "learning-theory"
+    },
+    "quantum-algorithms": {
+      "name": "Quantum Algorithms",
+      "color": "#5A42CB",
+      "category": "quantum-computing"
+    },
     "communication-complexity": {
       "name": "Communication Complexity",
       "color": "#4A5BD3",
@@ -50,21 +75,6 @@
       "name": "Streaming Algorithms",
       "color": "#D26036",
       "category": "algorithms"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
-      "category": "algorithms"
-    },
-    "quantum-algorithms": {
-      "name": "Quantum Algorithms",
-      "color": "#5A42CB",
-      "category": "quantum-computing"
-    },
-    "average-case-complexity": {
-      "name": "Average-Case Complexity",
-      "color": "#2F71CF",
-      "category": "complexity-theory"
     },
     "graph-coloring": {
       "name": "Graph Coloring",
@@ -130,11 +140,6 @@
       "name": "Static Data Structures",
       "color": "#38D6A0",
       "category": "data-structures"
-    },
-    "pac-learning": {
-      "name": "PAC Learning",
-      "color": "#CED646",
-      "category": "learning-theory"
     },
     "parallel-algorithms": {
       "name": "Parallel Algorithms",
@@ -296,11 +301,6 @@
       "color": "#CD4A8D",
       "category": "combinatorics-in-tcs"
     },
-    "succinct-data-structures": {
-      "name": "Succinct Data Structures",
-      "color": "#33C6B5",
-      "category": "data-structures"
-    },
     "statistical-learning-theory": {
       "name": "Statistical Learning Theory",
       "color": "#C7CA34",
@@ -323,6 +323,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-08-07",
+      "path": "posts/2026-08-07.md",
+      "paper_count": 5,
+      "generated_at": "2026-08-07T05:01:30.346852+00:00",
+      "tags": [
+        "average-case-complexity",
+        "approximation-algorithms",
+        "succinct-data-structures",
+        "pac-learning",
+        "quantum-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2608.06279",
+          "title": "Rigorous Low-Degree Implications for Planted Subgraph Detection: Noise and Treewidth",
+          "tags": [
+            "average-case-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2608.05331",
+          "title": "On the Approximability of Boolean Max-$k$-CSP",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2608.06066",
+          "title": "Dynamic Entropy-Encoded Arrays in $O(1)$ Time with Nearly Optimal Space",
+          "tags": [
+            "succinct-data-structures"
+          ]
+        },
+        {
+          "arxiv_id": "2608.06363",
+          "title": "An Optimal Agnostic PAC Algorithm",
+          "tags": [
+            "pac-learning"
+          ]
+        },
+        {
+          "arxiv_id": "2608.06094",
+          "title": "Time-Dependent Hamiltonian Simulation with Optimal Query Complexity",
+          "tags": [
+            "quantum-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-08-06",
       "path": "posts/2026-08-06.md",
