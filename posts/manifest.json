@@ -1,6 +1,16 @@
 {
   "version": 1,
   "tags": {
+    "communication-complexity": {
+      "name": "Communication Complexity",
+      "color": "#4A5BD3",
+      "category": "complexity-theory"
+    },
+    "online-algorithms": {
+      "name": "Online Algorithms",
+      "color": "#D08D4C",
+      "category": "algorithms"
+    },
     "average-case-complexity": {
       "name": "Average-Case Complexity",
       "color": "#2F71CF",
@@ -25,11 +35,6 @@
       "name": "Quantum Algorithms",
       "color": "#5A42CB",
       "category": "quantum-computing"
-    },
-    "communication-complexity": {
-      "name": "Communication Complexity",
-      "color": "#4A5BD3",
-      "category": "complexity-theory"
     },
     "mechanism-design": {
       "name": "Mechanism Design",
@@ -65,11 +70,6 @@
       "name": "Quantum Information",
       "color": "#7937D1",
       "category": "quantum-computing"
-    },
-    "online-algorithms": {
-      "name": "Online Algorithms",
-      "color": "#D08D4C",
-      "category": "algorithms"
     },
     "streaming-algorithms": {
       "name": "Streaming Algorithms",
@@ -323,6 +323,32 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-08-10",
+      "path": "posts/2026-08-10.md",
+      "paper_count": 2,
+      "generated_at": "2026-08-10T05:44:41.047300+00:00",
+      "tags": [
+        "communication-complexity",
+        "online-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2608.06592",
+          "title": "Superlogarithmic-Rank Matrix Rigidity for the Walsh-Hadamard Transform",
+          "tags": [
+            "communication-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2608.07369",
+          "title": "Online Metric TSP: Beyond the $\\sqrt{n}$ Barrier",
+          "tags": [
+            "online-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-08-07",
       "path": "posts/2026-08-07.md",
