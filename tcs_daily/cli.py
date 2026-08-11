@@ -99,7 +99,11 @@ def _is_report_markdown_link(href: str) -> bool:
 
 def cmd_fetch(args: argparse.Namespace, cfg: Config) -> None:
     """Fetch candidates from arXiv recent listings + metadata (all cached)."""
-    from .fetch import fetch_arxiv_metadata, fetch_recent_arxiv
+    from .fetch import (
+        fetch_arxiv_metadata,
+        fetch_recent_arxiv,
+        persist_enriched_candidates,
+    )
 
     entries = fetch_recent_arxiv(args.date, cfg.paths)
     papers: list[dict] = []
@@ -108,10 +112,13 @@ def cmd_fetch(args: argparse.Namespace, cfg: Config) -> None:
             meta = fetch_arxiv_metadata(
                 entry["arxiv_id"], cfg.paths, hint=entry
             )
-            papers.append({**entry, **meta})
+            paper = {**entry, **meta}
+            paper.pop("metadata_error", None)
+            papers.append(paper)
             time.sleep(0.3)
         except Exception as exc:
             papers.append({**entry, "metadata_error": str(exc)})
+    persist_enriched_candidates(args.date, cfg.paths, papers)
     _out({"date": args.date, "count": len(papers), "papers": papers})
 
 

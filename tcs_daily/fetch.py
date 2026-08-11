@@ -169,6 +169,52 @@ ARXIV_API = "https://export.arxiv.org/api/query"
 ATOM = {"a": "http://www.w3.org/2005/Atom"}
 
 
+def _metadata_complete(meta: object) -> bool:
+    """Return whether cached metadata is sufficient for paper screening."""
+    if not isinstance(meta, dict):
+        return False
+    text_fields = ("arxiv_id", "title", "abstract", "pdf_url", "source_url")
+    if any(not str(meta.get(field, "")).strip() for field in text_fields):
+        return False
+    authors = meta.get("authors")
+    return isinstance(authors, list) and bool(authors)
+
+
+def _metadata_from_hint(arxiv_id: str, hint: dict) -> dict:
+    """Normalize an enriched candidate entry into a per-paper cache payload."""
+    return {
+        "arxiv_id": arxiv_id,
+        "title": hint.get("title", ""),
+        "authors": hint.get("authors", []),
+        "abstract": hint.get("abstract", ""),
+        "categories": hint.get("categories", []),
+        "pdf_url": hint.get("pdf_url", ""),
+        "source_url": hint.get("source_url", f"https://arxiv.org/abs/{arxiv_id}"),
+        "published_at": hint.get("published_at", ""),
+    }
+
+
+def persist_enriched_candidates(
+    date: str,
+    paths: Paths,
+    papers: list[dict],
+) -> None:
+    """Persist metadata-enriched candidates so later screening is offline-safe."""
+    cache = paths.candidates_cache(date)
+    payload = read_json(cache) if cache.exists() else {}
+    if not isinstance(payload, dict):
+        payload = {}
+    payload.update(
+        {
+            "date": date,
+            "sources": payload.get("sources", list(ARXIV_RECENT_CATEGORIES)),
+            "count": len(papers),
+            "entries": papers,
+        }
+    )
+    write_json(cache, payload)
+
+
 def _atom_text(el: ET.Element | None) -> str:
     if el is None or el.text is None:
         return ""
@@ -183,8 +229,20 @@ def fetch_arxiv_metadata(
 ) -> dict:
     """Fetch arXiv metadata for one paper. Returns cached result if available."""
     cache = paths.arxiv_cache(arxiv_id)
+    cached: dict = {}
     if cache.exists():
-        return read_json(cache)
+        payload = read_json(cache)
+        if _metadata_complete(payload):
+            return payload
+        if isinstance(payload, dict):
+            cached = payload
+
+    hint = hint or {}
+    merged_hint = {**hint, **{k: v for k, v in cached.items() if v}}
+    hinted_meta = _metadata_from_hint(arxiv_id, merged_hint)
+    if _metadata_complete(hinted_meta):
+        write_json(cache, hinted_meta)
+        return hinted_meta
 
     xml_text = _http.get_text(
         f"{ARXIV_API}?{urlencode({'id_list': arxiv_id})}"
@@ -216,11 +274,10 @@ def fetch_arxiv_metadata(
     if not pdf_url:
         pdf_url = f"https://arxiv.org/pdf/{arxiv_id}.pdf"
 
-    hint = hint or {}
     meta = {
         "arxiv_id": arxiv_id,
-        "title": title or hint.get("title", ""),
-        "authors": authors or hint.get("authors", []),
+        "title": title or merged_hint.get("title", ""),
+        "authors": authors or merged_hint.get("authors", []),
         "abstract": _atom_text(entry.find("a:summary", ATOM)),
         "categories": categories,
         "pdf_url": pdf_url,

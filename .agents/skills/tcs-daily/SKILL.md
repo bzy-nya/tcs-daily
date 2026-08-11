@@ -306,3 +306,4 @@ date: 2026-03-04
 ## Changelog
 
 - 2026-08-11: HTTP 下载遇到截断响应（`http.client.IncompleteRead`）时，使用现有指数退避策略重试，并在服务端支持时通过标准 `Range` 请求断点续传。
+- 2026-08-11: `fetch` 将成功补取的 arXiv metadata 回写候选缓存；单篇 metadata 缓存缺字段时自动刷新，并可由完整候选缓存重建，避免瞬时 API 失败永久留下无摘要候选。
