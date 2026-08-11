@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "proof-complexity": {
+      "name": "Proof Complexity",
+      "color": "#3E44D4",
+      "category": "complexity-theory"
+    },
+    "circuit-complexity": {
+      "name": "Circuit Complexity",
+      "color": "#3E51D0",
+      "category": "complexity-theory"
+    },
+    "quantum-complexity-theory": {
+      "name": "Quantum Complexity Theory",
+      "color": "#4243CB",
+      "category": "quantum-computing"
+    },
+    "distributed-graph-algorithms": {
+      "name": "Distributed Graph Algorithms",
+      "color": "#51D043",
+      "category": "distributed-computing-theory"
+    },
+    "random-walks": {
+      "name": "Random Walks",
+      "color": "#75D038",
+      "category": "randomness-and-pseudorandomness"
+    },
     "communication-complexity": {
       "name": "Communication Complexity",
       "color": "#4A5BD3",
@@ -86,11 +111,6 @@
       "color": "#424DCB",
       "category": "complexity-theory"
     },
-    "circuit-complexity": {
-      "name": "Circuit Complexity",
-      "color": "#3E51D0",
-      "category": "complexity-theory"
-    },
     "dynamic-algorithms": {
       "name": "Dynamic Algorithms",
       "color": "#CB6342",
@@ -110,11 +130,6 @@
       "name": "Differential Privacy",
       "color": "#CCA946",
       "category": "learning-theory"
-    },
-    "quantum-complexity-theory": {
-      "name": "Quantum Complexity Theory",
-      "color": "#4243CB",
-      "category": "quantum-computing"
     },
     "distribution-testing": {
       "name": "Distribution Testing",
@@ -151,11 +166,6 @@
       "color": "#83D232",
       "category": "randomness-and-pseudorandomness"
     },
-    "distributed-graph-algorithms": {
-      "name": "Distributed Graph Algorithms",
-      "color": "#51D043",
-      "category": "distributed-computing-theory"
-    },
     "expanders": {
       "name": "Expanders",
       "color": "#8BCB2E",
@@ -165,11 +175,6 @@
       "name": "Matching Theory",
       "color": "#40D78C",
       "category": "graph-theory"
-    },
-    "proof-complexity": {
-      "name": "Proof Complexity",
-      "color": "#3E44D4",
-      "category": "complexity-theory"
     },
     "parameterized-complexity": {
       "name": "Parameterized Complexity",
@@ -323,6 +328,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-08-11",
+      "path": "posts/2026-08-11.md",
+      "paper_count": 5,
+      "generated_at": "2026-08-11T07:06:51.467804+00:00",
+      "tags": [
+        "proof-complexity",
+        "circuit-complexity",
+        "quantum-complexity-theory",
+        "distributed-graph-algorithms",
+        "random-walks"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2608.08760",
+          "title": "The Weak Rank Principle: Lower Bounds and Applications",
+          "tags": [
+            "proof-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2608.08578",
+          "title": "Fine-Grained AC$^0$ Lower Bounds for $k$-OV, $k$-XOR, and $k$-SUM via Colored Subgraph Isomorphism",
+          "tags": [
+            "circuit-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2608.07986",
+          "title": "Near-Optimal Gap Amplification for Nonnegative Unentangled Quantum Proofs",
+          "tags": [
+            "quantum-complexity-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2608.09500",
+          "title": "$\\tilde{\\mathrm{O}}$ptimal Distributed Maximum Flow Approximation in Undirected Planar Graphs",
+          "tags": [
+            "distributed-graph-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2608.09729",
+          "title": "On the self-intersection time of non-backtracking random walks",
+          "tags": [
+            "random-walks"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-08-10",
       "path": "posts/2026-08-10.md",

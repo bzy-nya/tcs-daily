@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 import sys
 import time
@@ -46,7 +47,7 @@ def tool(*args: str) -> dict | list | None:
         capture_output=True, text=True, cwd=ROOT,
     )
     if r.returncode != 0:
-        _log(f"[tool] {' '.join(args)} failed: {_tool_error(r.stderr)}")
+        _log(f"[tool] {' '.join(args)} failed: {_tool_error(r.stderr or r.stdout)}")
         return None
     try:
         return json.loads(r.stdout)
@@ -56,6 +57,33 @@ def tool(*args: str) -> dict | list | None:
 
 def _looks_complete(path: Path, *, min_size: int = 200) -> bool:
     return path.exists() and path.stat().st_size >= min_size
+
+
+def _base_arxiv_id(arxiv_id: str) -> str:
+    """Remove only a trailing arXiv version suffix such as ``v2``."""
+    return re.sub(r"v\d+$", "", arxiv_id)
+
+
+def _is_weekend(value: str) -> bool:
+    """Return whether an ISO report date falls on Saturday or Sunday."""
+    return date.fromisoformat(value).weekday() >= 5
+
+
+def _selected_draft_paths(selected: list[dict], drafts_dir: Path) -> list[Path]:
+    """Return draft paths in selection order, rejecting malformed selections."""
+    paths: list[Path] = []
+    seen: set[str] = set()
+    for paper in selected:
+        arxiv_id = paper.get("arxiv_id")
+        if not isinstance(arxiv_id, str) or not arxiv_id.strip():
+            raise ValueError("every selected paper must have a non-empty arxiv_id")
+        if arxiv_id in seen:
+            raise ValueError(f"duplicate selected arXiv id: {arxiv_id}")
+        seen.add(arxiv_id)
+        paths.append(drafts_dir / f"{arxiv_id}.md")
+    if not paths:
+        raise ValueError("selection contains no papers")
+    return paths
 
 
 def codex(prompt: str, *, model: str = "", full_auto: bool = True) -> int:
@@ -142,15 +170,17 @@ Use the $tcs-daily skill.
 `skipped_notable` 只列值得一提但未入选的，不需要穷举所有候选。
 
 **关于 tags**：
-1. 先运行 `tcs-daily tags`，它给出**唯一允许使用**的标签集合。
-2. 每篇只打 **1 个** tag；只有论文确实横跨两个独立子方向时才允许 **2 个**。
-3. 只能从 `tcs-daily tags` 返回的 tag key 中选择；**不要**新建 tag。
-4. **不要**用 `algorithms` `complexity` `graph-theory` 这种一级大类。
+1. 先运行 `tcs-daily tags`，它给出**唯一允许使用**的标签集合和 tagging policy。
+2. tag 描述论文**主定理所属的研究问题**，不是标题里的高频词、应用场景、所用工具或 arXiv 分类。
+3. 优先选能稳定检索同一研究线的最具体 tag；在两个相近 tag 之间犹豫时，按 `tcs-daily tags` 返回的 common_confusions 判定。
+4. 每篇默认只打 **1 个** tag。只有论文有两个彼此独立、都构成主要贡献的方向时才允许 **2 个**。
+5. 只能使用返回的 tag key；**不要**新建 tag，也不要用 `algorithms` `complexity` `graph-theory` 这种一级大类。
 """
 
 
 def prompt_paper(dt: str, paper: dict, memory_ctx: str) -> str:
     aid = paper["arxiv_id"]
+    aid_base = _base_arxiv_id(aid)
     title = paper.get("title", "")
     reason = paper.get("reason", "")
 
@@ -185,6 +215,10 @@ Use the $tcs-daily skill.
 根据论文特点选择最自然的叙事方式：有的论文适合从一个问题引入，有的适合从一个观察出发，有的适合先讲技术再回到动机。
 
 但无论怎么组织，以下内容必须覆盖到位：
+
+### 无背景读者协议（优先级最高）
+
+严格执行 `$tcs-daily` skill 中的“无背景读者协议”。不要因为篇幅或技术密度而跳过其中的前置概念清单、running example、首次概念解释与完稿冷读检查。
 
 ### 背景与脉络（这是最重要的，占最多篇幅）
 
@@ -246,7 +280,7 @@ Use the $tcs-daily skill.
 - 算子名用 `\\mathrm{{}}` 包裹
 
 ### 链接
-- arXiv 链接：`[arXiv:{aid}](https://arxiv.org/abs/{aid.rstrip('v1234567890')})`
+- arXiv 链接：`[arXiv:{aid}](https://arxiv.org/abs/{aid_base})`
 - 往期日报链接必须使用 hash route：`[2026-03-05 日报](#2026-03-05)`
 - 作者引用格式：`作者 (年份)` 或 `作者 et al. (年份)`，重要结果附 arXiv 链接
 
@@ -390,8 +424,11 @@ Use the $tcs-daily skill.
 - 如果原稿评价已经很好地融入了行文，就不要在末尾再加总结段
 
 **概念覆盖检查：**
-- 读一遍每篇文章，列出所有非本科水平的技术术语
-- 检查每个术语是否在**正文中**有解释（用自然语言讲清楚直觉和作用）
+- 把自己当成只学过本科算法课、不了解该子方向的读者，列出理解主结果所需的前置概念
+- 检查这些概念是否按依赖顺序出现；每个概念首次出现时都要说明“解决什么困难、直觉/例子、必要定义、在本文中的作用”
+- 每篇至少保留一个贯穿问题定义、主结果和技术思路的最小 running example
+- 检查每个符号是否先说明对象类型和量化范围，每个缩写是否首次写出全称
+- 冷读正文后，读者必须能复述问题输入、目标、主结果、相对 prior work 的改进，以及技术为何可能奏效；缺哪项就补哪项
 - 如果有裸用的术语，**在正文中添加解释**，不要只往旁注里扔
 - 旁注仅用于补充严格定义、历史引用、延伸细节——读者不展开旁注也必须能读懂全文
 - 如果原稿旁注过多（超过 3 个）或旁注里放了核心解释，把重要内容搬回正文
@@ -416,7 +453,7 @@ Use the $tcs-daily skill.
 
 完成后：
 - `tcs-daily manifest {dt} posts/{dt}.md {n}`
-- `tcs-daily validate {dt}`
+- `tcs-daily validate {dt} --selection {selection_rel}`
 """
 
 
@@ -427,6 +464,11 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Multi-stage TCS daily pipeline via codex exec.")
     ap.add_argument("--date", default=date.today().isoformat())
     ap.add_argument("--model", default="")
+    ap.add_argument(
+        "--allow-weekend",
+        action="store_true",
+        help="Allow an explicit Saturday/Sunday run (disabled by default)",
+    )
     ap.add_argument("--dry-run", action="store_true", help="Print prompts without running Codex")
     ap.add_argument("--no-full-auto", action="store_true")
     ap.add_argument("--stage", type=int, choices=[1, 2, 3],
@@ -442,6 +484,15 @@ def main() -> None:
     args = ap.parse_args()
 
     dt = args.date
+    try:
+        weekend = _is_weekend(dt)
+    except ValueError as exc:
+        ap.error(f"--date must be an ISO date (YYYY-MM-DD): {exc}")
+    if weekend and not args.allow_weekend:
+        _log(f"[skip] {dt} is a weekend; arXiv does not publish a daily update")
+        _log("[skip] use --allow-weekend only for an intentional manual backfill")
+        return
+
     fa = not args.no_full_auto
     model = args.model
     run_stage = args.stage  # None = all
@@ -493,10 +544,20 @@ def main() -> None:
             raise SystemExit(1)
         selection = json.loads(sel_path.read_text())
         selected = selection.get("selected", [])
+        try:
+            selected_drafts = _selected_draft_paths(selected, drafts_dir)
+        except ValueError as exc:
+            _log(f"[selection] invalid: {exc}")
+            raise SystemExit(1) from exc
         selected_ids = ", ".join(p["arxiv_id"] for p in selected) if selected else "(none)"
         _log(f"[selection] {len(selected)} papers: {selected_ids}")
     else:
         selected = [{"arxiv_id": "XXXX.XXXXXv1", "title": "(example)", "tags": ["exact-algorithms"], "reason": "…"}]
+        selected_drafts = [drafts_dir / "XXXX.XXXXXv1.md"]
+
+    if run_stage == 1:
+        _log("[done] stage 1 complete")
+        return
 
     # ════════════════════════════════════════════════════════════
     #  Stage 2 — per-paper deep analysis
@@ -535,9 +596,11 @@ def main() -> None:
                 _log(
                     f"[stage 2] unavailable after prep: {', '.join(failed)}"
                 )
-                pending = [p for p in pending if p["arxiv_id"] not in failed]
+                _log("[stage 2] aborting to avoid assembling an incomplete selection")
+                raise SystemExit(1)
             _log(f"[stage 2] ready for drafting: {len(pending)}")
 
+        drafting_failures: list[str] = []
         for i, paper in enumerate(pending, 1):
             aid = paper["arxiv_id"]
             tags = paper.get("tags", [])
@@ -552,7 +615,23 @@ def main() -> None:
                 rc = codex(p2, model=model, full_auto=fa)
                 if rc != 0:
                     _log(f"[stage 2] codex failed for {aid}")
-                    # continue with remaining papers
+                    drafting_failures.append(aid)
+                    continue
+                draft_path = drafts_dir / f"{aid}.md"
+                if not _looks_complete(draft_path, min_size=1200):
+                    _log(f"[stage 2] missing or incomplete draft for {aid}")
+                    drafting_failures.append(aid)
+
+        if drafting_failures:
+            _log(
+                "[stage 2] aborting after draft failures: "
+                + ", ".join(drafting_failures)
+            )
+            raise SystemExit(1)
+
+    if run_stage == 2:
+        _log("[done] stage 2 complete")
+        return
 
     # ════════════════════════════════════════════════════════════
     #  Stage 3 — assembly
@@ -561,10 +640,16 @@ def main() -> None:
         can_reuse_report = (
             not args.dry_run
             and 3 not in force_stages
+            and 2 not in force_stages
             and _looks_complete(report_path, min_size=2000)
+            and all(_looks_complete(path, min_size=1200) for path in selected_drafts)
+            and report_path.stat().st_mtime
+                >= max(sel_path.stat().st_mtime, *(path.stat().st_mtime for path in selected_drafts))
         )
         if can_reuse_report:
-            cached_validation = tool("validate", dt)
+            cached_validation = tool(
+                "validate", dt, "--selection", str(sel_path.relative_to(ROOT))
+            )
             can_reuse_report = bool(cached_validation and cached_validation.get("ok"))
 
         if can_reuse_report:
@@ -573,8 +658,15 @@ def main() -> None:
             _log("[stage 3] assembling report")
 
             if not args.dry_run:
-                drafts = sorted(drafts_dir.glob("*.md"))
-                draft_rels = [str(d.relative_to(ROOT)) for d in drafts]
+                missing_drafts = [
+                    path for path in selected_drafts
+                    if not _looks_complete(path, min_size=1200)
+                ]
+                if missing_drafts:
+                    for path in missing_drafts:
+                        _log(f"[stage 3] missing selected draft: {path.relative_to(ROOT)}")
+                    raise SystemExit(1)
+                draft_rels = [str(path.relative_to(ROOT)) for path in selected_drafts]
                 _log(f"[stage 3] drafts={len(draft_rels)}")
             else:
                 draft_rels = [f"data/cache/drafts/{dt}/XXXX.XXXXXv1.md"]
@@ -592,12 +684,13 @@ def main() -> None:
                     raise SystemExit(rc)
 
     # ── post-flight ────────────────────────────────────────────
-    result = tool("validate", dt)
+    result = tool("validate", dt, "--selection", str(sel_path.relative_to(ROOT)))
     if result and result.get("ok"):
         _log("[done] outputs validated")
     else:
         errs = result.get("errors", []) if result else ["validation failed"]
         _log(f"[done] validation issues: {errs}")
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

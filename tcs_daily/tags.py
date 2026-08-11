@@ -189,6 +189,49 @@ ALIASES: dict[str, str] = {
 }
 
 
+TAGGING_POLICY: dict[str, object] = {
+    "primary_rule": (
+        "Choose the most specific tag for the paper's main theorem or algorithmic "
+        "contribution, not a title keyword, application domain, proof tool, or arXiv category."
+    ),
+    "tag_count": (
+        "Use one tag by default. Use two only when the paper has two independent "
+        "contributions that are both central to the paper."
+    ),
+    "common_confusions": (
+        {
+            "tags": ("average-case-complexity", "statistical-learning-theory"),
+            "rule": (
+                "Use average-case-complexity for computational barriers under a natural "
+                "input distribution; use statistical-learning-theory for generalization, "
+                "estimation, or learning guarantees."
+            ),
+        },
+        {
+            "tags": ("distributed-algorithms", "distributed-graph-algorithms"),
+            "rule": (
+                "Use distributed-graph-algorithms when the network input and result are "
+                "graph-specific; otherwise use distributed-algorithms."
+            ),
+        },
+        {
+            "tags": ("sublinear-algorithms", "property-testing"),
+            "rule": (
+                "Use property-testing for accept/reject access to a property; use "
+                "sublinear-algorithms for estimation, search, or other sublinear tasks."
+            ),
+        },
+        {
+            "tags": ("quantum-information", "quantum-complexity-theory"),
+            "rule": (
+                "Use quantum-complexity-theory for complexity classes, reductions, and "
+                "hardness; use quantum-information for information-theoretic phenomena."
+            ),
+        },
+    ),
+}
+
+
 SPECIAL_TAG_NAMES: dict[str, str] = {
     "average-case-complexity": "Average-Case Complexity",
     "existential-theory-of-the-reals": "Existential Theory of the Reals",
@@ -256,6 +299,11 @@ def tag_defs() -> dict[str, dict[str, str]]:
         for tag in tags:
             defs[tag] = {"name": _display_name(tag), "category": category}
     return defs
+
+
+def tagging_policy() -> dict[str, object]:
+    """Return the canonical policy used by agents when assigning report tags."""
+    return TAGGING_POLICY
 
 
 def canonical_tag(tag: str) -> str:

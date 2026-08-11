@@ -15,15 +15,20 @@ from datetime import date as date_type
 from pathlib import Path
 
 from .config import Config
-from .tags import category_defs, normalize_tags, tag_color, tag_defs
+from .tags import category_defs, normalize_tags, tag_color, tag_defs, tagging_policy
 
 
 ISSUE_RE = re.compile(
     r"^::::issue(?:\[([^\]]*)\])?\s*\n(.*?)^::::\s*$",
     re.MULTILINE | re.DOTALL,
 )
-ISSUE_LINE_RE = re.compile(r"^::::issue(?:\[([^\]]*)\])?\s*$")
+ISSUE_LINE_RE = re.compile(r"^::::issue(?:\[([^\]]*)\])?\s*$", re.MULTILINE)
+ISSUE_CLOSE_RE = re.compile(r"^::::\s*$", re.MULTILINE)
 MD_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
+ARXIV_LINK_RE = re.compile(
+    r"\[arXiv:([^\]]+)\]\(https://arxiv\.org/abs/([^)]+)\)"
+)
+ARXIV_ID_RE = re.compile(r"^(?:[a-z-]+/\d{7}|\d{4}\.\d{4,5})(?:v\d+)?$", re.I)
 
 
 def _out(data: object) -> None:
@@ -44,6 +49,37 @@ def _parse_issue_tags(raw: str | None) -> list[str]:
 def _iter_issue_blocks(md_text: str):
     for match in ISSUE_RE.finditer(md_text):
         yield _parse_issue_tags(match.group(1)), match.group(2)
+
+
+def _base_arxiv_id(arxiv_id: str) -> str:
+    return re.sub(r"v\d+$", "", arxiv_id.strip())
+
+
+def _paper_from_issue(tags: list[str], body: str) -> dict:
+    """Extract manifest metadata from one parsed issue block."""
+    title_match = re.search(r"^##\s+(.+)", body, re.MULTILINE)
+    raw_title = title_match.group(1).strip() if title_match else ""
+    title = re.sub(
+        r"\s*\[arXiv:[^\]]*\]\([^)]*\)\s*$", "", raw_title,
+    ).strip()
+    arxiv_match = ARXIV_LINK_RE.search(body)
+
+    paper: dict = {}
+    if arxiv_match:
+        paper["arxiv_id"] = arxiv_match.group(1).strip()
+    if title:
+        paper["title"] = title
+    if tags:
+        paper["tags"] = tags
+    return paper
+
+
+def _normalized_paper_ids(papers: list[dict]) -> list[str]:
+    return [
+        _base_arxiv_id(str(paper.get("arxiv_id", "")))
+        for paper in papers
+        if paper.get("arxiv_id")
+    ]
 
 
 def _is_report_markdown_link(href: str) -> bool:
@@ -139,6 +175,7 @@ def cmd_tags(args: argparse.Namespace, cfg: Config) -> None:
     defs = tag_defs()
     cats = category_defs()
     payload = {
+        "tagging_policy": tagging_policy(),
         "categories": [
             {
                 "key": key,
@@ -179,23 +216,7 @@ def cmd_manifest(args: argparse.Namespace, cfg: Config) -> None:
     if report_path.exists():
         md_text = report_path.read_text("utf-8")
         for tags, body in _iter_issue_blocks(md_text):
-            # Title = first ## heading, strip trailing arXiv link
-            title_m = re.search(r"^##\s+(.+)", body, re.MULTILINE)
-            raw_title = title_m.group(1).strip() if title_m else ""
-            title = re.sub(
-                r"\s*\[arXiv:[^\]]*\]\([^)]*\)\s*$", "", raw_title,
-            ).strip()
-            # arXiv id from first [arXiv:...] link
-            arxiv_m = re.search(r"\[arXiv:(\S+?)\]", body)
-            arxiv_id = arxiv_m.group(1) if arxiv_m else ""
-            paper: dict = {}
-            if arxiv_id:
-                paper["arxiv_id"] = arxiv_id
-            if title:
-                paper["title"] = title
-            if tags:
-                paper["tags"] = tags
-            papers_list.append(paper)
+            papers_list.append(_paper_from_issue(tags, body))
 
     # Fall back to memory.db if markdown parsing yielded nothing
     if not papers_list:
@@ -264,10 +285,11 @@ def cmd_manifest(args: argparse.Namespace, cfg: Config) -> None:
 
 
 def cmd_validate(args: argparse.Namespace, cfg: Config) -> None:
-    """Minimal validation — report exists, manifest has entry, frontmatter ok."""
+    """Validate report structure, manifest metadata, and optional selection."""
     from .cache import read_json
 
     errors: list[str] = []
+    issue_papers: list[dict] = []
 
     rp = cfg.paths.report_file(args.date)
     if not rp.exists():
@@ -276,9 +298,14 @@ def cmd_validate(args: argparse.Namespace, cfg: Config) -> None:
         errors.append(f"Report file too small: {rp}")
     else:
         text = rp.read_text("utf-8")
-        if not text.startswith("---"):
+        frontmatter = re.match(r"^---\n([\s\S]*?)\n---(?:\n|$)", text)
+        if not frontmatter:
             errors.append("Report missing YAML frontmatter")
-        elif f"date: {args.date}" not in text.split("---")[1]:
+        elif not re.search(
+            rf"^date:\s*{re.escape(args.date)}\s*$",
+            frontmatter.group(1),
+            re.MULTILINE,
+        ):
             errors.append("Frontmatter missing correct date field")
 
         known_tags = tag_defs()
@@ -299,7 +326,8 @@ def cmd_validate(args: argparse.Namespace, cfg: Config) -> None:
             if len(tags) > 2:
                 errors.append(f"Line {lineno}: issue block has {len(tags)} tags; max is 2")
             for raw in raw_tags:
-                canonical = normalize_tags([raw])[0][0] if raw else ""
+                canonical_tags, _ = normalize_tags([raw])
+                canonical = canonical_tags[0] if canonical_tags else ""
                 if canonical != raw:
                     errors.append(
                         f"Line {lineno}: non-canonical tag `{raw}`; use `{canonical}`"
@@ -308,17 +336,102 @@ def cmd_validate(args: argparse.Namespace, cfg: Config) -> None:
                 if tag not in known_tags:
                     errors.append(f"Line {lineno}: unknown tag `{tag}`")
 
+        issue_starts = list(ISSUE_LINE_RE.finditer(text))
+        issue_closes = list(ISSUE_CLOSE_RE.finditer(text))
+        issue_blocks = list(_iter_issue_blocks(text))
+        if not issue_starts:
+            errors.append("Report has no issue blocks")
+        if len(issue_starts) != len(issue_closes):
+            errors.append(
+                "Issue block markers are unbalanced: "
+                f"{len(issue_starts)} start(s), {len(issue_closes)} close(s)"
+            )
+        if len(issue_blocks) != len(issue_starts):
+            errors.append(
+                f"Parsed {len(issue_blocks)} of {len(issue_starts)} issue block(s)"
+            )
+
+        for index, (tags, body) in enumerate(issue_blocks, start=1):
+            paper = _paper_from_issue(tags, body)
+            link_match = ARXIV_LINK_RE.search(body)
+            if not paper.get("title"):
+                errors.append(f"Issue {index}: missing level-2 paper title")
+            if not link_match:
+                errors.append(f"Issue {index}: missing canonical arXiv link")
+            else:
+                label_id, target_id = (part.strip() for part in link_match.groups())
+                if not ARXIV_ID_RE.fullmatch(label_id):
+                    errors.append(f"Issue {index}: invalid arXiv id `{label_id}`")
+                if _base_arxiv_id(label_id) != _base_arxiv_id(target_id):
+                    errors.append(
+                        f"Issue {index}: arXiv label `{label_id}` does not match "
+                        f"link target `{target_id}`"
+                    )
+            issue_papers.append(paper)
+
     mp = cfg.paths.manifest_file()
     if not mp.exists() or not mp.read_text("utf-8").strip():
         errors.append("Manifest missing or empty")
     else:
         manifest = read_json(mp)
         match = next(
-            (r for r in manifest.get("reports", []) if r["date"] == args.date),
+            (r for r in manifest.get("reports", []) if r.get("date") == args.date),
             None,
         )
         if not match:
             errors.append(f"Manifest has no entry for {args.date}")
+        else:
+            manifest_papers = match.get("papers", [])
+            issue_ids = _normalized_paper_ids(issue_papers)
+            manifest_ids = _normalized_paper_ids(manifest_papers)
+            if match.get("paper_count") != len(issue_papers):
+                errors.append(
+                    "Manifest paper_count does not match report issue count: "
+                    f"{match.get('paper_count')} != {len(issue_papers)}"
+                )
+            if len(manifest_papers) != len(issue_papers):
+                errors.append(
+                    "Manifest papers length does not match report issue count: "
+                    f"{len(manifest_papers)} != {len(issue_papers)}"
+                )
+            if manifest_ids != issue_ids:
+                errors.append(
+                    "Manifest paper ids do not match report order: "
+                    f"{manifest_ids} != {issue_ids}"
+                )
+            for index, (issue_paper, manifest_paper) in enumerate(
+                zip(issue_papers, manifest_papers), start=1
+            ):
+                if issue_paper.get("title") != manifest_paper.get("title"):
+                    errors.append(f"Manifest title mismatch for issue {index}")
+                if issue_paper.get("tags", []) != manifest_paper.get("tags", []):
+                    errors.append(f"Manifest tags mismatch for issue {index}")
+
+    selection_arg = getattr(args, "selection", "")
+    if selection_arg:
+        root = cfg.paths.root.resolve()
+        selection_path = (root / selection_arg).resolve()
+        if not selection_path.is_relative_to(root):
+            errors.append("Selection path must stay inside the project root")
+        elif not selection_path.exists():
+            errors.append(f"Selection file missing: {selection_arg}")
+        else:
+            try:
+                selection = read_json(selection_path)
+                selected = selection.get("selected", [])
+                selected_ids = _normalized_paper_ids(selected)
+                report_ids = _normalized_paper_ids(issue_papers)
+                if len(selected_ids) != len(set(selected_ids)):
+                    errors.append("Selection contains duplicate arXiv ids")
+                missing = sorted(set(selected_ids) - set(report_ids))
+                extra = sorted(set(report_ids) - set(selected_ids))
+                if missing or extra or len(selected_ids) != len(report_ids):
+                    errors.append(
+                        "Selection does not match report papers: "
+                        f"missing={missing}, extra={extra}"
+                    )
+            except (json.JSONDecodeError, OSError, TypeError, AttributeError) as exc:
+                errors.append(f"Invalid selection file: {exc}")
 
     _out({"ok": not errors, "errors": errors})
     if errors:
@@ -457,6 +570,11 @@ def main() -> None:
     # ── validate ───────────────────────────────────────────────
     p = sub.add_parser("validate", help="Check outputs")
     p.add_argument("date")
+    p.add_argument(
+        "--selection",
+        default="",
+        help="Relative selection JSON path; require its papers to match the report",
+    )
 
     # ── memory ─────────────────────────────────────────────────
     p_mem = sub.add_parser("memory", help="Knowledge base operations")

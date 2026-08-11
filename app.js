@@ -132,6 +132,7 @@ function initMarked() {
             renderer(tok) {
                 issueCounter++;
                 const idx = issueCounter;
+                const contentId = `issue-content-${idx}`;
                 const inner = marked.parse(tok.text);
                 const tags = tok.tags ? tok.tags.split(',').map(t => t.trim()).filter(Boolean) : [];
                 const tagsHTML = tags.length
@@ -142,13 +143,13 @@ function initMarked() {
                       }).join('')}</div>`
                     : '';
                 return `<section class="issue-block collapsed" data-issue-index="${idx}">` +
-                       `<div class="issue-gutter">` +
-                           `<button class="issue-toggle" aria-label="Toggle issue">` +
-                               `<svg class="icon small" aria-hidden="true"><use href="#px-triangle"/></svg>` +
-                           `</button>` +
-                           `<span class="issue-label"></span>` +
-                       `</div>` +
-                       `<div class="issue-content">${inner}${tagsHTML}</div>` +
+                       `<button class="issue-toggle" type="button" ` +
+                               `aria-expanded="false" aria-controls="${contentId}" ` +
+                               `aria-label="Expand issue ${idx}">` +
+                           `<svg class="icon small" aria-hidden="true"><use href="#px-triangle"/></svg>` +
+                           `<span class="issue-label">Issue ${idx}</span>` +
+                       `</button>` +
+                       `<div class="issue-content" id="${contentId}">${inner}${tagsHTML}</div>` +
                        `</section>`;
             }
         };
@@ -172,6 +173,11 @@ function initMarked() {
 
 let manifest = null;
 const expandedTagCategories = new Set();
+let routeGeneration = 0;
+
+function isCurrentRoute(generation) {
+    return generation === routeGeneration;
+}
 
 async function loadManifest(force = false) {
     if (manifest && !force) return manifest;
@@ -240,6 +246,37 @@ function ensureMathBlockSpacing(md) {
     return out.join('\n');
 }
 
+function escapeHtml(value) {
+    return String(value)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+}
+
+/** Render only $...$ fragments from manifest titles; keep all other text inert. */
+function renderInlineMath(value) {
+    const source = String(value || '');
+    if (typeof katex === 'undefined' || !source.includes('$')) {
+        return escapeHtml(source);
+    }
+
+    const pattern = /\$([^$\n]+?)\$(?!\d)/g;
+    let cursor = 0;
+    let html = '';
+    for (const match of source.matchAll(pattern)) {
+        html += escapeHtml(source.slice(cursor, match.index));
+        html += katex.renderToString(match[1], {
+            displayMode: false,
+            throwOnError: false,
+            output: 'html',
+        });
+        cursor = match.index + match[0].length;
+    }
+    return html + escapeHtml(source.slice(cursor));
+}
+
 function prettyCategoryName(slug) {
     return slug.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
 }
@@ -281,22 +318,27 @@ function hideLoading() {
 /**
  * Render a single issue.
  */
-async function showArticle(date, expandIssue) {
+async function showArticle(date, expandIssue, generation) {
     showLoading();
 
     const md = await loadMarkdown(date);
+    if (!isCurrentRoute(generation)) return;
     if (!md) {
-        document.getElementById('loading').innerHTML =
-            `<div class="loading-text">404 — no report for ${date}</div>`;
+        const message = document.createElement('div');
+        message.className = 'loading-text';
+        message.textContent = `404 — no report for ${date}`;
+        document.getElementById('loading').replaceChildren(message);
         return;
     }
 
     let man = await loadManifest();
+    if (!isCurrentRoute(generation)) return;
     let reports = man.reports || [];
     let entry = reports.find(r => r.date === date);
     if (!entry) {
         // A stale manifest can hide newly deployed reports from navigation/index.
         man = await loadManifest(true);
+        if (!isCurrentRoute(generation)) return;
         reports = man.reports || [];
         entry = reports.find(r => r.date === date);
     }
@@ -364,7 +406,7 @@ async function showArticle(date, expandIssue) {
     // Expand a specific issue if requested (via #date:N), otherwise all start collapsed
     if (expandIssue) {
         const target = document.querySelector(`.issue-block[data-issue-index="${expandIssue}"]`);
-        if (target) target.classList.remove('collapsed');
+        if (target) setIssueExpanded(target, true);
     }
 
     // Sync sidenote visibility for initial collapsed state
@@ -381,6 +423,22 @@ async function showArticle(date, expandIssue) {
 
     // Position after layout settles
     requestAnimationFrame(() => requestAnimationFrame(positionSidenotes));
+}
+
+function setIssueExpanded(block, expanded) {
+    if (!block) return;
+    block.classList.toggle('collapsed', !expanded);
+    const button = block.querySelector('.issue-toggle');
+    if (!button) return;
+    const issueIndex = block.dataset.issueIndex || '';
+    button.setAttribute('aria-expanded', String(expanded));
+    button.setAttribute('aria-label', `${expanded ? 'Collapse' : 'Expand'} issue ${issueIndex}`);
+}
+
+function toggleIssue(block) {
+    setIssueExpanded(block, block.classList.contains('collapsed'));
+    syncSidenoteVisibility();
+    requestAnimationFrame(positionSidenotes);
 }
 
 /**
@@ -466,10 +524,11 @@ function positionSidenotes() {
  * Filtering hides individual papers that don't match;
  * if no papers in a date match, the whole date group is hidden.
  */
-async function showIndex(filterTag) {
+async function showIndex(filterTag, generation) {
     showLoading();
 
     const man = await loadManifest(true);
+    if (!isCurrentRoute(generation)) return;
     const reports = man.reports || [];
     const tagDefs = man.tags || {};
     const categoryDefs = man.categories || {};
@@ -513,9 +572,11 @@ async function showIndex(filterTag) {
             const expanded = expandedTagCategories.has(category);
             const preview = tags.slice(0, 2);
             const accent = catInfo.accent || 'var(--accent)';
+            const categoryId = `tag-category-${category}`;
             return `<section class="tag-category${expanded ? ' expanded' : ''}"
                              style="--category-accent:${accent}">
-                        <button class="tag-category-toggle" type="button" data-tag-category="${category}">
+                        <button class="tag-category-toggle" type="button" data-tag-category="${category}"
+                                aria-expanded="${expanded}" aria-controls="${categoryId}">
                             <span class="tag-category-heading">
                                 <span class="tag-category-name">${catInfo.name}</span>
                                 <span class="tag-category-meta">${tags.length} tags</span>
@@ -528,7 +589,7 @@ async function showIndex(filterTag) {
                                             style="--tag-color:${bg};background:${bg}">${info.name || tag}</span>`;
                             }).join('')}
                         </div>
-                        <div class="tag-category-tags">
+                        <div class="tag-category-tags" id="${categoryId}">
                             ${tags.map(({ tag, info }) => {
                                 const bg = info.color || 'var(--secondary)';
                                 const active = filterTag === tag;
@@ -572,7 +633,7 @@ async function showIndex(filterTag) {
             }).join('');
             html += `<a class="paper-row${hidden ? ' hidden-by-filter' : ''}" href="#${r.date}:${issueIdx}">
                         <span class="paper-row-index">Issue ${issueIdx}</span>
-                        <span class="paper-row-title">${p.title || p.arxiv_id}</span>
+                        <span class="paper-row-title">${renderInlineMath(p.title || p.arxiv_id)}</span>
                         <span class="paper-row-tags">${pTags}</span>
                      </a>`;
         });
@@ -593,45 +654,60 @@ async function showIndex(filterTag) {
    ═══════════════════════════════════════════════════════════ */
 
 async function route() {
+    const generation = ++routeGeneration;
     const hash = location.hash.slice(1) || '';
 
     // Clear sidenote column on every route change
     document.getElementById('sidenote-column').innerHTML = '';
 
-    // #index
-    if (hash === 'index') {
-        showIndex(null);
-        return;
-    }
-
-    // #tag/xxx
-    const tagMatch = hash.match(/^tag\/(.+)$/);
-    if (tagMatch) {
-        showIndex(decodeURIComponent(tagMatch[1]));
-        return;
-    }
-
-    // #YYYY-MM-DD:N — show article with issue N expanded
-    const dateIssueMatch = hash.match(/^(\d{4}-\d{2}-\d{2})(?::(\d+))?$/);
-    if (dateIssueMatch) {
-        showArticle(dateIssueMatch[1], dateIssueMatch[2] ? parseInt(dateIssueMatch[2]) : null);
-        return;
-    }
-
-    // Empty hash or unknown — show latest issue
-    if (hash === '' || hash === '#') {
-        const man = await loadManifest(true);
-        const dates = (man.reports || []).map(r => r.date).sort();
-        if (dates.length) {
-            showArticle(dates[dates.length - 1]);
-        } else {
-            showIndex(null);
+    try {
+        // #index
+        if (hash === 'index') {
+            await showIndex(null, generation);
+            return;
         }
-        return;
-    }
 
-    // Fallback: try as date
-    showArticle(hash);
+        // #tag/xxx
+        const tagMatch = hash.match(/^tag\/(.+)$/);
+        if (tagMatch) {
+            await showIndex(decodeURIComponent(tagMatch[1]), generation);
+            return;
+        }
+
+        // #YYYY-MM-DD:N — show article with issue N expanded
+        const dateIssueMatch = hash.match(/^(\d{4}-\d{2}-\d{2})(?::(\d+))?$/);
+        if (dateIssueMatch) {
+            await showArticle(
+                dateIssueMatch[1],
+                dateIssueMatch[2] ? parseInt(dateIssueMatch[2]) : null,
+                generation,
+            );
+            return;
+        }
+
+        // Empty hash — show latest issue
+        if (hash === '' || hash === '#') {
+            const man = await loadManifest(true);
+            if (!isCurrentRoute(generation)) return;
+            const dates = (man.reports || []).map(r => r.date).sort();
+            if (dates.length) {
+                await showArticle(dates[dates.length - 1], null, generation);
+            } else {
+                await showIndex(null, generation);
+            }
+            return;
+        }
+
+        // Fallback: try as date
+        await showArticle(hash, null, generation);
+    } catch (error) {
+        if (!isCurrentRoute(generation)) return;
+        console.error('Failed to render route:', error);
+        const message = document.createElement('div');
+        message.className = 'loading-text';
+        message.textContent = 'Unable to load this page. Please try again.';
+        document.getElementById('loading').replaceChildren(message);
+    }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -644,27 +720,14 @@ async function init() {
 
     // Issue-block toggle (event delegation on persistent element)
     document.getElementById('article-body').addEventListener('click', e => {
-        let toggled = false;
-        // Toggle via entire gutter area (triangle + label)
-        const gutter = e.target.closest('.issue-gutter');
-        if (gutter) {
-            gutter.closest('.issue-block').classList.toggle('collapsed');
-            toggled = true;
-        }
-        // Toggle via heading click (on mobile the gutter is hidden,
-        // so the h2 is the only toggle — must work in both directions)
-        if (!toggled) {
-            const heading = e.target.closest('.issue-block .issue-content > h2');
-            if (heading) {
-                heading.closest('.issue-block').classList.toggle('collapsed');
-                toggled = true;
-            }
-        }
-        // After any toggle, sync sidenote visibility and reposition
-        if (toggled) {
-            syncSidenoteVisibility();
-            requestAnimationFrame(positionSidenotes);
-        }
+        const button = e.target.closest('.issue-toggle');
+        if (button) toggleIssue(button.closest('.issue-block'));
+    });
+    document.getElementById('article-body').addEventListener('keydown', e => {
+        const button = e.target.closest('.issue-toggle');
+        if (!button || (e.key !== 'Enter' && e.key !== ' ')) return;
+        e.preventDefault();
+        toggleIssue(button.closest('.issue-block'));
     });
 
     document.getElementById('index-tags').addEventListener('click', e => {
@@ -693,15 +756,19 @@ async function init() {
             expandedTagCategories.add(category);
         }
         document.querySelectorAll('.tag-category.expanded').forEach(node => {
-            if (node !== section) node.classList.remove('expanded');
+            if (node !== section) {
+                node.classList.remove('expanded');
+                node.querySelector('.tag-category-toggle')?.setAttribute('aria-expanded', 'false');
+            }
         });
-        section.classList.toggle('expanded');
+        const expanded = section.classList.toggle('expanded');
+        button.setAttribute('aria-expanded', String(expanded));
     });
 
-    window.addEventListener('hashchange', route);
+    window.addEventListener('hashchange', () => { void route(); });
     window.addEventListener('resize', positionSidenotes);
 
-    route();
+    void route();
 }
 
 // Wait for KaTeX to load (it's deferred)

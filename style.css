@@ -467,55 +467,43 @@ a.pixel-badge:hover {
     width: 80px;
 }
 
-/* Gutter: triangle toggle + "Issue N" label, outside container on the left */
-.issue-gutter {
-    position: absolute;
-    right: calc(100% + 32px);   /* 24px container padding + 8px gap */
-    top: 4px;                   /* align with heading baseline */
-    display: none;              /* hidden on narrow screens */
+/* Semantic issue toggle: inline on narrow screens, in the gutter when wide. */
+.issue-toggle {
+    position: relative;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
+    opacity: 0.65;
     white-space: nowrap;
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 2px;
+    color: var(--text);
+    margin: 0 0 8px;
+    font: inherit;
+    transition: color 0.6s ease, opacity 0.3s ease;
 }
 
 @media (min-width: 1200px) {
-    .issue-gutter {
-        display: flex;
+    .issue-toggle {
+        position: absolute;
+        right: calc(100% + 32px);   /* 24px container padding + 8px gap */
+        top: 4px;                   /* align with heading baseline */
+        margin: 0;
+        opacity: 0.2;
     }
 }
 
-.issue-block:hover .issue-gutter {
-    opacity: 0.6;
-    pointer-events: auto;
-}
-.issue-block:hover .issue-gutter:hover {
+.issue-block:hover .issue-toggle,
+.issue-block.collapsed .issue-toggle,
+.issue-toggle:is(:hover, :focus-visible) {
     opacity: 1;
 }
 
-/* When collapsed, gutter is always visible */
-.issue-block.collapsed .issue-gutter {
-    opacity: 0.6;
-    pointer-events: auto;
-}
-.issue-block.collapsed .issue-gutter:hover {
-    opacity: 1;
-}
-
-.issue-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 2px;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;       /* let clicks fall through to .issue-gutter */
-    transition: color 0.6s ease;
+.issue-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
 }
 
 /* Triangle icon: bigger, expanded → pointing down (90deg), collapsed → right (0deg) */
@@ -535,10 +523,6 @@ a.pixel-badge:hover {
     color: var(--accent);
     letter-spacing: 0.05em;
     transition: color 0.6s ease;
-    pointer-events: none;       /* let clicks fall through to .issue-gutter */
-}
-.issue-label::after {
-    content: "Issue " counter(issue-counter);
 }
 
 /* Collapsed state: hide everything, then show back the first h2 and issue-tags */
@@ -548,7 +532,6 @@ a.pixel-badge:hover {
 .issue-block.collapsed .issue-content > h2:first-of-type {
     display: block;
     opacity: 0.6;
-    cursor: pointer;
 }
 .issue-block.collapsed .issue-content > h2:first-of-type::after {
     content: " ···";
