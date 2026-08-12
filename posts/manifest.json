@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
+    "interactive-proofs": {
+      "name": "Interactive Proofs",
+      "color": "#2A46CF",
+      "category": "complexity-theory"
+    },
+    "circuit-complexity": {
+      "name": "Circuit Complexity",
+      "color": "#3E51D0",
+      "category": "complexity-theory"
+    },
+    "online-algorithms": {
+      "name": "Online Algorithms",
+      "color": "#D08D4C",
+      "category": "algorithms"
+    },
+    "probabilistic-method": {
+      "name": "Probabilistic Method",
+      "color": "#C935AB",
+      "category": "combinatorics-in-tcs"
+    },
     "proof-complexity": {
       "name": "Proof Complexity",
       "color": "#3E44D4",
@@ -31,20 +56,10 @@
       "color": "#4A5BD3",
       "category": "complexity-theory"
     },
-    "online-algorithms": {
-      "name": "Online Algorithms",
-      "color": "#D08D4C",
-      "category": "algorithms"
-    },
     "average-case-complexity": {
       "name": "Average-Case Complexity",
       "color": "#2F71CF",
       "category": "complexity-theory"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
-      "category": "algorithms"
     },
     "succinct-data-structures": {
       "name": "Succinct Data Structures",
@@ -104,11 +119,6 @@
     "space-complexity": {
       "name": "Space Complexity",
       "color": "#424DCB",
-      "category": "complexity-theory"
-    },
-    "circuit-complexity": {
-      "name": "Circuit Complexity",
-      "color": "#3E51D0",
       "category": "complexity-theory"
     },
     "dynamic-algorithms": {
@@ -276,20 +286,10 @@
       "color": "#C9753A",
       "category": "algorithms"
     },
-    "probabilistic-method": {
-      "name": "Probabilistic Method",
-      "color": "#C935AB",
-      "category": "combinatorics-in-tcs"
-    },
     "program-verification": {
       "name": "Program Verification",
       "color": "#3987CA",
       "category": "logic-and-formal-methods"
-    },
-    "interactive-proofs": {
-      "name": "Interactive Proofs",
-      "color": "#2A46CF",
-      "category": "complexity-theory"
     },
     "graph-property-testing": {
       "name": "Graph Property Testing",
@@ -328,6 +328,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-08-12",
+      "path": "posts/2026-08-12.md",
+      "paper_count": 5,
+      "generated_at": "2026-08-12T09:52:40.841007+00:00",
+      "tags": [
+        "approximation-algorithms",
+        "interactive-proofs",
+        "circuit-complexity",
+        "online-algorithms",
+        "probabilistic-method"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2608.11158",
+          "title": "New Lower and Upper Bounds for the Grothendieck Constant",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2608.11181",
+          "title": "How to Verify Consistency of Probabilistic Claims",
+          "tags": [
+            "interactive-proofs"
+          ]
+        },
+        {
+          "arxiv_id": "2608.10179",
+          "title": "Polynomial Bounds on Degeneration Order from Commutativity Properties of Tensor Slices",
+          "tags": [
+            "circuit-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2608.10040",
+          "title": "Online Discrepancy Minimization for Sub-Gaussian Inputs via Regularization and Restriction",
+          "tags": [
+            "online-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2608.10184",
+          "title": "The sharp SAT/UNSAT phase transition in random ellipsoid fitting",
+          "tags": [
+            "probabilistic-method"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-08-11",
       "path": "posts/2026-08-11.md",
