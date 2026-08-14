@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "lattice-problems": {
+      "name": "Lattice Problems",
+      "color": "#B34AD3",
+      "category": "cryptography"
+    },
+    "graph-algorithms": {
+      "name": "Graph Algorithms",
+      "color": "#35C456",
+      "category": "graph-theory"
+    },
+    "random-walks": {
+      "name": "Random Walks",
+      "color": "#75D038",
+      "category": "randomness-and-pseudorandomness"
+    },
+    "parallel-algorithms": {
+      "name": "Parallel Algorithms",
+      "color": "#CA5439",
+      "category": "algorithms"
+    },
+    "sample-complexity": {
+      "name": "Sample Complexity",
+      "color": "#D8B344",
+      "category": "learning-theory"
+    },
     "approximation-algorithms": {
       "name": "Approximation Algorithms",
       "color": "#D55839",
@@ -45,11 +70,6 @@
       "name": "Distributed Graph Algorithms",
       "color": "#51D043",
       "category": "distributed-computing-theory"
-    },
-    "random-walks": {
-      "name": "Random Walks",
-      "color": "#75D038",
-      "category": "randomness-and-pseudorandomness"
     },
     "communication-complexity": {
       "name": "Communication Complexity",
@@ -96,11 +116,6 @@
       "color": "#3FCFC4",
       "category": "computational-geometry"
     },
-    "lattice-problems": {
-      "name": "Lattice Problems",
-      "color": "#B34AD3",
-      "category": "cryptography"
-    },
     "quantum-information": {
       "name": "Quantum Information",
       "color": "#7937D1",
@@ -126,11 +141,6 @@
       "color": "#CB6342",
       "category": "algorithms"
     },
-    "graph-algorithms": {
-      "name": "Graph Algorithms",
-      "color": "#35C456",
-      "category": "graph-theory"
-    },
     "enumeration-algorithms": {
       "name": "Enumeration Algorithms",
       "color": "#CA5F39",
@@ -146,11 +156,6 @@
       "color": "#8ACC41",
       "category": "property-testing"
     },
-    "sample-complexity": {
-      "name": "Sample Complexity",
-      "color": "#D8B344",
-      "category": "learning-theory"
-    },
     "extremal-combinatorics": {
       "name": "Extremal Combinatorics",
       "color": "#D641CB",
@@ -165,11 +170,6 @@
       "name": "Static Data Structures",
       "color": "#38D6A0",
       "category": "data-structures"
-    },
-    "parallel-algorithms": {
-      "name": "Parallel Algorithms",
-      "color": "#CA5439",
-      "category": "algorithms"
     },
     "pseudorandom-generators": {
       "name": "Pseudorandom Generators",
@@ -328,6 +328,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-08-14",
+      "path": "posts/2026-08-14.md",
+      "paper_count": 5,
+      "generated_at": "2026-08-14T05:00:54.079743+00:00",
+      "tags": [
+        "lattice-problems",
+        "graph-algorithms",
+        "random-walks",
+        "parallel-algorithms",
+        "sample-complexity"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2608.12664",
+          "title": "Euclidean SVP is deterministically NP-hard to approximate within any constant factor",
+          "tags": [
+            "lattice-problems"
+          ]
+        },
+        {
+          "arxiv_id": "2608.13382",
+          "title": "A Dense Weisfeiler–Leman Algorithm for Deciding Bounded-Cliquewidth Homomorphism Indistinguishability",
+          "tags": [
+            "graph-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2608.13487",
+          "title": "Hit-and-Run Mixes as Fast as the Ball Walk",
+          "tags": [
+            "random-walks"
+          ]
+        },
+        {
+          "arxiv_id": "2608.13231",
+          "title": "$\\widetilde O(1)$-Depth Parallel Reachability Faster than Transitive Closure",
+          "tags": [
+            "parallel-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2608.13514",
+          "title": "Bagging Robustly Learns VC Classes with Linear Sample Complexity",
+          "tags": [
+            "sample-complexity"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-08-12",
       "path": "posts/2026-08-12.md",
