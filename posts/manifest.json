@@ -1,15 +1,30 @@
 {
   "version": 1,
   "tags": {
+    "geometric-algorithms": {
+      "name": "Geometric Algorithms",
+      "color": "#3FCFC4",
+      "category": "computational-geometry"
+    },
     "lattice-problems": {
       "name": "Lattice Problems",
       "color": "#B34AD3",
       "category": "cryptography"
     },
+    "spectral-graph-theory": {
+      "name": "Spectral Graph Theory",
+      "color": "#39CA6F",
+      "category": "graph-theory"
+    },
     "graph-algorithms": {
       "name": "Graph Algorithms",
       "color": "#35C456",
       "category": "graph-theory"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
     },
     "random-walks": {
       "name": "Random Walks",
@@ -25,11 +40,6 @@
       "name": "Sample Complexity",
       "color": "#D8B344",
       "category": "learning-theory"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
-      "category": "algorithms"
     },
     "interactive-proofs": {
       "name": "Interactive Proofs",
@@ -110,11 +120,6 @@
       "name": "Randomized Algorithms",
       "color": "#C97C30",
       "category": "algorithms"
-    },
-    "geometric-algorithms": {
-      "name": "Geometric Algorithms",
-      "color": "#3FCFC4",
-      "category": "computational-geometry"
     },
     "quantum-information": {
       "name": "Quantum Information",
@@ -328,6 +333,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-08-17",
+      "path": "posts/2026-08-17.md",
+      "paper_count": 5,
+      "generated_at": "2026-08-17T04:59:56.636214+00:00",
+      "tags": [
+        "geometric-algorithms",
+        "lattice-problems",
+        "spectral-graph-theory",
+        "graph-algorithms",
+        "approximation-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2608.13782",
+          "title": "The Sharp Dimension Bound in the Johnson--Lindenstrauss Lemma",
+          "tags": [
+            "geometric-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2608.14529",
+          "title": "Polynomial-Factor Deterministic NP-Hardness for SVP in Every lp Norm with p > 2",
+          "tags": [
+            "lattice-problems"
+          ]
+        },
+        {
+          "arxiv_id": "2608.13910",
+          "title": "Deterministic Spectral Sparsification in Almost-Linear Time for Dense Graphs",
+          "tags": [
+            "spectral-graph-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2608.14486",
+          "title": "Isomorphism of tournaments with bounded VC dimension",
+          "tags": [
+            "graph-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2608.13983",
+          "title": "Weighted Equitability and Matroid-Constrained Discrepancy",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-08-14",
       "path": "posts/2026-08-14.md",
