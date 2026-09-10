@@ -90,9 +90,11 @@ def codex(prompt: str, *, model: str = "", full_auto: bool = True) -> int:
     """Run ``codex exec`` with *prompt* piped to stdin."""
     import os
 
-    cmd = ["codex", "exec", "-C", str(ROOT), "--sandbox", "workspace-write"]
+    cmd = ["codex", "exec", "-C", str(ROOT)]
     if full_auto:
-        cmd.append("--full-auto")
+        cmd.append("--approve-for-me")
+    else:
+        cmd.extend(["--sandbox", "workspace-write"])
     if model:
         cmd.extend(["--model", model])
     cmd.append("-")

@@ -7,8 +7,9 @@ import unittest
 from argparse import Namespace
 from contextlib import redirect_stdout
 from pathlib import Path
+from unittest.mock import patch
 
-from run_codex import _base_arxiv_id, _is_weekend, _selected_draft_paths
+from run_codex import _base_arxiv_id, _is_weekend, _selected_draft_paths, codex
 from tcs_daily.cli import cmd_manifest, cmd_tags, cmd_validate
 from tcs_daily.config import Config
 
@@ -37,6 +38,28 @@ class PipelineHelperTests(unittest.TestCase):
         self.assertTrue(_is_weekend("2026-08-08"))
         self.assertTrue(_is_weekend("2026-08-09"))
         self.assertFalse(_is_weekend("2026-08-10"))
+
+    @patch("run_codex.subprocess.run")
+    def test_codex_uses_current_automatic_approval_flag(self, run) -> None:
+        run.return_value.returncode = 0
+
+        self.assertEqual(codex("prompt"), 0)
+
+        command = run.call_args.args[0]
+        self.assertIn("--approve-for-me", command)
+        self.assertNotIn("--sandbox", command)
+        self.assertNotIn("--full-auto", command)
+
+    @patch("run_codex.subprocess.run")
+    def test_codex_manual_mode_omits_automatic_approval(self, run) -> None:
+        run.return_value.returncode = 0
+
+        self.assertEqual(codex("prompt", full_auto=False), 0)
+
+        command = run.call_args.args[0]
+        self.assertNotIn("--approve-for-me", command)
+        self.assertIn("--sandbox", command)
+        self.assertIn("workspace-write", command)
 
 
 class TaggingPolicyTests(unittest.TestCase):

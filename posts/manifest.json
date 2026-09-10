@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "quantum-complexity-theory": {
+      "name": "Quantum Complexity Theory",
+      "color": "#4243CB",
+      "category": "quantum-computing"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
+    "linear-algebraic-algorithms": {
+      "name": "Linear Algebraic Algorithms",
+      "color": "#CE8749",
+      "category": "algorithms"
+    },
+    "differential-privacy": {
+      "name": "Differential Privacy",
+      "color": "#CCA946",
+      "category": "learning-theory"
+    },
+    "algebraic-coding-theory": {
+      "name": "Algebraic Coding Theory",
+      "color": "#CB2E7E",
+      "category": "coding-theory"
+    },
     "geometric-algorithms": {
       "name": "Geometric Algorithms",
       "color": "#3FCFC4",
@@ -20,11 +45,6 @@
       "name": "Graph Algorithms",
       "color": "#35C456",
       "category": "graph-theory"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
-      "category": "algorithms"
     },
     "random-walks": {
       "name": "Random Walks",
@@ -70,11 +90,6 @@
       "name": "Approximate Counting",
       "color": "#3951CF",
       "category": "complexity-theory"
-    },
-    "quantum-complexity-theory": {
-      "name": "Quantum Complexity Theory",
-      "color": "#4243CB",
-      "category": "quantum-computing"
     },
     "distributed-graph-algorithms": {
       "name": "Distributed Graph Algorithms",
@@ -150,11 +165,6 @@
       "name": "Enumeration Algorithms",
       "color": "#CA5F39",
       "category": "algorithms"
-    },
-    "differential-privacy": {
-      "name": "Differential Privacy",
-      "color": "#CCA946",
-      "category": "learning-theory"
     },
     "distribution-testing": {
       "name": "Distribution Testing",
@@ -276,11 +286,6 @@
       "color": "#34A8CA",
       "category": "computational-geometry"
     },
-    "linear-algebraic-algorithms": {
-      "name": "Linear Algebraic Algorithms",
-      "color": "#CE8749",
-      "category": "algorithms"
-    },
     "network-flows": {
       "name": "Network Flows",
       "color": "#4CD099",
@@ -333,6 +338,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-09-07",
+      "path": "posts/2026-09-07.md",
+      "paper_count": 5,
+      "generated_at": "2026-09-10T10:56:11.074318+00:00",
+      "tags": [
+        "quantum-complexity-theory",
+        "approximation-algorithms",
+        "linear-algebraic-algorithms",
+        "differential-privacy",
+        "algebraic-coding-theory"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2609.05201",
+          "title": "Optimal inequalities for completely bounded polynomials and the limitations of quantum query algorithms",
+          "tags": [
+            "quantum-complexity-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2609.04414",
+          "title": "An iterative rounding $2$-approximation for Feedback Vertex Set via AI-assisted proof of an extreme point property",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2609.04338",
+          "title": "Computing Lewis Weights to High Precision by Fixed-Point Iteration",
+          "tags": [
+            "linear-algebraic-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2609.05329",
+          "title": "Machine Unlearning as Private Retroactive Algorithms",
+          "tags": [
+            "differential-privacy"
+          ]
+        },
+        {
+          "arxiv_id": "2609.05017",
+          "title": "Algebraic Geometry Codes Approach the Half-Singleton Bound with Constant Field Size",
+          "tags": [
+            "algebraic-coding-theory"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-08-17",
       "path": "posts/2026-08-17.md",
