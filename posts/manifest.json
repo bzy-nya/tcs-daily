@@ -1,15 +1,35 @@
 {
   "version": 1,
   "tags": {
-    "quantum-complexity-theory": {
-      "name": "Quantum Complexity Theory",
-      "color": "#4243CB",
-      "category": "quantum-computing"
+    "list-decoding": {
+      "name": "List Decoding",
+      "color": "#C93589",
+      "category": "coding-theory"
     },
     "approximation-algorithms": {
       "name": "Approximation Algorithms",
       "color": "#D55839",
       "category": "algorithms"
+    },
+    "geometric-algorithms": {
+      "name": "Geometric Algorithms",
+      "color": "#3FCFC4",
+      "category": "computational-geometry"
+    },
+    "static-data-structures": {
+      "name": "Static Data Structures",
+      "color": "#38D6A0",
+      "category": "data-structures"
+    },
+    "randomized-algorithms": {
+      "name": "Randomized Algorithms",
+      "color": "#C97C30",
+      "category": "algorithms"
+    },
+    "quantum-complexity-theory": {
+      "name": "Quantum Complexity Theory",
+      "color": "#4243CB",
+      "category": "quantum-computing"
     },
     "linear-algebraic-algorithms": {
       "name": "Linear Algebraic Algorithms",
@@ -25,11 +45,6 @@
       "name": "Algebraic Coding Theory",
       "color": "#CB2E7E",
       "category": "coding-theory"
-    },
-    "geometric-algorithms": {
-      "name": "Geometric Algorithms",
-      "color": "#3FCFC4",
-      "category": "computational-geometry"
     },
     "lattice-problems": {
       "name": "Lattice Problems",
@@ -131,11 +146,6 @@
       "color": "#45D3B6",
       "category": "data-structures"
     },
-    "randomized-algorithms": {
-      "name": "Randomized Algorithms",
-      "color": "#C97C30",
-      "category": "algorithms"
-    },
     "quantum-information": {
       "name": "Quantum Information",
       "color": "#7937D1",
@@ -180,11 +190,6 @@
       "name": "Time Complexity",
       "color": "#4078CD",
       "category": "complexity-theory"
-    },
-    "static-data-structures": {
-      "name": "Static Data Structures",
-      "color": "#38D6A0",
-      "category": "data-structures"
     },
     "pseudorandom-generators": {
       "name": "Pseudorandom Generators",
@@ -338,6 +343,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-09-09",
+      "path": "posts/2026-09-09.md",
+      "paper_count": 5,
+      "generated_at": "2026-09-10T13:19:44.166066+00:00",
+      "tags": [
+        "list-decoding",
+        "approximation-algorithms",
+        "geometric-algorithms",
+        "static-data-structures",
+        "randomized-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2609.08005",
+          "title": "Algorithmic List Decoding of Reed-Solomon Codes up to Capacity",
+          "tags": [
+            "list-decoding"
+          ]
+        },
+        {
+          "arxiv_id": "2609.06775",
+          "title": "Improved Multilayered PCPs and Hypergraph Vertex Cover",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2609.07979",
+          "title": "The Stretch Factor of Planar Delaunay Triangulations Is Less Than 1.65",
+          "tags": [
+            "geometric-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2609.09031",
+          "title": "Deterministic Edge-Fault-Tolerant Connectivity Labeling Schemes with Nearly Optimal Label Size",
+          "tags": [
+            "static-data-structures"
+          ]
+        },
+        {
+          "arxiv_id": "2609.06905",
+          "title": "Accelerated High-Accuracy Sampling from a Warm Start via the Proximal Bouncy Particle Sampler",
+          "tags": [
+            "randomized-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-09-07",
       "path": "posts/2026-09-07.md",
