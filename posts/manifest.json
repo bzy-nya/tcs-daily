@@ -1,20 +1,30 @@
 {
   "version": 1,
   "tags": {
+    "graph-drawing": {
+      "name": "Graph Drawing",
+      "color": "#48CF60",
+      "category": "graph-theory"
+    },
     "approximate-counting": {
       "name": "Approximate Counting",
       "color": "#3951CF",
       "category": "complexity-theory"
     },
-    "online-algorithms": {
-      "name": "Online Algorithms",
-      "color": "#D08D4C",
-      "category": "algorithms"
-    },
     "graph-algorithms": {
       "name": "Graph Algorithms",
       "color": "#35C456",
       "category": "graph-theory"
+    },
+    "quantum-complexity-theory": {
+      "name": "Quantum Complexity Theory",
+      "color": "#4243CB",
+      "category": "quantum-computing"
+    },
+    "online-algorithms": {
+      "name": "Online Algorithms",
+      "color": "#D08D4C",
+      "category": "algorithms"
     },
     "quantum-information": {
       "name": "Quantum Information",
@@ -45,11 +55,6 @@
       "name": "Randomized Algorithms",
       "color": "#C97C30",
       "category": "algorithms"
-    },
-    "quantum-complexity-theory": {
-      "name": "Quantum Complexity Theory",
-      "color": "#4243CB",
-      "category": "quantum-computing"
     },
     "linear-algebraic-algorithms": {
       "name": "Linear Algebraic Algorithms",
@@ -326,11 +331,6 @@
       "color": "#C7CA34",
       "category": "learning-theory"
     },
-    "graph-drawing": {
-      "name": "Graph Drawing",
-      "color": "#48CF60",
-      "category": "graph-theory"
-    },
     "distributed-algorithms": {
       "name": "Distributed Algorithms",
       "color": "#D2532C",
@@ -343,6 +343,55 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-09-11",
+      "path": "posts/2026-09-11.md",
+      "paper_count": 5,
+      "generated_at": "2026-09-11T06:43:10.168524+00:00",
+      "tags": [
+        "graph-drawing",
+        "approximate-counting",
+        "graph-algorithms",
+        "quantum-complexity-theory"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2609.10916",
+          "title": "Almost Linear Universal Point Sets for Planar Graphs",
+          "tags": [
+            "graph-drawing"
+          ]
+        },
+        {
+          "arxiv_id": "2609.11049",
+          "title": "A deterministic $(1+\\varepsilon)^n$ approximation for the permanent of a nonnegative matrix",
+          "tags": [
+            "approximate-counting"
+          ]
+        },
+        {
+          "arxiv_id": "2609.11285",
+          "title": "Max Independent Set Remains NP-hard when Excluding a Planar Induced Minor",
+          "tags": [
+            "graph-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2609.11854",
+          "title": "PureSuperQMA(exp) = BellPureSymQMA(poly) = QMA via Dimension-Free Bosonic Argmax",
+          "tags": [
+            "quantum-complexity-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2609.11830",
+          "title": "Oracle Separations in the Fourier Hierarchy",
+          "tags": [
+            "quantum-complexity-theory"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-09-10",
       "path": "posts/2026-09-10.md",
