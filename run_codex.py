@@ -90,7 +90,28 @@ def codex(prompt: str, *, model: str = "", full_auto: bool = True) -> int:
     """Run ``codex exec`` with *prompt* piped to stdin."""
     import os
 
-    cmd = ["codex", "exec", "-C", str(ROOT)]
+    cmd = [
+        "codex",
+        "exec",
+        "-C",
+        str(ROOT),
+        "--ephemeral",
+        "--disable",
+        "plugins",
+        "--disable",
+        "apps",
+        "--disable",
+        "remote_plugin",
+        "-c",
+        'model_provider="chatgpt-http"',
+        "-c",
+        (
+            'model_providers.chatgpt-http={ name = "ChatGPT HTTP", '
+            'base_url = "https://chatgpt.com/backend-api/codex", '
+            'wire_api = "responses", requires_openai_auth = true, '
+            'supports_websockets = false }'
+        ),
+    ]
     if full_auto:
         cmd.append("--approve-for-me")
     else:
@@ -151,6 +172,9 @@ Use the $tcs-daily skill.
 2. `tcs-daily memory stats` 和 `tcs-daily memory topics` 回顾知识库积累。
 3. 浏览每篇论文的摘要，选出 2-5 篇**最值得深入讲解**的论文。
 
+筛选阶段只使用 `fetch` 返回的缓存摘要、`memory` 和 `tags`；不要下载或提取 PDF，
+不要发起网页搜索或其他外部网络请求。入选论文会在下一阶段统一下载并阅读全文。
+
 选择标准（你自己把握权重）：
 - 有明确新定理/算法/下界的原创研究
 - 结果的新颖性与重要性
@@ -206,6 +230,10 @@ Use the $tcs-daily skill.
    如果某个 section 为空，在 full_text 中搜索你需要的内容。
    **严禁自己写 PDF 解析脚本或安装额外 PDF 工具。**
 2. 需要更多上下文就 `tcs-daily memory search/entries/topics`。
+
+本阶段资料已经齐备。只使用预提取全文、论文自身参考文献、知识库和本地往期日报；
+不要调用 `fetch`、`metadata` 或 `download`，不要发起网页搜索或其他外部网络请求。
+若参考文献中没有可确认的 arXiv 编号，不要猜测链接。
 
 然后写一篇深度解读，存入 `data/cache/drafts/{dt}/{aid}.md`。
 
@@ -346,6 +374,7 @@ Use the $tcs-daily skill.
 
 用 `cat` 逐个读取上面的文件。也读取 `{selection_rel}` 查看筛选结果。
 开始编辑前先运行一次 `tcs-daily tags`，确认最终稿里使用的 tag 都来自允许集合。
+组装阶段只处理这些本地文件，不要发起网页搜索或其他外部网络请求。
 
 ## 任务
 

@@ -9,7 +9,15 @@ from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
-from run_codex import _base_arxiv_id, _is_weekend, _selected_draft_paths, codex
+from run_codex import (
+    _base_arxiv_id,
+    _is_weekend,
+    _selected_draft_paths,
+    codex,
+    prompt_assembly,
+    prompt_paper,
+    prompt_screening,
+)
 from tcs_daily.cli import cmd_manifest, cmd_tags, cmd_validate
 from tcs_daily.config import Config
 
@@ -49,6 +57,13 @@ class PipelineHelperTests(unittest.TestCase):
         self.assertIn("--approve-for-me", command)
         self.assertNotIn("--sandbox", command)
         self.assertNotIn("--full-auto", command)
+        self.assertIn("--ephemeral", command)
+        self.assertIn('model_provider="chatgpt-http"', command)
+        provider = next(arg for arg in command if arg.startswith("model_providers."))
+        self.assertIn("supports_websockets = false", provider)
+        self.assertIn("plugins", command)
+        self.assertIn("apps", command)
+        self.assertIn("remote_plugin", command)
 
     @patch("run_codex.subprocess.run")
     def test_codex_manual_mode_omits_automatic_approval(self, run) -> None:
@@ -60,6 +75,28 @@ class PipelineHelperTests(unittest.TestCase):
         self.assertNotIn("--approve-for-me", command)
         self.assertIn("--sandbox", command)
         self.assertIn("workspace-write", command)
+
+    def test_screening_prompt_forbids_expensive_network_work(self) -> None:
+        prompt = prompt_screening(DATE)
+
+        self.assertIn("不要下载或提取 PDF", prompt)
+        self.assertIn("不要发起网页搜索", prompt)
+
+    def test_writing_prompts_use_only_prepared_local_inputs(self) -> None:
+        paper_prompt = prompt_paper(
+            DATE,
+            {"arxiv_id": ARXIV_ID, "title": "Example", "tags": ["exact-algorithms"]},
+            "memory",
+        )
+        assembly_prompt = prompt_assembly(
+            DATE,
+            [f"data/cache/drafts/{DATE}/{ARXIV_ID}.md"],
+            f"data/cache/selection/{DATE}.json",
+        )
+
+        self.assertIn("不要调用 `fetch`、`metadata` 或 `download`", paper_prompt)
+        self.assertIn("不要发起网页搜索", paper_prompt)
+        self.assertIn("不要发起网页搜索", assembly_prompt)
 
 
 class TaggingPolicyTests(unittest.TestCase):
