@@ -1,6 +1,16 @@
 {
   "version": 1,
   "tags": {
+    "sample-complexity": {
+      "name": "Sample Complexity",
+      "color": "#D8B344",
+      "category": "learning-theory"
+    },
+    "space-complexity": {
+      "name": "Space Complexity",
+      "color": "#424DCB",
+      "category": "complexity-theory"
+    },
     "graph-drawing": {
       "name": "Graph Drawing",
       "color": "#48CF60",
@@ -91,11 +101,6 @@
       "color": "#CA5439",
       "category": "algorithms"
     },
-    "sample-complexity": {
-      "name": "Sample Complexity",
-      "color": "#D8B344",
-      "category": "learning-theory"
-    },
     "interactive-proofs": {
       "name": "Interactive Proofs",
       "color": "#2A46CF",
@@ -165,11 +170,6 @@
       "name": "Graph Coloring",
       "color": "#3FD395",
       "category": "graph-theory"
-    },
-    "space-complexity": {
-      "name": "Space Complexity",
-      "color": "#424DCB",
-      "category": "complexity-theory"
     },
     "dynamic-algorithms": {
       "name": "Dynamic Algorithms",
@@ -343,6 +343,32 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-09-15",
+      "path": "posts/2026-09-15.md",
+      "paper_count": 2,
+      "generated_at": "2026-09-15T08:20:59.295267+00:00",
+      "tags": [
+        "sample-complexity",
+        "space-complexity"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2609.15268",
+          "title": "Learning CNF Formulas from Uniform Random Solutions: Near-Tight Sample Complexity for Valiant's Algorithm",
+          "tags": [
+            "sample-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2609.15062",
+          "title": "The Exact Growth Rate of Space-Optimal Reversible Pebbling on Chains",
+          "tags": [
+            "space-complexity"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-09-11",
       "path": "posts/2026-09-11.md",
