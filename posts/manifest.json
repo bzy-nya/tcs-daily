@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "extremal-combinatorics": {
+      "name": "Extremal Combinatorics",
+      "color": "#D641CB",
+      "category": "combinatorics-in-tcs"
+    },
+    "lattice-problems": {
+      "name": "Lattice Problems",
+      "color": "#B34AD3",
+      "category": "cryptography"
+    },
+    "list-decoding": {
+      "name": "List Decoding",
+      "color": "#C93589",
+      "category": "coding-theory"
+    },
+    "linear-algebraic-algorithms": {
+      "name": "Linear Algebraic Algorithms",
+      "color": "#CE8749",
+      "category": "algorithms"
+    },
+    "parameterized-complexity": {
+      "name": "Parameterized Complexity",
+      "color": "#4963D4",
+      "category": "complexity-theory"
+    },
     "sample-complexity": {
       "name": "Sample Complexity",
       "color": "#D8B344",
@@ -46,11 +71,6 @@
       "color": "#3FCFC4",
       "category": "computational-geometry"
     },
-    "list-decoding": {
-      "name": "List Decoding",
-      "color": "#C93589",
-      "category": "coding-theory"
-    },
     "approximation-algorithms": {
       "name": "Approximation Algorithms",
       "color": "#D55839",
@@ -66,11 +86,6 @@
       "color": "#C97C30",
       "category": "algorithms"
     },
-    "linear-algebraic-algorithms": {
-      "name": "Linear Algebraic Algorithms",
-      "color": "#CE8749",
-      "category": "algorithms"
-    },
     "differential-privacy": {
       "name": "Differential Privacy",
       "color": "#CCA946",
@@ -80,11 +95,6 @@
       "name": "Algebraic Coding Theory",
       "color": "#CB2E7E",
       "category": "coding-theory"
-    },
-    "lattice-problems": {
-      "name": "Lattice Problems",
-      "color": "#B34AD3",
-      "category": "cryptography"
     },
     "spectral-graph-theory": {
       "name": "Spectral Graph Theory",
@@ -186,11 +196,6 @@
       "color": "#8ACC41",
       "category": "property-testing"
     },
-    "extremal-combinatorics": {
-      "name": "Extremal Combinatorics",
-      "color": "#D641CB",
-      "category": "combinatorics-in-tcs"
-    },
     "time-complexity": {
       "name": "Time Complexity",
       "color": "#4078CD",
@@ -210,11 +215,6 @@
       "name": "Matching Theory",
       "color": "#40D78C",
       "category": "graph-theory"
-    },
-    "parameterized-complexity": {
-      "name": "Parameterized Complexity",
-      "color": "#4963D4",
-      "category": "complexity-theory"
     },
     "formal-language-theory": {
       "name": "Formal Language Theory",
@@ -343,6 +343,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-09-16",
+      "path": "posts/2026-09-16.md",
+      "paper_count": 5,
+      "generated_at": "2026-09-16T05:12:20.941162+00:00",
+      "tags": [
+        "extremal-combinatorics",
+        "lattice-problems",
+        "list-decoding",
+        "linear-algebraic-algorithms",
+        "parameterized-complexity"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2609.16401",
+          "title": "A Resolution of Friedgut's Conjecture on Influential Coalitions",
+          "tags": [
+            "extremal-combinatorics"
+          ]
+        },
+        {
+          "arxiv_id": "2609.16711",
+          "title": "Euclidean SVP is NP-hard for Cyclic Lattices",
+          "tags": [
+            "lattice-problems"
+          ]
+        },
+        {
+          "arxiv_id": "2609.17020",
+          "title": "List Decoding, Linear Hashing, and Furstenberg over $\\mathbb F_q$",
+          "tags": [
+            "list-decoding"
+          ]
+        },
+        {
+          "arxiv_id": "2609.17266",
+          "title": "Rank-One Matrix Discrepancy and Algorithmic Kadison–Singer",
+          "tags": [
+            "linear-algebraic-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2609.16923",
+          "title": "High-Multiplicity Bin Packing is FPT",
+          "tags": [
+            "parameterized-complexity"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-09-15",
       "path": "posts/2026-09-15.md",
