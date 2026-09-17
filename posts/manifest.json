@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "linear-algebraic-algorithms": {
+      "name": "Linear Algebraic Algorithms",
+      "color": "#CE8749",
+      "category": "algorithms"
+    },
+    "online-algorithms": {
+      "name": "Online Algorithms",
+      "color": "#D08D4C",
+      "category": "algorithms"
+    },
+    "online-learning": {
+      "name": "Online Learning",
+      "color": "#BBD038",
+      "category": "learning-theory"
+    },
+    "cryptographic-protocols": {
+      "name": "Cryptographic Protocols",
+      "color": "#A63FD3",
+      "category": "cryptography"
+    },
+    "streaming-algorithms": {
+      "name": "Streaming Algorithms",
+      "color": "#D26036",
+      "category": "algorithms"
+    },
     "extremal-combinatorics": {
       "name": "Extremal Combinatorics",
       "color": "#D641CB",
@@ -15,11 +40,6 @@
       "name": "List Decoding",
       "color": "#C93589",
       "category": "coding-theory"
-    },
-    "linear-algebraic-algorithms": {
-      "name": "Linear Algebraic Algorithms",
-      "color": "#CE8749",
-      "category": "algorithms"
     },
     "parameterized-complexity": {
       "name": "Parameterized Complexity",
@@ -55,11 +75,6 @@
       "name": "Quantum Complexity Theory",
       "color": "#4243CB",
       "category": "quantum-computing"
-    },
-    "online-algorithms": {
-      "name": "Online Algorithms",
-      "color": "#D08D4C",
-      "category": "algorithms"
     },
     "quantum-information": {
       "name": "Quantum Information",
@@ -170,11 +185,6 @@
       "name": "Dynamic Data Structures",
       "color": "#45D3B6",
       "category": "data-structures"
-    },
-    "streaming-algorithms": {
-      "name": "Streaming Algorithms",
-      "color": "#D26036",
-      "category": "algorithms"
     },
     "graph-coloring": {
       "name": "Graph Coloring",
@@ -343,6 +353,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-09-17",
+      "path": "posts/2026-09-17.md",
+      "paper_count": 5,
+      "generated_at": "2026-09-17T05:29:37.479354+00:00",
+      "tags": [
+        "linear-algebraic-algorithms",
+        "online-algorithms",
+        "online-learning",
+        "cryptographic-protocols",
+        "streaming-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2609.18914",
+          "title": "A Walk From Free Probability to Matrix Discrepancy I: Matrix Spencer",
+          "tags": [
+            "linear-algebraic-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2609.19118",
+          "title": "On the Strong Matroid Secretary Conjecture and Beyond",
+          "tags": [
+            "online-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2609.18166",
+          "title": "Learning Depth-3 Circuits with Polynomial Savings",
+          "tags": [
+            "online-learning"
+          ]
+        },
+        {
+          "arxiv_id": "2609.18020",
+          "title": "Improved lower bounds for decomposable randomized encoding",
+          "tags": [
+            "cryptographic-protocols"
+          ]
+        },
+        {
+          "arxiv_id": "2609.19089",
+          "title": "A Near-Optimal Space Lower Bound for Euclidean Diameter Estimation in Dynamic Streams",
+          "tags": [
+            "streaming-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-09-16",
       "path": "posts/2026-09-16.md",
