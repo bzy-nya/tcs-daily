@@ -55,6 +55,7 @@ tcs-daily tags                        # Canonical allowed report tags
 tcs-daily history <query>             # Search past reports
 tcs-daily manifest <date> <path> <n>  # Update manifest.json
 tcs-daily validate <date>             # Check outputs
+tcs-daily validate <date> --require-scores  # Also require per-paper scores and reasons
 
 tcs-daily memory search <query>       # Search papers in knowledge base
 tcs-daily memory topics [query]       # List/search topics
@@ -66,6 +67,15 @@ tcs-daily memory link-topic <id> <t>  # Link paper to topic
 tcs-daily memory record-entry <k><v><c> # Record knowledge entry
 tcs-daily memory stats                # KB statistics
 ```
+
+The pipeline uses the [skill](.agents/skills/tcs-daily/SKILL.md) as its shared workflow
+and loads [writing and scoring guidance](.agents/skills/tcs-daily/references/writing.md)
+only for drafting or substantive edits. Each paper ends with two 0–10 scores and
+brief reasons: confidence in the analyzed result, and writing quality (写作质量) of the
+daily analysis. The latter is an editorial judgment about readability and formulaic
+language, not an estimate of AI authorship. Draft checks are reused during assembly;
+the runner performs final validation once, including scores. Standalone `validate`
+without `--require-scores` remains compatible with older reports.
 
 ## Data Sources
 

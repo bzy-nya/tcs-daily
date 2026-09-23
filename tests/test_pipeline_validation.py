@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import io
 import json
+import os
 import tempfile
 import unittest
 from argparse import Namespace
@@ -14,6 +15,7 @@ from run_codex import (
     _is_weekend,
     _selected_draft_paths,
     codex,
+    main,
     prompt_assembly,
     prompt_paper,
     prompt_screening,
@@ -24,6 +26,10 @@ from tcs_daily.config import Config
 
 DATE = "2026-08-10"
 ARXIV_ID = "2608.00001v2"
+SCORES = (
+    "**结果置信度：8.0/10** — 已核对 Theorem 1，附录未逐步复算。\n\n"
+    "**写作质量：8.5/10** — 四点图解释了归约，参数一段仍较密。"
+)
 
 
 class PipelineHelperTests(unittest.TestCase):
@@ -110,6 +116,56 @@ class TaggingPolicyTests(unittest.TestCase):
         self.assertGreaterEqual(len(policy["common_confusions"]), 4)
 
 
+class PipelineExecutionTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temp_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp_dir.cleanup)
+        self.root = Path(self.temp_dir.name)
+        selection = self.root / "data/cache/selection" / f"{DATE}.json"
+        draft = self.root / "data/cache/drafts" / DATE / f"{ARXIV_ID}.md"
+        self.report = self.root / "posts" / f"{DATE}.md"
+        for path in (selection, draft, self.report):
+            path.parent.mkdir(parents=True, exist_ok=True)
+        selection.write_text(json.dumps({"selected": [{"arxiv_id": ARXIV_ID}]}))
+        draft.write_text("Draft content.\n" * 150)
+        self.report.write_text("Report content.\n" * 150)
+        for path in (selection, draft):
+            os.utime(path, (100, 100))
+        os.utime(self.report, (200, 200))
+
+    def run_assembly(self, validation_results: list[dict]):
+        with (
+            patch("run_codex.ROOT", self.root),
+            patch("sys.argv", ["run_codex.py", "--date", DATE, "--stage", "3"]),
+            patch("run_codex.tool", side_effect=validation_results) as tool,
+            patch("run_codex.codex", return_value=0) as agent,
+        ):
+            main()
+        return tool, agent
+
+    def test_reuses_validated_report_without_second_validation_or_agent(self) -> None:
+        tool, agent = self.run_assembly([{"ok": True}])
+        agent.assert_not_called()
+        tool.assert_called_once_with(
+            "validate", DATE, "--selection",
+            f"data/cache/selection/{DATE}.json", "--require-scores",
+        )
+
+    def test_new_assembly_runs_only_final_validation(self) -> None:
+        self.report.unlink()
+        tool, agent = self.run_assembly([{"ok": True}])
+        agent.assert_called_once()
+        self.assertEqual(tool.call_count, 1)
+        self.assertIn("--require-scores", tool.call_args.args)
+
+    def test_invalid_cached_report_is_repaired_and_revalidated(self) -> None:
+        tool, agent = self.run_assembly([
+            {"ok": False, "errors": ["Missing scores"]}, {"ok": True},
+        ])
+        agent.assert_called_once()
+        self.assertEqual(tool.call_count, 2)
+
+
 class ValidationTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp_dir = tempfile.TemporaryDirectory()
@@ -130,6 +186,7 @@ class ValidationTests(unittest.TestCase):
         *,
         close_issue: bool = True,
         link_target: str = "2608.00001",
+        body: str = "Analysis.",
     ) -> None:
         close = "\n::::\n" if close_issue else "\n"
         self.report_path.write_text(
@@ -139,7 +196,7 @@ class ValidationTests(unittest.TestCase):
             "::::issue[exact-algorithms]\n"
             f"## Example Paper [arXiv:{ARXIV_ID}]"
             f"(https://arxiv.org/abs/{link_target})\n\n"
-            "Analysis."
+            f"{body}"
             f"{close}",
             "utf-8",
         )
@@ -151,12 +208,15 @@ class ValidationTests(unittest.TestCase):
                 self.cfg,
             )
 
-    def validate(self, *, selection: str = "") -> tuple[int, dict]:
+    def validate(self, *, selection: str = "", require_scores: bool = False) -> tuple[int, dict]:
         output = io.StringIO()
         code = 0
         try:
             with redirect_stdout(output):
-                cmd_validate(Namespace(date=DATE, selection=selection), self.cfg)
+                cmd_validate(
+                    Namespace(date=DATE, selection=selection, require_scores=require_scores),
+                    self.cfg,
+                )
         except SystemExit as exc:
             code = int(exc.code or 0)
         return code, json.loads(output.getvalue())
@@ -200,6 +260,67 @@ class ValidationTests(unittest.TestCase):
         code, payload = self.validate()
         self.assertEqual(code, 1)
         self.assertIn("paper_count", " ".join(payload["errors"]))
+
+    def test_score_validation_is_opt_in_for_legacy_reports(self) -> None:
+        self.assertEqual(self.validate()[0], 0)
+        code, payload = self.validate(require_scores=True)
+        self.assertEqual(code, 1)
+        self.assertIn("结果置信度", " ".join(payload["errors"]))
+        self.assertIn("写作质量", " ".join(payload["errors"]))
+
+    def test_accepts_decimal_scores_and_both_endpoints(self) -> None:
+        for scores in (SCORES, SCORES.replace("8.0/10", "0/10").replace("8.5/10", "10/10")):
+            with self.subTest(scores=scores):
+                self.write_report(body=f"Analysis.\n\n{scores}")
+                code, payload = self.validate(require_scores=True)
+                self.assertEqual((code, payload["errors"]), (0, []))
+
+    def test_rejects_out_of_range_or_non_numeric_scores(self) -> None:
+        for score in ("-1", "10.1", "10.000000000000000001", "NaN", "inf", "八", "8e0"):
+            with self.subTest(score=score):
+                self.write_report(body=SCORES.replace("8.0/10", f"{score}/10"))
+                self.assertEqual(self.validate(require_scores=True)[0], 1)
+
+    def test_each_score_needs_a_reason(self) -> None:
+        for paragraph in SCORES.split("\n\n"):
+            with self.subTest(paragraph=paragraph):
+                without_reason = paragraph.split(" — ")[0] + " —   "
+                self.write_report(body=SCORES.replace(paragraph, without_reason))
+                self.assertEqual(self.validate(require_scores=True)[0], 1)
+
+    def test_required_scores_use_new_writing_quality_label(self) -> None:
+        self.write_report(body=SCORES.replace("写作质量", "写作说人话程度"))
+        code, payload = self.validate(require_scores=True)
+        self.assertEqual(code, 1)
+        self.assertIn("写作质量", " ".join(payload["errors"]))
+
+    def test_scores_must_be_unique_and_at_the_end_of_each_issue(self) -> None:
+        for body in (
+            f"{SCORES}\n\nMore analysis after scores.",
+            f"{SCORES}\n\n{SCORES}",
+            f":::aside[评分]\n{SCORES}\n:::",
+        ):
+            with self.subTest(body=body):
+                self.write_report(body=body)
+                self.assertEqual(self.validate(require_scores=True)[0], 1)
+
+    def test_scores_outside_issue_do_not_satisfy_requirement(self) -> None:
+        with self.report_path.open("a") as report:
+            report.write(f"\n{SCORES}\n")
+        self.assertEqual(self.validate(require_scores=True)[0], 1)
+
+    def test_every_issue_requires_its_own_scores(self) -> None:
+        self.write_report(body=f"Analysis.\n\n{SCORES}")
+        with self.report_path.open("a") as report:
+            report.write(
+                "\n::::issue[exact-algorithms]\n"
+                "## Second paper [arXiv:2608.00002](https://arxiv.org/abs/2608.00002)\n\n"
+                "Analysis without scores.\n::::\n"
+            )
+        self.rebuild_manifest()
+        code, payload = self.validate(require_scores=True)
+        self.assertEqual(code, 1)
+        self.assertTrue(all(error.startswith("Issue 2:") for error in payload["errors"]))
 
 
 if __name__ == "__main__":

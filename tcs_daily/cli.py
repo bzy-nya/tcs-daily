@@ -12,6 +12,7 @@ import re
 import sys
 import time
 from datetime import date as date_type
+from decimal import Decimal
 from pathlib import Path
 
 from .config import Config
@@ -29,6 +30,31 @@ ARXIV_LINK_RE = re.compile(
     r"\[arXiv:([^\]]+)\]\(https://arxiv\.org/abs/([^)]+)\)"
 )
 ARXIV_ID_RE = re.compile(r"^(?:[a-z-]+/\d{7}|\d{4}\.\d{4,5})(?:v\d+)?$", re.I)
+SCORE_LABELS = ("结果置信度", "写作质量")
+
+
+def _score_errors(body: str, index: int) -> list[str]:
+    """Check the two visible score lines at the end of a paper block."""
+    errors: list[str] = []
+    lines = [line.strip() for line in body.splitlines() if line.strip()]
+    footer = lines[-2:]
+    for offset, label in enumerate(SCORE_LABELS):
+        occurrences = re.findall(rf"^\*\*{label}[：:]", body, re.MULTILINE)
+        if len(occurrences) != 1:
+            errors.append(f"Issue {index}: expected exactly one {label} score")
+        line = footer[offset] if len(footer) == 2 else ""
+        match = re.fullmatch(
+            rf"\*\*{label}：([0-9]+(?:\.[0-9]+)?)/10\*\* — (\S[^\n]*)",
+            line,
+        )
+        if not match:
+            errors.append(
+                f"Issue {index}: end with **{label}：N/10** — concrete reason "
+                "(confidence first, writing second)"
+            )
+        elif not Decimal("0") <= Decimal(match.group(1)) <= Decimal("10"):
+            errors.append(f"Issue {index}: {label} must be between 0 and 10")
+    return errors
 
 
 def _out(data: object) -> None:
@@ -359,6 +385,8 @@ def cmd_validate(args: argparse.Namespace, cfg: Config) -> None:
             )
 
         for index, (tags, body) in enumerate(issue_blocks, start=1):
+            if getattr(args, "require_scores", False):
+                errors.extend(_score_errors(body, index))
             paper = _paper_from_issue(tags, body)
             link_match = ARXIV_LINK_RE.search(body)
             if not paper.get("title"):
@@ -581,6 +609,11 @@ def main() -> None:
         "--selection",
         default="",
         help="Relative selection JSON path; require its papers to match the report",
+    )
+    p.add_argument(
+        "--require-scores",
+        action="store_true",
+        help="Require two 0-10 scores with reasons at the end of every paper block",
     )
 
     # ── memory ─────────────────────────────────────────────────
