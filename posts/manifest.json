@@ -31,6 +31,16 @@
       "color": "#D641CB",
       "category": "combinatorics-in-tcs"
     },
+    "linear-algebraic-algorithms": {
+      "name": "Linear Algebraic Algorithms",
+      "color": "#CE8749",
+      "category": "algorithms"
+    },
+    "parameterized-complexity": {
+      "name": "Parameterized Complexity",
+      "color": "#4963D4",
+      "category": "complexity-theory"
+    },
     "lattice-problems": {
       "name": "Lattice Problems",
       "color": "#B34AD3",
@@ -39,11 +49,6 @@
     "approximation-algorithms": {
       "name": "Approximation Algorithms",
       "color": "#D55839",
-      "category": "algorithms"
-    },
-    "linear-algebraic-algorithms": {
-      "name": "Linear Algebraic Algorithms",
-      "color": "#CE8749",
       "category": "algorithms"
     },
     "online-learning": {
@@ -60,11 +65,6 @@
       "name": "List Decoding",
       "color": "#C93589",
       "category": "coding-theory"
-    },
-    "parameterized-complexity": {
-      "name": "Parameterized Complexity",
-      "color": "#4963D4",
-      "category": "complexity-theory"
     },
     "sample-complexity": {
       "name": "Sample Complexity",
@@ -404,6 +404,56 @@
           "title": "An Exponential Succinctness Gap between Three-Variable Logic and the Calculus of Relations",
           "tags": [
             "model-theory"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-22",
+      "path": "posts/2026-09-22.md",
+      "paper_count": 5,
+      "generated_at": "2026-09-23T05:21:49.543112+00:00",
+      "tags": [
+        "extremal-combinatorics",
+        "linear-algebraic-algorithms",
+        "parameterized-complexity",
+        "approximate-counting",
+        "online-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2609.24931",
+          "title": "A Proof of the Most Informative Boolean Function Conjecture",
+          "tags": [
+            "extremal-combinatorics"
+          ]
+        },
+        {
+          "arxiv_id": "2609.23540",
+          "title": "Vector Balancing in Polynomial Time",
+          "tags": [
+            "linear-algebraic-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2609.23711",
+          "title": "A Fixed-Parameter Algorithm for 4-Block Integer Programming",
+          "tags": [
+            "parameterized-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2609.23671",
+          "title": "A general counting and sampling Lovász local lemma",
+          "tags": [
+            "approximate-counting"
+          ]
+        },
+        {
+          "arxiv_id": "2609.22605",
+          "title": "Hardness of Online Directed Steiner Network",
+          "tags": [
+            "online-algorithms"
           ]
         }
       ]
