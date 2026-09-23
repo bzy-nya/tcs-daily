@@ -1,25 +1,40 @@
 {
   "version": 1,
   "tags": {
-    "extremal-combinatorics": {
-      "name": "Extremal Combinatorics",
-      "color": "#D641CB",
-      "category": "combinatorics-in-tcs"
+    "quantum-complexity-theory": {
+      "name": "Quantum Complexity Theory",
+      "color": "#4243CB",
+      "category": "quantum-computing"
+    },
+    "approximate-counting": {
+      "name": "Approximate Counting",
+      "color": "#3951CF",
+      "category": "complexity-theory"
     },
     "online-algorithms": {
       "name": "Online Algorithms",
       "color": "#D08D4C",
       "category": "algorithms"
     },
+    "streaming-algorithms": {
+      "name": "Streaming Algorithms",
+      "color": "#D26036",
+      "category": "algorithms"
+    },
+    "model-theory": {
+      "name": "Model Theory",
+      "color": "#3583C4",
+      "category": "logic-and-formal-methods"
+    },
+    "extremal-combinatorics": {
+      "name": "Extremal Combinatorics",
+      "color": "#D641CB",
+      "category": "combinatorics-in-tcs"
+    },
     "lattice-problems": {
       "name": "Lattice Problems",
       "color": "#B34AD3",
       "category": "cryptography"
-    },
-    "approximate-counting": {
-      "name": "Approximate Counting",
-      "color": "#3951CF",
-      "category": "complexity-theory"
     },
     "approximation-algorithms": {
       "name": "Approximation Algorithms",
@@ -40,11 +55,6 @@
       "name": "Cryptographic Protocols",
       "color": "#A63FD3",
       "category": "cryptography"
-    },
-    "streaming-algorithms": {
-      "name": "Streaming Algorithms",
-      "color": "#D26036",
-      "category": "algorithms"
     },
     "list-decoding": {
       "name": "List Decoding",
@@ -75,11 +85,6 @@
       "name": "Graph Algorithms",
       "color": "#35C456",
       "category": "graph-theory"
-    },
-    "quantum-complexity-theory": {
-      "name": "Quantum Complexity Theory",
-      "color": "#4243CB",
-      "category": "quantum-computing"
     },
     "quantum-information": {
       "name": "Quantum Information",
@@ -353,6 +358,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-09-23",
+      "path": "posts/2026-09-23.md",
+      "paper_count": 5,
+      "generated_at": "2026-09-23T05:01:13.579485+00:00",
+      "tags": [
+        "quantum-complexity-theory",
+        "approximate-counting",
+        "online-algorithms",
+        "streaming-algorithms",
+        "model-theory"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2609.25680",
+          "title": "$\\mathsf{BQP} \\subseteq \\mathsf{IP}$ Does Not Relativize",
+          "tags": [
+            "quantum-complexity-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2609.26246",
+          "title": "Approximate Counting of $k$-Paths in $O^*(2^k)$ Time",
+          "tags": [
+            "approximate-counting"
+          ]
+        },
+        {
+          "arxiv_id": "2609.26789",
+          "title": "Polylogarithmic Collective Tree Exploration",
+          "tags": [
+            "online-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2609.26508",
+          "title": "Gap-Free Streaming PCA Beyond Rank-One Updates: Near-Optimal Rates and Applications to Differential Privacy",
+          "tags": [
+            "streaming-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2609.26778",
+          "title": "An Exponential Succinctness Gap between Three-Variable Logic and the Calculus of Relations",
+          "tags": [
+            "model-theory"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-09-21",
       "path": "posts/2026-09-21.md",
