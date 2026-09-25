@@ -1,6 +1,26 @@
 {
   "version": 1,
   "tags": {
+    "circuit-complexity": {
+      "name": "Circuit Complexity",
+      "color": "#3E51D0",
+      "category": "complexity-theory"
+    },
+    "communication-complexity": {
+      "name": "Communication Complexity",
+      "color": "#4A5BD3",
+      "category": "complexity-theory"
+    },
+    "geometric-algorithms": {
+      "name": "Geometric Algorithms",
+      "color": "#3FCFC4",
+      "category": "computational-geometry"
+    },
+    "parameterized-complexity": {
+      "name": "Parameterized Complexity",
+      "color": "#4963D4",
+      "category": "complexity-theory"
+    },
     "quantum-complexity-theory": {
       "name": "Quantum Complexity Theory",
       "color": "#4243CB",
@@ -35,11 +55,6 @@
       "name": "Linear Algebraic Algorithms",
       "color": "#CE8749",
       "category": "algorithms"
-    },
-    "parameterized-complexity": {
-      "name": "Parameterized Complexity",
-      "color": "#4963D4",
-      "category": "complexity-theory"
     },
     "lattice-problems": {
       "name": "Lattice Problems",
@@ -91,11 +106,6 @@
       "color": "#7937D1",
       "category": "quantum-computing"
     },
-    "geometric-algorithms": {
-      "name": "Geometric Algorithms",
-      "color": "#3FCFC4",
-      "category": "computational-geometry"
-    },
     "static-data-structures": {
       "name": "Static Data Structures",
       "color": "#38D6A0",
@@ -136,11 +146,6 @@
       "color": "#2A46CF",
       "category": "complexity-theory"
     },
-    "circuit-complexity": {
-      "name": "Circuit Complexity",
-      "color": "#3E51D0",
-      "category": "complexity-theory"
-    },
     "probabilistic-method": {
       "name": "Probabilistic Method",
       "color": "#C935AB",
@@ -155,11 +160,6 @@
       "name": "Distributed Graph Algorithms",
       "color": "#51D043",
       "category": "distributed-computing-theory"
-    },
-    "communication-complexity": {
-      "name": "Communication Complexity",
-      "color": "#4A5BD3",
-      "category": "complexity-theory"
     },
     "average-case-complexity": {
       "name": "Average-Case Complexity",
@@ -358,6 +358,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-09-25",
+      "path": "posts/2026-09-25.md",
+      "paper_count": 5,
+      "generated_at": "2026-09-25T06:36:55.067921+00:00",
+      "tags": [
+        "circuit-complexity",
+        "communication-complexity",
+        "geometric-algorithms",
+        "parameterized-complexity",
+        "quantum-complexity-theory"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2609.30139",
+          "title": "A General Composition Theorem for Approximate Degree",
+          "tags": [
+            "circuit-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2609.28691",
+          "title": "Lossless Hardness Condensation in Deterministic Communication Complexity",
+          "tags": [
+            "communication-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2609.30215",
+          "title": "A Nearly Quadratic Lower Bound for Linear Optimization over Convex Bodies in the Membership Oracle Model",
+          "tags": [
+            "geometric-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2609.29141",
+          "title": "A Deterministic Polynomial Kernel for Odd Cycle Transversal",
+          "tags": [
+            "parameterized-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2609.29497",
+          "title": "Quantum Query Advantage Requires Space",
+          "tags": [
+            "quantum-complexity-theory"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-09-23",
       "path": "posts/2026-09-23.md",
