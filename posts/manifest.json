@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "linear-algebraic-algorithms": {
+      "name": "Linear Algebraic Algorithms",
+      "color": "#CE8749",
+      "category": "algorithms"
+    },
+    "quantum-complexity-theory": {
+      "name": "Quantum Complexity Theory",
+      "color": "#4243CB",
+      "category": "quantum-computing"
+    },
+    "property-testing": {
+      "name": "Property Testing",
+      "color": "#C9D033",
+      "category": "property-testing"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
+    "random-walks": {
+      "name": "Random Walks",
+      "color": "#75D038",
+      "category": "randomness-and-pseudorandomness"
+    },
     "circuit-complexity": {
       "name": "Circuit Complexity",
       "color": "#3E51D0",
@@ -56,11 +81,6 @@
       "color": "#3FCFC4",
       "category": "computational-geometry"
     },
-    "quantum-complexity-theory": {
-      "name": "Quantum Complexity Theory",
-      "color": "#4243CB",
-      "category": "quantum-computing"
-    },
     "approximate-counting": {
       "name": "Approximate Counting",
       "color": "#3951CF",
@@ -81,20 +101,10 @@
       "color": "#D641CB",
       "category": "combinatorics-in-tcs"
     },
-    "linear-algebraic-algorithms": {
-      "name": "Linear Algebraic Algorithms",
-      "color": "#CE8749",
-      "category": "algorithms"
-    },
     "lattice-problems": {
       "name": "Lattice Problems",
       "color": "#B34AD3",
       "category": "cryptography"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
-      "category": "algorithms"
     },
     "online-learning": {
       "name": "Online Learning",
@@ -155,11 +165,6 @@
       "name": "Spectral Graph Theory",
       "color": "#39CA6F",
       "category": "graph-theory"
-    },
-    "random-walks": {
-      "name": "Random Walks",
-      "color": "#75D038",
-      "category": "randomness-and-pseudorandomness"
     },
     "parallel-algorithms": {
       "name": "Parallel Algorithms",
@@ -245,11 +250,6 @@
       "name": "Formal Language Theory",
       "color": "#CF7334",
       "category": "automata-and-formal-languages"
-    },
-    "property-testing": {
-      "name": "Property Testing",
-      "color": "#C9D033",
-      "category": "property-testing"
     },
     "exact-algorithms": {
       "name": "Exact Algorithms",
@@ -358,6 +358,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-09-30",
+      "path": "posts/2026-09-30.md",
+      "paper_count": 5,
+      "generated_at": "2026-09-30T05:03:52.683565+00:00",
+      "tags": [
+        "linear-algebraic-algorithms",
+        "quantum-complexity-theory",
+        "property-testing",
+        "approximation-algorithms",
+        "random-walks"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2609.38101",
+          "title": "Solving Linear Systems in $\\widetilde{O}(mn\\log\\frac{\\kappa}{\\epsilon})$ Bit Operations",
+          "tags": [
+            "linear-algebraic-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2609.38073",
+          "title": "Optimal Quantum-Classical Separations for Exact Learning",
+          "tags": [
+            "quantum-complexity-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2609.37431",
+          "title": "Query Complexity of Testing Structured Parenthesis Languages",
+          "tags": [
+            "property-testing"
+          ]
+        },
+        {
+          "arxiv_id": "2609.36236",
+          "title": "Maximizing Social Influence in Almost Linear Time",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2609.38044",
+          "title": "A Tale of Two Walks: Kipnis, Marchioro and Presutti Meet Kac in a Quantum World",
+          "tags": [
+            "random-walks"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-09-29",
       "path": "posts/2026-09-29.md",
