@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "dynamic-algorithms": {
+      "name": "Dynamic Algorithms",
+      "color": "#CB6342",
+      "category": "algorithms"
+    },
+    "streaming-algorithms": {
+      "name": "Streaming Algorithms",
+      "color": "#D26036",
+      "category": "algorithms"
+    },
+    "time-complexity": {
+      "name": "Time Complexity",
+      "color": "#4078CD",
+      "category": "complexity-theory"
+    },
+    "exact-algorithms": {
+      "name": "Exact Algorithms",
+      "color": "#C9543A",
+      "category": "algorithms"
+    },
+    "graph-property-testing": {
+      "name": "Graph Property Testing",
+      "color": "#AFCA34",
+      "category": "property-testing"
+    },
     "quantum-complexity-theory": {
       "name": "Quantum Complexity Theory",
       "color": "#4243CB",
@@ -20,11 +45,6 @@
       "name": "Graph Coloring",
       "color": "#3FD395",
       "category": "graph-theory"
-    },
-    "time-complexity": {
-      "name": "Time Complexity",
-      "color": "#4078CD",
-      "category": "complexity-theory"
     },
     "linear-algebraic-algorithms": {
       "name": "Linear Algebraic Algorithms",
@@ -95,11 +115,6 @@
       "name": "Approximate Counting",
       "color": "#3951CF",
       "category": "complexity-theory"
-    },
-    "streaming-algorithms": {
-      "name": "Streaming Algorithms",
-      "color": "#D26036",
-      "category": "algorithms"
     },
     "model-theory": {
       "name": "Model Theory",
@@ -216,11 +231,6 @@
       "color": "#45D3B6",
       "category": "data-structures"
     },
-    "dynamic-algorithms": {
-      "name": "Dynamic Algorithms",
-      "color": "#CB6342",
-      "category": "algorithms"
-    },
     "enumeration-algorithms": {
       "name": "Enumeration Algorithms",
       "color": "#CA5F39",
@@ -250,11 +260,6 @@
       "name": "Formal Language Theory",
       "color": "#CF7334",
       "category": "automata-and-formal-languages"
-    },
-    "exact-algorithms": {
-      "name": "Exact Algorithms",
-      "color": "#C9543A",
-      "category": "algorithms"
     },
     "pcp-theory": {
       "name": "PCP Theory",
@@ -326,11 +331,6 @@
       "color": "#3987CA",
       "category": "logic-and-formal-methods"
     },
-    "graph-property-testing": {
-      "name": "Graph Property Testing",
-      "color": "#AFCA34",
-      "category": "property-testing"
-    },
     "voting-theory": {
       "name": "Voting Theory",
       "color": "#CF3F70",
@@ -358,6 +358,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-10-02",
+      "path": "posts/2026-10-02.md",
+      "paper_count": 5,
+      "generated_at": "2026-10-02T07:22:53.303035+00:00",
+      "tags": [
+        "dynamic-algorithms",
+        "streaming-algorithms",
+        "time-complexity",
+        "exact-algorithms",
+        "graph-property-testing"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2610.00491",
+          "title": "Dynamic Connectivity, Minimum Spanning Tree, and 2-Edge Connectivity with Polylogarithmic Worst-Case Update Time",
+          "tags": [
+            "dynamic-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.01007",
+          "title": "Settling the Pass Complexity of Streaming Set Cover",
+          "tags": [
+            "streaming-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.00644",
+          "title": "Approximate Polynomial Satisfiability is in the Counting Hierarchy",
+          "tags": [
+            "time-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2610.00874",
+          "title": "Beyond odd characteristic: Faster isomorphism testing of 2-groups of Frattini class 2",
+          "tags": [
+            "exact-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.01752",
+          "title": "Near-optimal quantum query lower bounds on bipartiteness and expansion testing in the bounded-degree graph model",
+          "tags": [
+            "graph-property-testing"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-01",
       "path": "posts/2026-10-01.md",
