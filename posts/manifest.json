@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "exact-algorithms": {
+      "name": "Exact Algorithms",
+      "color": "#C9543A",
+      "category": "algorithms"
+    },
+    "property-testing": {
+      "name": "Property Testing",
+      "color": "#C9D033",
+      "category": "property-testing"
+    },
+    "geometric-data-structures": {
+      "name": "Geometric Data Structures",
+      "color": "#33D5B2",
+      "category": "data-structures"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
+    "quantum-complexity-theory": {
+      "name": "Quantum Complexity Theory",
+      "color": "#4243CB",
+      "category": "quantum-computing"
+    },
     "dynamic-algorithms": {
       "name": "Dynamic Algorithms",
       "color": "#CB6342",
@@ -16,20 +41,10 @@
       "color": "#4078CD",
       "category": "complexity-theory"
     },
-    "exact-algorithms": {
-      "name": "Exact Algorithms",
-      "color": "#C9543A",
-      "category": "algorithms"
-    },
     "graph-property-testing": {
       "name": "Graph Property Testing",
       "color": "#AFCA34",
       "category": "property-testing"
-    },
-    "quantum-complexity-theory": {
-      "name": "Quantum Complexity Theory",
-      "color": "#4243CB",
-      "category": "quantum-computing"
     },
     "communication-complexity": {
       "name": "Communication Complexity",
@@ -49,16 +64,6 @@
     "linear-algebraic-algorithms": {
       "name": "Linear Algebraic Algorithms",
       "color": "#CE8749",
-      "category": "algorithms"
-    },
-    "property-testing": {
-      "name": "Property Testing",
-      "color": "#C9D033",
-      "category": "property-testing"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
       "category": "algorithms"
     },
     "random-walks": {
@@ -266,11 +271,6 @@
       "color": "#3B58D2",
       "category": "complexity-theory"
     },
-    "geometric-data-structures": {
-      "name": "Geometric Data Structures",
-      "color": "#33D5B2",
-      "category": "data-structures"
-    },
     "fine-grained-complexity": {
       "name": "Fine-Grained Complexity",
       "color": "#4C60D0",
@@ -358,6 +358,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-10-05",
+      "path": "posts/2026-10-05.md",
+      "paper_count": 5,
+      "generated_at": "2026-10-05T05:00:45.053979+00:00",
+      "tags": [
+        "exact-algorithms",
+        "property-testing",
+        "geometric-data-structures",
+        "approximation-algorithms",
+        "quantum-complexity-theory"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2610.03030",
+          "title": "A Shortest Augmenting Path Algorithm for Linear Matroid Parity",
+          "tags": [
+            "exact-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.03205",
+          "title": "Hamiltonian locality testing and certification do not achieve the Heisenberg limit",
+          "tags": [
+            "property-testing"
+          ]
+        },
+        {
+          "arxiv_id": "2610.03451",
+          "title": "Point and Line Nearest-Neighbor Searching in 3-Space",
+          "tags": [
+            "geometric-data-structures"
+          ]
+        },
+        {
+          "arxiv_id": "2610.03621",
+          "title": "Normal-Form Correlation in Markov Games",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.03705",
+          "title": "Unitary complexity in polynomial space",
+          "tags": [
+            "quantum-complexity-theory"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-02",
       "path": "posts/2026-10-02.md",
