@@ -6,6 +6,21 @@
       "color": "#C9543A",
       "category": "algorithms"
     },
+    "online-learning": {
+      "name": "Online Learning",
+      "color": "#BBD038",
+      "category": "learning-theory"
+    },
+    "linear-algebraic-algorithms": {
+      "name": "Linear Algebraic Algorithms",
+      "color": "#CE8749",
+      "category": "algorithms"
+    },
+    "randomized-algorithms": {
+      "name": "Randomized Algorithms",
+      "color": "#C97C30",
+      "category": "algorithms"
+    },
     "property-testing": {
       "name": "Property Testing",
       "color": "#C9D033",
@@ -61,11 +76,6 @@
       "color": "#3FD395",
       "category": "graph-theory"
     },
-    "linear-algebraic-algorithms": {
-      "name": "Linear Algebraic Algorithms",
-      "color": "#CE8749",
-      "category": "algorithms"
-    },
     "random-walks": {
       "name": "Random Walks",
       "color": "#75D038",
@@ -89,11 +99,6 @@
     "online-algorithms": {
       "name": "Online Algorithms",
       "color": "#D08D4C",
-      "category": "algorithms"
-    },
-    "randomized-algorithms": {
-      "name": "Randomized Algorithms",
-      "color": "#C97C30",
       "category": "algorithms"
     },
     "network-flows": {
@@ -135,11 +140,6 @@
       "name": "Lattice Problems",
       "color": "#B34AD3",
       "category": "cryptography"
-    },
-    "online-learning": {
-      "name": "Online Learning",
-      "color": "#BBD038",
-      "category": "learning-theory"
     },
     "cryptographic-protocols": {
       "name": "Cryptographic Protocols",
@@ -358,6 +358,55 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-10-07",
+      "path": "posts/2026-10-07.md",
+      "paper_count": 5,
+      "generated_at": "2026-10-07T05:08:26.784344+00:00",
+      "tags": [
+        "exact-algorithms",
+        "online-learning",
+        "linear-algebraic-algorithms",
+        "randomized-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2610.08207",
+          "title": "A Fast Algorithm for Maltsev Constraints",
+          "tags": [
+            "exact-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.08735",
+          "title": "Optimal and Efficient Online Inverse Optimization",
+          "tags": [
+            "online-learning"
+          ]
+        },
+        {
+          "arxiv_id": "2610.08701",
+          "title": "Large Growth Happens: Gaussian Elimination with Partial Pivoting on Random Matrices",
+          "tags": [
+            "linear-algebraic-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.07465",
+          "title": "A Tardos-Type Algorithm for Separable Convex Quadratic Programming",
+          "tags": [
+            "exact-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.08199",
+          "title": "Efficient Posterior Sampling for $\\mathbb Z_2$ Synchronization",
+          "tags": [
+            "randomized-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-05",
       "path": "posts/2026-10-05.md",
