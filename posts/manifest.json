@@ -1,10 +1,30 @@
 {
   "version": 1,
   "tags": {
+    "network-coding": {
+      "name": "Network Coding",
+      "color": "#CE3B92",
+      "category": "coding-theory"
+    },
     "exact-algorithms": {
       "name": "Exact Algorithms",
       "color": "#C9543A",
       "category": "algorithms"
+    },
+    "proof-complexity": {
+      "name": "Proof Complexity",
+      "color": "#3E44D4",
+      "category": "complexity-theory"
+    },
+    "fine-grained-complexity": {
+      "name": "Fine-Grained Complexity",
+      "color": "#4C60D0",
+      "category": "complexity-theory"
+    },
+    "approximate-counting": {
+      "name": "Approximate Counting",
+      "color": "#3951CF",
+      "category": "complexity-theory"
     },
     "online-learning": {
       "name": "Online Learning",
@@ -121,11 +141,6 @@
       "color": "#3FCFC4",
       "category": "computational-geometry"
     },
-    "approximate-counting": {
-      "name": "Approximate Counting",
-      "color": "#3951CF",
-      "category": "complexity-theory"
-    },
     "model-theory": {
       "name": "Model Theory",
       "color": "#3583C4",
@@ -206,11 +221,6 @@
       "color": "#C935AB",
       "category": "combinatorics-in-tcs"
     },
-    "proof-complexity": {
-      "name": "Proof Complexity",
-      "color": "#3E44D4",
-      "category": "complexity-theory"
-    },
     "average-case-complexity": {
       "name": "Average-Case Complexity",
       "color": "#2F71CF",
@@ -269,11 +279,6 @@
     "pcp-theory": {
       "name": "PCP Theory",
       "color": "#3B58D2",
-      "category": "complexity-theory"
-    },
-    "fine-grained-complexity": {
-      "name": "Fine-Grained Complexity",
-      "color": "#4C60D0",
       "category": "complexity-theory"
     },
     "graph-minor-theory": {
@@ -358,6 +363,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-10-08",
+      "path": "posts/2026-10-08.md",
+      "paper_count": 5,
+      "generated_at": "2026-10-08T06:48:59.784817+00:00",
+      "tags": [
+        "network-coding",
+        "exact-algorithms",
+        "proof-complexity",
+        "fine-grained-complexity",
+        "approximate-counting"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2610.10108",
+          "title": "The Multiple Unicast Conjecture is False",
+          "tags": [
+            "network-coding"
+          ]
+        },
+        {
+          "arxiv_id": "2610.10446",
+          "title": "Subset Sum via Partial Match",
+          "tags": [
+            "exact-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.08988",
+          "title": "Associativity of Multiplication Is Hard for Resolution",
+          "tags": [
+            "proof-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2610.10153",
+          "title": "3SUM Is Really Hard: A Real-to-Integer Reduction",
+          "tags": [
+            "fine-grained-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2610.10443",
+          "title": "Color Coding for the Sherrington-Kirkpatrick Model",
+          "tags": [
+            "approximate-counting"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-07",
       "path": "posts/2026-10-07.md",
