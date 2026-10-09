@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "circuit-complexity": {
+      "name": "Circuit Complexity",
+      "color": "#3E51D0",
+      "category": "complexity-theory"
+    },
+    "dynamic-data-structures": {
+      "name": "Dynamic Data Structures",
+      "color": "#45D3B6",
+      "category": "data-structures"
+    },
+    "geometric-algorithms": {
+      "name": "Geometric Algorithms",
+      "color": "#3FCFC4",
+      "category": "computational-geometry"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
+    "statistical-learning-theory": {
+      "name": "Statistical Learning Theory",
+      "color": "#C7CA34",
+      "category": "learning-theory"
+    },
     "network-coding": {
       "name": "Network Coding",
       "color": "#CE3B92",
@@ -51,11 +76,6 @@
       "color": "#33D5B2",
       "category": "data-structures"
     },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
-      "category": "algorithms"
-    },
     "quantum-complexity-theory": {
       "name": "Quantum Complexity Theory",
       "color": "#4243CB",
@@ -84,11 +104,6 @@
     "communication-complexity": {
       "name": "Communication Complexity",
       "color": "#4A5BD3",
-      "category": "complexity-theory"
-    },
-    "circuit-complexity": {
-      "name": "Circuit Complexity",
-      "color": "#3E51D0",
       "category": "complexity-theory"
     },
     "graph-coloring": {
@@ -135,11 +150,6 @@
       "name": "Parameterized Complexity",
       "color": "#4963D4",
       "category": "complexity-theory"
-    },
-    "geometric-algorithms": {
-      "name": "Geometric Algorithms",
-      "color": "#3FCFC4",
-      "category": "computational-geometry"
     },
     "model-theory": {
       "name": "Model Theory",
@@ -241,11 +251,6 @@
       "color": "#D54439",
       "category": "algorithmic-game-theory"
     },
-    "dynamic-data-structures": {
-      "name": "Dynamic Data Structures",
-      "color": "#45D3B6",
-      "category": "data-structures"
-    },
     "enumeration-algorithms": {
       "name": "Enumeration Algorithms",
       "color": "#CA5F39",
@@ -346,11 +351,6 @@
       "color": "#CD4A8D",
       "category": "combinatorics-in-tcs"
     },
-    "statistical-learning-theory": {
-      "name": "Statistical Learning Theory",
-      "color": "#C7CA34",
-      "category": "learning-theory"
-    },
     "distributed-algorithms": {
       "name": "Distributed Algorithms",
       "color": "#D2532C",
@@ -363,6 +363,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-10-09",
+      "path": "posts/2026-10-09.md",
+      "paper_count": 5,
+      "generated_at": "2026-10-09T04:57:11.803663+00:00",
+      "tags": [
+        "circuit-complexity",
+        "dynamic-data-structures",
+        "geometric-algorithms",
+        "approximation-algorithms",
+        "statistical-learning-theory"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2610.11823",
+          "title": "The rank of $3\\times 3$ matrix multiplication over $\\mathbb{F}_2$ is 23",
+          "tags": [
+            "circuit-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2610.10904",
+          "title": "$\\Omega((\\log n/\\log\\log n)^2)$ Lower Bounds for Dynamic Graph Problems",
+          "tags": [
+            "dynamic-data-structures"
+          ]
+        },
+        {
+          "arxiv_id": "2610.10888",
+          "title": "Peeling Half the Onion: Embedding $k$-Outerplanar Graphs into $\\ell_1$ and Trees with a Polynomial Distortion (in $k$)",
+          "tags": [
+            "geometric-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.11481",
+          "title": "A QPTAS for Stochastic Scheduling of Bernoulli Jobs",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.11741",
+          "title": "Efficient Recovery of Latent Coordinate Structure from Sparse Observations of the Hypercube",
+          "tags": [
+            "statistical-learning-theory"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-08",
       "path": "posts/2026-10-08.md",
