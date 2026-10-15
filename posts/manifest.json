@@ -1,6 +1,36 @@
 {
   "version": 1,
   "tags": {
+    "network-coding": {
+      "name": "Network Coding",
+      "color": "#CE3B92",
+      "category": "coding-theory"
+    },
+    "external-memory-algorithms": {
+      "name": "External Memory Algorithms",
+      "color": "#D47549",
+      "category": "algorithms"
+    },
+    "randomized-algorithms": {
+      "name": "Randomized Algorithms",
+      "color": "#C97C30",
+      "category": "algorithms"
+    },
+    "average-case-complexity": {
+      "name": "Average-Case Complexity",
+      "color": "#2F71CF",
+      "category": "complexity-theory"
+    },
+    "geometric-algorithms": {
+      "name": "Geometric Algorithms",
+      "color": "#3FCFC4",
+      "category": "computational-geometry"
+    },
+    "space-complexity": {
+      "name": "Space Complexity",
+      "color": "#424DCB",
+      "category": "complexity-theory"
+    },
     "circuit-complexity": {
       "name": "Circuit Complexity",
       "color": "#3E51D0",
@@ -11,11 +41,6 @@
       "color": "#45D3B6",
       "category": "data-structures"
     },
-    "geometric-algorithms": {
-      "name": "Geometric Algorithms",
-      "color": "#3FCFC4",
-      "category": "computational-geometry"
-    },
     "approximation-algorithms": {
       "name": "Approximation Algorithms",
       "color": "#D55839",
@@ -25,11 +50,6 @@
       "name": "Statistical Learning Theory",
       "color": "#C7CA34",
       "category": "learning-theory"
-    },
-    "network-coding": {
-      "name": "Network Coding",
-      "color": "#CE3B92",
-      "category": "coding-theory"
     },
     "exact-algorithms": {
       "name": "Exact Algorithms",
@@ -59,11 +79,6 @@
     "linear-algebraic-algorithms": {
       "name": "Linear Algebraic Algorithms",
       "color": "#CE8749",
-      "category": "algorithms"
-    },
-    "randomized-algorithms": {
-      "name": "Randomized Algorithms",
-      "color": "#C97C30",
       "category": "algorithms"
     },
     "property-testing": {
@@ -181,11 +196,6 @@
       "color": "#D8B344",
       "category": "learning-theory"
     },
-    "space-complexity": {
-      "name": "Space Complexity",
-      "color": "#424DCB",
-      "category": "complexity-theory"
-    },
     "graph-drawing": {
       "name": "Graph Drawing",
       "color": "#48CF60",
@@ -230,11 +240,6 @@
       "name": "Probabilistic Method",
       "color": "#C935AB",
       "category": "combinatorics-in-tcs"
-    },
-    "average-case-complexity": {
-      "name": "Average-Case Complexity",
-      "color": "#2F71CF",
-      "category": "complexity-theory"
     },
     "succinct-data-structures": {
       "name": "Succinct Data Structures",
@@ -363,6 +368,58 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-10-15",
+      "path": "posts/2026-10-15.md",
+      "paper_count": 5,
+      "generated_at": "2026-10-15T04:46:55.480233+00:00",
+      "tags": [
+        "network-coding",
+        "external-memory-algorithms",
+        "randomized-algorithms",
+        "average-case-complexity",
+        "geometric-algorithms",
+        "space-complexity"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2610.20079",
+          "title": "Undirected Network Coding and Faster External-Memory Integer Sorting",
+          "tags": [
+            "network-coding",
+            "external-memory-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.20492",
+          "title": "On Complexity of Gaussian Sampling",
+          "tags": [
+            "randomized-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.19162",
+          "title": "The Gap Between Average-Case and Worst-Case Complexity",
+          "tags": [
+            "average-case-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2610.20244",
+          "title": "FPTAS for Polygonal Multi-Robot Motion Planning",
+          "tags": [
+            "geometric-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.19558",
+          "title": "The Two-Level Poset Game is PSPACE-Complete",
+          "tags": [
+            "space-complexity"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-09",
       "path": "posts/2026-10-09.md",
