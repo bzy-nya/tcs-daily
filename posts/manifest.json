@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "exact-algorithms": {
+      "name": "Exact Algorithms",
+      "color": "#C9543A",
+      "category": "algorithms"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
+    "linear-algebraic-algorithms": {
+      "name": "Linear Algebraic Algorithms",
+      "color": "#CE8749",
+      "category": "algorithms"
+    },
+    "differential-privacy": {
+      "name": "Differential Privacy",
+      "color": "#CCA946",
+      "category": "learning-theory"
+    },
+    "time-complexity": {
+      "name": "Time Complexity",
+      "color": "#4078CD",
+      "category": "complexity-theory"
+    },
     "network-coding": {
       "name": "Network Coding",
       "color": "#CE3B92",
@@ -41,20 +66,10 @@
       "color": "#45D3B6",
       "category": "data-structures"
     },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
-      "category": "algorithms"
-    },
     "statistical-learning-theory": {
       "name": "Statistical Learning Theory",
       "color": "#C7CA34",
       "category": "learning-theory"
-    },
-    "exact-algorithms": {
-      "name": "Exact Algorithms",
-      "color": "#C9543A",
-      "category": "algorithms"
     },
     "proof-complexity": {
       "name": "Proof Complexity",
@@ -75,11 +90,6 @@
       "name": "Online Learning",
       "color": "#BBD038",
       "category": "learning-theory"
-    },
-    "linear-algebraic-algorithms": {
-      "name": "Linear Algebraic Algorithms",
-      "color": "#CE8749",
-      "category": "algorithms"
     },
     "property-testing": {
       "name": "Property Testing",
@@ -105,11 +115,6 @@
       "name": "Streaming Algorithms",
       "color": "#D26036",
       "category": "algorithms"
-    },
-    "time-complexity": {
-      "name": "Time Complexity",
-      "color": "#4078CD",
-      "category": "complexity-theory"
     },
     "graph-property-testing": {
       "name": "Graph Property Testing",
@@ -215,11 +220,6 @@
       "name": "Static Data Structures",
       "color": "#38D6A0",
       "category": "data-structures"
-    },
-    "differential-privacy": {
-      "name": "Differential Privacy",
-      "color": "#CCA946",
-      "category": "learning-theory"
     },
     "algebraic-coding-theory": {
       "name": "Algebraic Coding Theory",
@@ -368,6 +368,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-10-16",
+      "path": "posts/2026-10-16.md",
+      "paper_count": 5,
+      "generated_at": "2026-10-16T04:59:29.374584+00:00",
+      "tags": [
+        "exact-algorithms",
+        "approximation-algorithms",
+        "linear-algebraic-algorithms",
+        "differential-privacy",
+        "time-complexity"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2610.20742",
+          "title": "Subset Sum in Almost-Linear Time",
+          "tags": [
+            "exact-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.22250",
+          "title": "Tree Edit Distance: Near-Linear-Time Approximate, Sublinear, and Dynamic",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.22302",
+          "title": "Near-Optimal Parallel $M$-Matrix Scaling",
+          "tags": [
+            "linear-algebraic-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.22278",
+          "title": "Subgraph Counting with Local Node Differential Privacy",
+          "tags": [
+            "differential-privacy"
+          ]
+        },
+        {
+          "arxiv_id": "2610.21785",
+          "title": "The Six-Dimensional Tarski Problem is $\\Omega(\\log^3 n)$-Hard",
+          "tags": [
+            "time-complexity"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-15",
       "path": "posts/2026-10-15.md",
