@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "graph-minor-theory": {
+      "name": "Graph Minor Theory",
+      "color": "#2BD371",
+      "category": "graph-theory"
+    },
+    "quantum-complexity-theory": {
+      "name": "Quantum Complexity Theory",
+      "color": "#4243CB",
+      "category": "quantum-computing"
+    },
+    "communication-complexity": {
+      "name": "Communication Complexity",
+      "color": "#4A5BD3",
+      "category": "complexity-theory"
+    },
+    "randomized-algorithms": {
+      "name": "Randomized Algorithms",
+      "color": "#C97C30",
+      "category": "algorithms"
+    },
+    "graph-coloring": {
+      "name": "Graph Coloring",
+      "color": "#3FD395",
+      "category": "graph-theory"
+    },
     "exact-algorithms": {
       "name": "Exact Algorithms",
       "color": "#C9543A",
@@ -34,11 +59,6 @@
     "external-memory-algorithms": {
       "name": "External Memory Algorithms",
       "color": "#D47549",
-      "category": "algorithms"
-    },
-    "randomized-algorithms": {
-      "name": "Randomized Algorithms",
-      "color": "#C97C30",
       "category": "algorithms"
     },
     "average-case-complexity": {
@@ -101,11 +121,6 @@
       "color": "#33D5B2",
       "category": "data-structures"
     },
-    "quantum-complexity-theory": {
-      "name": "Quantum Complexity Theory",
-      "color": "#4243CB",
-      "category": "quantum-computing"
-    },
     "dynamic-algorithms": {
       "name": "Dynamic Algorithms",
       "color": "#CB6342",
@@ -120,16 +135,6 @@
       "name": "Graph Property Testing",
       "color": "#AFCA34",
       "category": "property-testing"
-    },
-    "communication-complexity": {
-      "name": "Communication Complexity",
-      "color": "#4A5BD3",
-      "category": "complexity-theory"
-    },
-    "graph-coloring": {
-      "name": "Graph Coloring",
-      "color": "#3FD395",
-      "category": "graph-theory"
     },
     "random-walks": {
       "name": "Random Walks",
@@ -291,11 +296,6 @@
       "color": "#3B58D2",
       "category": "complexity-theory"
     },
-    "graph-minor-theory": {
-      "name": "Graph Minor Theory",
-      "color": "#2BD371",
-      "category": "graph-theory"
-    },
     "string-data-structures": {
       "name": "String Data Structures",
       "color": "#48CF9B",
@@ -368,6 +368,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-10-19",
+      "path": "posts/2026-10-19.md",
+      "paper_count": 5,
+      "generated_at": "2026-10-19T04:47:00.812144+00:00",
+      "tags": [
+        "graph-minor-theory",
+        "quantum-complexity-theory",
+        "communication-complexity",
+        "randomized-algorithms",
+        "graph-coloring"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2610.23792",
+          "title": "Revisiting separators in string graphs, region intersection graphs, and induced-minor-free graphs",
+          "tags": [
+            "graph-minor-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2610.23560",
+          "title": "Electrostatic Limits on Quantum Spatial Search",
+          "tags": [
+            "quantum-complexity-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2610.21216",
+          "title": "On the Complexity of Symmetric Boolean Functions in Multiparty Private Simultaneous Messages",
+          "tags": [
+            "communication-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2610.23775",
+          "title": "Polytope Sampling at the Speed of Isoperimetry",
+          "tags": [
+            "randomized-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2610.23824",
+          "title": "Online Graph Coloring with Random Arrivals",
+          "tags": [
+            "graph-coloring"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-16",
       "path": "posts/2026-10-16.md",
