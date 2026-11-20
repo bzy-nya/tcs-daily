@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "statistical-learning-theory": {
+      "name": "Statistical Learning Theory",
+      "color": "#C7CA34",
+      "category": "learning-theory"
+    },
+    "extremal-combinatorics": {
+      "name": "Extremal Combinatorics",
+      "color": "#D641CB",
+      "category": "combinatorics-in-tcs"
+    },
+    "random-graphs": {
+      "name": "Random Graphs",
+      "color": "#46D660",
+      "category": "graph-theory"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
+    "parameterized-complexity": {
+      "name": "Parameterized Complexity",
+      "color": "#4963D4",
+      "category": "complexity-theory"
+    },
     "graph-minor-theory": {
       "name": "Graph Minor Theory",
       "color": "#2BD371",
@@ -29,11 +54,6 @@
     "exact-algorithms": {
       "name": "Exact Algorithms",
       "color": "#C9543A",
-      "category": "algorithms"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
       "category": "algorithms"
     },
     "linear-algebraic-algorithms": {
@@ -85,11 +105,6 @@
       "name": "Dynamic Data Structures",
       "color": "#45D3B6",
       "category": "data-structures"
-    },
-    "statistical-learning-theory": {
-      "name": "Statistical Learning Theory",
-      "color": "#C7CA34",
-      "category": "learning-theory"
     },
     "proof-complexity": {
       "name": "Proof Complexity",
@@ -171,20 +186,10 @@
       "color": "#2A46CF",
       "category": "complexity-theory"
     },
-    "parameterized-complexity": {
-      "name": "Parameterized Complexity",
-      "color": "#4963D4",
-      "category": "complexity-theory"
-    },
     "model-theory": {
       "name": "Model Theory",
       "color": "#3583C4",
       "category": "logic-and-formal-methods"
-    },
-    "extremal-combinatorics": {
-      "name": "Extremal Combinatorics",
-      "color": "#D641CB",
-      "category": "combinatorics-in-tcs"
     },
     "lattice-problems": {
       "name": "Lattice Problems",
@@ -368,6 +373,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-11-20",
+      "path": "posts/2026-11-20.md",
+      "paper_count": 5,
+      "generated_at": "2026-11-20T07:02:42.469018+00:00",
+      "tags": [
+        "statistical-learning-theory",
+        "extremal-combinatorics",
+        "random-graphs",
+        "approximation-algorithms",
+        "parameterized-complexity"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2611.25011",
+          "title": "Near-Quadratic Sample Compression for All VC Classes",
+          "tags": [
+            "statistical-learning-theory"
+          ]
+        },
+        {
+          "arxiv_id": "2611.26229",
+          "title": "Sharp topological overlap in every dimension",
+          "tags": [
+            "extremal-combinatorics"
+          ]
+        },
+        {
+          "arxiv_id": "2611.25157",
+          "title": "Optimal Robust Community Detection",
+          "tags": [
+            "random-graphs"
+          ]
+        },
+        {
+          "arxiv_id": "2611.26352",
+          "title": "Polylogarithmic Approximation for Packing Convex Polyhedra",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2611.26080",
+          "title": "Running-Time Lower Bounds under FPT $\\neq$ W[1]",
+          "tags": [
+            "parameterized-complexity"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-19",
       "path": "posts/2026-10-19.md",
