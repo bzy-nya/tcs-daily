@@ -1,6 +1,31 @@
 {
   "version": 1,
   "tags": {
+    "time-complexity": {
+      "name": "Time Complexity",
+      "color": "#4078CD",
+      "category": "complexity-theory"
+    },
+    "linear-algebraic-algorithms": {
+      "name": "Linear Algebraic Algorithms",
+      "color": "#CE8749",
+      "category": "algorithms"
+    },
+    "average-case-complexity": {
+      "name": "Average-Case Complexity",
+      "color": "#2F71CF",
+      "category": "complexity-theory"
+    },
+    "cryptographic-protocols": {
+      "name": "Cryptographic Protocols",
+      "color": "#A63FD3",
+      "category": "cryptography"
+    },
+    "approximation-algorithms": {
+      "name": "Approximation Algorithms",
+      "color": "#D55839",
+      "category": "algorithms"
+    },
     "statistical-learning-theory": {
       "name": "Statistical Learning Theory",
       "color": "#C7CA34",
@@ -15,11 +40,6 @@
       "name": "Random Graphs",
       "color": "#46D660",
       "category": "graph-theory"
-    },
-    "approximation-algorithms": {
-      "name": "Approximation Algorithms",
-      "color": "#D55839",
-      "category": "algorithms"
     },
     "parameterized-complexity": {
       "name": "Parameterized Complexity",
@@ -56,20 +76,10 @@
       "color": "#C9543A",
       "category": "algorithms"
     },
-    "linear-algebraic-algorithms": {
-      "name": "Linear Algebraic Algorithms",
-      "color": "#CE8749",
-      "category": "algorithms"
-    },
     "differential-privacy": {
       "name": "Differential Privacy",
       "color": "#CCA946",
       "category": "learning-theory"
-    },
-    "time-complexity": {
-      "name": "Time Complexity",
-      "color": "#4078CD",
-      "category": "complexity-theory"
     },
     "network-coding": {
       "name": "Network Coding",
@@ -80,11 +90,6 @@
       "name": "External Memory Algorithms",
       "color": "#D47549",
       "category": "algorithms"
-    },
-    "average-case-complexity": {
-      "name": "Average-Case Complexity",
-      "color": "#2F71CF",
-      "category": "complexity-theory"
     },
     "geometric-algorithms": {
       "name": "Geometric Algorithms",
@@ -194,11 +199,6 @@
     "lattice-problems": {
       "name": "Lattice Problems",
       "color": "#B34AD3",
-      "category": "cryptography"
-    },
-    "cryptographic-protocols": {
-      "name": "Cryptographic Protocols",
-      "color": "#A63FD3",
       "category": "cryptography"
     },
     "list-decoding": {
@@ -373,6 +373,56 @@
     }
   },
   "reports": [
+    {
+      "date": "2026-11-26",
+      "path": "posts/2026-11-26.md",
+      "paper_count": 5,
+      "generated_at": "2026-11-26T06:02:00.124414+00:00",
+      "tags": [
+        "time-complexity",
+        "linear-algebraic-algorithms",
+        "average-case-complexity",
+        "cryptographic-protocols",
+        "approximation-algorithms"
+      ],
+      "papers": [
+        {
+          "arxiv_id": "2611.34869",
+          "title": "Pinwheel Scheduling is PSPACE-Complete",
+          "tags": [
+            "time-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2611.34664",
+          "title": "The asymptotic spectrum of tensors is connected",
+          "tags": [
+            "linear-algebraic-algorithms"
+          ]
+        },
+        {
+          "arxiv_id": "2611.34728",
+          "title": "Low-degree hardness rules out eigenvalue tests but not eigenvector tests",
+          "tags": [
+            "average-case-complexity"
+          ]
+        },
+        {
+          "arxiv_id": "2611.33508",
+          "title": "Merkle Trees Minimize Verifier Complexity in the ROM",
+          "tags": [
+            "cryptographic-protocols"
+          ]
+        },
+        {
+          "arxiv_id": "2611.33928",
+          "title": "Almost Tight Hardness of Approximation for $0$-Extension",
+          "tags": [
+            "approximation-algorithms"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-20",
       "path": "posts/2026-11-20.md",
